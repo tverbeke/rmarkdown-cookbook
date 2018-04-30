@@ -160,7 +160,47 @@ already read:
 \begin{itemize}
 \tightlist
 \item
+  Dynamic documents and knitr
+\item
   R Markdown: The Definitive guide
+\item
+  Authoring books with bookdown
+\item
+  Blogdown
+\end{itemize}
+
+\section{Ideas to be written up}\label{ideas-to-be-written-up}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{(ref:tag)} to store page formatting options which might
+  need to be reused. For example a page break
+\item
+  Managing big projects: \texttt{source} is particularly useful for
+  loading external scripts so that the R Markdown project isn't too
+  bloated with code.
+\item
+  Using subfigures within the R Markdown environments:
+  \url{https://stackoverflow.com/questions/12546365/subfigures-or-subcaptions-with-knitr/49086985\#49086985}
+\item
+  Caching, and ways it can be tailored to suit analysis. This cache
+  invalidation is a great example:
+  \url{https://stackoverflow.com/questions/18376008/invalidate-a-chunks-cache-when-uncached-chunk-changes}
+\item
+  Knitr hooks: these are explained within your previous book, but i I
+  think a few more practical examples could be very useful for readers
+  to see the power of it. -Designing custom behavior which can respond
+  to change in outputs using \texttt{is\_latex\_output} etc. For
+  example, you may want to have interactive tables using
+  \texttt{DT:datatable} in the HTML output but print static versions in
+  the PDF.
+\item
+  Creating stylized tables using kableExtra: lots of fun things can be
+  done with this package
+\item
+  Using short author citations:
+  \url{https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic\&utm_source=google_rich_qa\&utm_campaign=google_rich_qa}
 \end{itemize}
 
 \chapter{Introduction}\label{intro}
@@ -243,6 +283,8 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 You can write citations, too. For example, we are using the
 \textbf{bookdown} package \citep{R-bookdown} in this sample book, which
 was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
+
+\chapter{References}\label{references}
 
 \chapter{LaTeX}\label{latex}
 

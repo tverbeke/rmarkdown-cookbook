@@ -6,20 +6,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Mastering R Markdown</title>
-  <meta name="description" content="Mastering R Markdown">
+  <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown 0.7.8 and GitBook 2.6.7">
 
   <meta property="og:title" content="Mastering R Markdown" />
   <meta property="og:type" content="book" />
   
   
-  
+  <meta property="og:description" content="Tips and tricks to build advanced projects in R Markdown" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Mastering R Markdown" />
   
-  
+  <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   
 
 <meta name="author" content="Michael Harper">
@@ -100,17 +100,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Mastering R Markdown with examples</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About the book</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About the book</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#ideas-to-be-written-up"><i class="fa fa-check"></i><b>1.1</b> Ideas to be written up</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>3</b> LaTeX</a><ul>
-<li class="chapter" data-level="3.1" data-path="latex.html"><a href="latex.html#inserting-commands"><i class="fa fa-check"></i><b>3.1</b> Inserting Commands</a></li>
-<li class="chapter" data-level="3.2" data-path="latex.html"><a href="latex.html#latex-preamble"><i class="fa fa-check"></i><b>3.2</b> LaTeX preamble</a></li>
-<li class="chapter" data-level="3.3" data-path="latex.html"><a href="latex.html#subfigures"><i class="fa fa-check"></i><b>3.3</b> Subfigures</a></li>
-<li class="chapter" data-level="3.4" data-path="latex.html"><a href="latex.html#changing-citation-engine"><i class="fa fa-check"></i><b>3.4</b> Changing citation Engine</a></li>
-<li class="chapter" data-level="3.5" data-path="latex.html"><a href="latex.html#altering-citation-style"><i class="fa fa-check"></i><b>3.5</b> Altering Citation Style</a></li>
+<li class="chapter" data-level="3" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>3</b> References</a></li>
+<li class="chapter" data-level="4" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>4</b> LaTeX</a><ul>
+<li class="chapter" data-level="4.1" data-path="latex.html"><a href="latex.html#inserting-commands"><i class="fa fa-check"></i><b>4.1</b> Inserting Commands</a></li>
+<li class="chapter" data-level="4.2" data-path="latex.html"><a href="latex.html#latex-preamble"><i class="fa fa-check"></i><b>4.2</b> LaTeX preamble</a></li>
+<li class="chapter" data-level="4.3" data-path="latex.html"><a href="latex.html#subfigures"><i class="fa fa-check"></i><b>4.3</b> Subfigures</a></li>
+<li class="chapter" data-level="4.4" data-path="latex.html"><a href="latex.html#changing-citation-engine"><i class="fa fa-check"></i><b>4.4</b> Changing citation Engine</a></li>
+<li class="chapter" data-level="4.5" data-path="latex.html"><a href="latex.html#altering-citation-style"><i class="fa fa-check"></i><b>4.5</b> Altering Citation Style</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -142,9 +145,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>This book aims to bring together lots of useful tips for R Markdown.</p>
 <p>There are already several fantastic books out there which you may have already read:</p>
 <ul>
+<li>Dynamic documents and knitr</li>
 <li>R Markdown: The Definitive guide</li>
+<li>Authoring books with bookdown</li>
+<li>Blogdown</li>
+</ul>
+<div id="ideas-to-be-written-up" class="section level2">
+<h2><span class="header-section-number">1.1</span> Ideas to be written up</h2>
+<ul>
+<li>Use <code>(ref:tag)</code> to store page formatting options which might need to be reused. For example a page break</li>
+<li>Managing big projects: <code>source</code> is particularly useful for loading external scripts so that the R Markdown project isn’t too bloated with code.</li>
+<li>Using subfigures within the R Markdown environments: <a href="https://stackoverflow.com/questions/12546365/subfigures-or-subcaptions-with-knitr/49086985#49086985" class="uri">https://stackoverflow.com/questions/12546365/subfigures-or-subcaptions-with-knitr/49086985#49086985</a></li>
+<li>Caching, and ways it can be tailored to suit analysis. This cache invalidation is a great example: <a href="https://stackoverflow.com/questions/18376008/invalidate-a-chunks-cache-when-uncached-chunk-changes" class="uri">https://stackoverflow.com/questions/18376008/invalidate-a-chunks-cache-when-uncached-chunk-changes</a></li>
+<li>Knitr hooks: these are explained within your previous book, but i I think a few more practical examples could be very useful for readers to see the power of it. -Designing custom behavior which can respond to change in outputs using <code>is_latex_output</code> etc. For example, you may want to have interactive tables using <code>DT:datatable</code> in the HTML output but print static versions in the PDF.</li>
+<li>Creating stylized tables using kableExtra: lots of fun things can be done with this package</li>
+<li>Using short author citations: <a href="https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa" class="uri">https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa</a></li>
 </ul>
 
+</div>
 </div>
             </section>
 
@@ -182,13 +200,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/index.Rmd",
+"text": "Edit"
 },
 "download": ["mastering-rmarkdown.pdf", "mastering-rmarkdown.epub"],
 "toc": {
 "collapse": "subsection"
-}
+},
+"split_by": "section"
 });
 });
 </script>
