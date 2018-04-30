@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="managing-big-projects.html">
-<link rel="next" href="html-output.html">
+<link rel="prev" href="multi-format-projects.html">
+<link rel="next" href="tables.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -154,84 +154,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="latex" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> LaTeX</h1>
-<p>For many authors, the main of long reports or books, the primary output will be LaTeX. In this chapter, we discuss approaches which can be used to customise the output of PDF reports.</p>
-<p>Users should approach with a note of caution. One of the major benefits of R Markdown is</p>
-<div id="inserting-commands" class="section level2">
-<h2><span class="header-section-number">5.1</span> Inserting Commands</h2>
-</div>
-<div id="latex-preamble" class="section level2">
-<h2><span class="header-section-number">5.2</span> LaTeX preamble</h2>
-</div>
-<div id="multi-figure-plots" class="section level2">
-<h2><span class="header-section-number">5.3</span> Multi-figure plots</h2>
-<p>If we need to print multiple output graphs or figures, there are several ways this can be achieved.</p>
-</div>
-<div id="cross-output" class="section level2">
-<h2><span class="header-section-number">5.4</span> Cross-output</h2>
-<p>As explained in <a href="https://bookdown.org/yihui/rmarkdown/r-code.html#figures" class="uri">https://bookdown.org/yihui/rmarkdown/r-code.html#figures</a> of <span class="citation">(<span class="citeproc-not-found" data-reference-id="xie2018"><strong>???</strong></span>)</span>, we can place multiple figures side-by-side using the <code>fig.hold='hold'</code> along with the <code>out.width</code> option. As an example below, we have set the <code>out.width=&quot;50%&quot;</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)
-<span class="kw">plot</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">pch=</span><span class="dv">19</span>)</code></pre></div>
-<div class="figure"><span id="fig:fig-sub-2"></span>
-<img src="mastering-rmarkdown_files/figure-html/fig-sub-2-1.png" alt="Side-by-side figures" width="50%" /><img src="mastering-rmarkdown_files/figure-html/fig-sub-2-2.png" alt="Side-by-side figures" width="50%" />
-<p class="caption">
-Figure 5.1: Side-by-side figures
-</p>
-</div>
-<p>The main benefits of this approach is that it is easily achieved, and also works for both PDF and HTML outputs.</p>
-</div>
-<div id="latex-subfigures" class="section level2">
-<h2><span class="header-section-number">5.5</span> LaTeX subfigures</h2>
-<p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
-<p>Subfigures require the LaTeX package <code>subfig</code>. The line <code>\usepackage{subfig}</code> must therefore be included within the YAML, or if you are using an external tex template you can add this to that file. For example:</p>
-<p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
+<div id="knitr-hooks" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Knitr Hooks</h1>
 <ul>
-<li><code>fig.subcap</code> is a list of the captions for subfigures</li>
-<li><code>fig.ncol</code>: the number of columns of subfigures</li>
-<li><code>out.width</code>: the output width of the figures. You will normally set this 100% divided by the number of sub columns.</li>
-</ul>
-<p>An example is demonstrated below:</p>
-<pre><code>```yaml
-output: pdf_document
-header-includes:
-   - \usepackage{subfig}
-```
-
-```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
-plot(1:10)
-plot(rnorm(10), pch=19)
-```</code></pre>
-<p>The output is shown in Figure <a href="latex.html#fig:subcaptions">5.2</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/subfigure.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</code></pre></div>
-<div class="figure"><span id="fig:subcaptions"></span>
-<img src="images/subfigure.png" alt="An example subcaption"  />
-<p class="caption">
-Figure 5.2: An example subcaption
-</p>
-</div>
-<div id="using-with-list" class="section level3">
-<h3><span class="header-section-number">5.5.1</span> Using with list</h3>
-</div>
-</div>
-<div id="changing-citation-engine" class="section level2">
-<h2><span class="header-section-number">5.6</span> Changing citation Engine</h2>
-</div>
-<div id="altering-citation-style" class="section level2">
-<h2><span class="header-section-number">5.7</span> Altering Citation Style</h2>
-<ul>
-<li>Using short author citations: <a href="https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa" class="uri">https://stackoverflow.com/questions/48303890/using-short-author-citations-in-bookdown-rmarkdown?utm_medium=organic&amp;utm_source=google_rich_qa&amp;utm_campaign=google_rich_qa</a></li>
+<li>Knitr hooks: these are explained within previous R Markdown book</li>
+<li>Include practical examples could be very useful for readers to see the power of it.</li>
+<li>Use some of these: <a href="https://gist.github.com/yihui/2629886" class="uri">https://gist.github.com/yihui/2629886</a></li>
 </ul>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="managing-big-projects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="html-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multi-format-projects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -261,7 +199,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/04-latex.Rmd",
+"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/07-hooks.Rmd",
 "text": "Edit"
 },
 "download": ["mastering-rmarkdown.pdf", "mastering-rmarkdown.epub"],
