@@ -24,8 +24,8 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Mastering R Markdown},
-            pdfauthor={Michael Harper},
+            pdftitle={R Markdown Cookbook},
+            pdfauthor={Michael Harper, Yihui Xie},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -117,15 +117,15 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{Mastering R Markdown}
+  \title{R Markdown Cookbook}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-    \author{Michael Harper}
+    \author{Michael Harper, Yihui Xie}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-08-07}
+    \date{2018-08-08}
 
 \usepackage{booktabs}
 
@@ -142,7 +142,7 @@
 This book is in a very early stage of development. If you have any
 suggestions on what should be included within this book, please get in
 touch via GitHub:
-\url{https://github.com/mikey-harper/mastering-rmarkdown}
+\url{https://github.com/mikey-harper/rmarkdown-cookbook}
 \end{quote}
 
 \begin{itemize}
@@ -155,6 +155,10 @@ touch via GitHub:
   limited in what they can achieve with advanced customisation. However,
   we can easily edit.
 \end{itemize}
+
+It is noted in the book \emph{R Markdown: The Definitive Guide} that
+``Please do not underestimate the customizability of R Markdown because
+of the simplicity of its syntax''
 
 \section{Recommended Reading}\label{recommended-reading}
 
@@ -183,8 +187,6 @@ already read:
   What readers can learn
 \item
   Feedback and errata
-\item
-  Suggested examples
 \end{itemize}
 
 \section{Overview of Book}\label{overview-of-book}
@@ -202,10 +204,7 @@ already read:
 \item
   What should be known before reading this book
 \item
-  Recommended reading
-\item
-  \texttt{bookdown} is used as the default engine as it provides
-  improvements
+  Assumed knowledge of the basics of R Markdown
 \end{itemize}
 
 \section{Quick Tips}\label{quick-tips}
@@ -218,48 +217,6 @@ already read:
   \url{https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown/23529410\#23529410}
 \end{itemize}
 
-\chapter{Managing Big Projects}\label{managing-big-projects}
-
-\begin{itemize}
-\tightlist
-\item
-  Practical tips on how a big project should be managed
-\item
-  \texttt{source} is particularly useful for loading external scripts so
-  that the R Markdown project isn't too bloated with code.
-\end{itemize}
-
-\textbf{Ideas}: - Use \texttt{(ref:tag)} to store page formatting
-options which might need to be reused. For example a page break
-
-\section{Sourcing Files}\label{sourcing-files}
-
-A benefit of using R Markdown is that it is easy
-
-\begin{verbatim}
-source("yourScript.R")
-\end{verbatim}
-
-\section{Caching}\label{caching}
-
-\begin{itemize}
-\tightlist
-\item
-  Caching
-\item
-  Ways it can be tailored to suit analysis. This cache invalidation is a
-  great example:
-  \url{https://stackoverflow.com/questions/18376008/invalidate-a-chunks-cache-when-uncached-chunk-changes}
-\end{itemize}
-
-\section{Notifications}\label{notifications}
-
-\begin{itemize}
-\tightlist
-\item
-  Can link R Markdown with notifications if have long analysis
-\end{itemize}
-
 \chapter{LaTeX}\label{latex}
 
 For many authors, the main of long reports or books, the primary output
@@ -267,7 +224,11 @@ will be LaTeX. In this chapter, we discuss approaches which can be used
 to customise the output of PDF reports.
 
 Users should approach with a note of caution. One of the major benefits
-of R Markdown is
+of R Markdown is the fact that a single source document can create
+documents with multiple formats. By tailoring your work to a single
+output format (PDF/Word/HTML), you may improve the appearance and
+performance of a single output but at the expense of this
+tranferability.
 
 \section{Inserting Commands}\label{inserting-commands}
 
@@ -372,10 +333,14 @@ The output is shown in Figure \ref{fig:subcaptions}.
 
 \chapter{HTML Output}\label{html-output}
 
+How to customise the appearance of HTML documents:
+
 \begin{itemize}
 \tightlist
 \item
-  Take some of the details from here:
+  CSS styles
+\item
+  Adapt some of the details from here:
   \url{https://rmarkdown.rstudio.com/html_document_format.html}
 \end{itemize}
 
@@ -385,29 +350,31 @@ The output is shown in Figure \ref{fig:subcaptions}.
 
 \chapter{Multi-format projects}\label{multi-format-projects}
 
-\begin{itemize}
-\tightlist
-\item
-  One of the main benefits of R Markdown is that it is easy to create
-  documents in a single source file and generate PDF, HTML, ebook and
-  Word documents. This book example is available in all three formats.
-  Project should therefore ideally be designed to be flexible for the
-  multiple outputs. However, users will often find themselves wanting to
-  fine-tune the output, and doing so will often require -Designing
-  custom behavior which can respond to change in outputs using
-  \texttt{is\_latex\_output} etc. For example, you may want to have
-  interactive tables using \texttt{DT:datatable} in the HTML output but
-  print static versions in the PDF.
-\end{itemize}
+One of the main benefits of R Markdown can create multiple output
+formats from a single source document. This book example is available in
+all three formats, with PDF, ebook and online versions all being
+available.
+
+Project should therefore ideally be designed to be flexible for the
+multiple outputs. However, users will often find themselves wanting to
+fine-tune the output, and doing so will often require
+
+This chapter aims to provide several examples on how a document can be
+customised with output specific features, whilst also retaining the
+ability to export documents to multiple formats.
+
+\section{Control Output}\label{control-output}
+
+Dsigning custom behavior which can respond to change in outputs using
+\texttt{is\_latex\_output} etc. For example, you may want to have
+interactive tables using \texttt{DT:datatable} in the HTML output but
+print static versions in the PDF.
 
 \section{Output-specific functions}\label{output-specific-functions}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{bookdown} will take screenshots of HTML widgets in static
-  reports
-\end{itemize}
+HTML documents have the capacity to contain. The webshot package is
+available to take screenshots of HTML elements for non-interactive
+output formats (ebooks, PDF).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -432,6 +399,8 @@ function will return a TRUE/FALSE action
 \end{Highlighting}
 \end{Shaded}
 
+This can be used to control the output of statements.
+
 \chapter{Knitr Hooks}\label{knitr-hooks}
 
 \begin{itemize}
@@ -450,7 +419,51 @@ function will return a TRUE/FALSE action
 \begin{itemize}
 \tightlist
 \item
+  provide more detailed documentation on kable
+\item
   Using kableExtra to style tables
+\end{itemize}
+
+\chapter{Managing Big Projects}\label{managing-big-projects}
+
+\begin{itemize}
+\tightlist
+\item
+  Practical tips on how a big project should be managed
+\item
+  \texttt{source} is particularly useful for loading external scripts so
+  that the R Markdown project isn't too bloated with code.
+\end{itemize}
+
+\textbf{Ideas}: - Use \texttt{(ref:tag)} to store page formatting
+options which might need to be reused. For example a page break
+
+\section{Sourcing Files}\label{sourcing-files}
+
+A benefit of using R Markdown is that it is easy
+
+\begin{verbatim}
+source("yourScript.R")
+\end{verbatim}
+
+\section{Caching}\label{caching}
+
+\begin{itemize}
+\tightlist
+\item
+  Caching
+\item
+  Ways it can be tailored to suit analysis. This cache invalidation is a
+  great example:
+  \url{https://stackoverflow.com/questions/18376008/invalidate-a-chunks-cache-when-uncached-chunk-changes}
+\end{itemize}
+
+\section{Notifications}\label{notifications}
+
+\begin{itemize}
+\tightlist
+\item
+  Can link R Markdown with notifications if have long analysis
 \end{itemize}
 
 \begin{itemize}
