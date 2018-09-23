@@ -238,7 +238,7 @@ The R session information used when compiling this book is as follows:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{xfun}\OperatorTok{::}\KeywordTok{session_info}\NormalTok{(}\KeywordTok{c}\NormalTok{(}
-  \StringTok{'blogdown'}\NormalTok{, }\StringTok{'bookdown'}\NormalTok{, }\StringTok{'knitr'}\NormalTok{, }\StringTok{'rmarkdown'}\NormalTok{), }\DataTypeTok{dependencies =} \OtherTok{FALSE}\NormalTok{)}
+  \StringTok{'bookdown'}\NormalTok{, }\StringTok{'knitr'}\NormalTok{, }\StringTok{'rmarkdown'}\NormalTok{), }\DataTypeTok{dependencies =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -256,7 +256,7 @@ The R session information used when compiling this book is as follows:
 ##   LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   blogdown_0.8    bookdown_0.7.19 knitr_1.20      rmarkdown_1.10
+##   bookdown_0.7.19 knitr_1.20      rmarkdown_1.10
 \end{verbatim}
 
 We do not add prompts (\texttt{\textgreater{}} and \texttt{+}) to R
@@ -320,43 +320,8 @@ wishing to extend
 
 \section{R Markdown components}\label{r-markdown-components}
 
-A common source of confusion is understanding which component does what
-within the R markdown worflow. Figure X highlights the components of the
-R Markdown workflow.
-
-We focus on \texttt{.Rmd} files within this book. \texttt{.Rnw} and
-\texttt{.Rhtml} are available but less frequently used formats.
-
-\textbf{knitr} is responsible for the first stage of the conversion
-process. This processes all the embedded code chunks.
-
-The conversion process used by \textbf{knitr} is output format
-dependent.
-
-\textbf{pandoc} is responsible for converting the raw markdown file into
-the required output format (PDF/HTML/Word).
-
-If PDF format is selected, there is one additonal dependency of LaTeX.
-
-\chapter{Basics}\label{basics-1}
-
-\begin{itemize}
-\tightlist
-\item
-  What should be known before reading this book
-\item
-  Assumed knowledge of the basics of R Markdown
-\end{itemize}
-
-\section{Quick Tips}\label{quick-tips}
-
-\begin{itemize}
-\item
-  Short index of some basic ideas on how to improve R Markdown documents
-\item
-  Include current date in R Markdown
-  \url{https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown/23529410\#23529410}
-\end{itemize}
+Explain the difference between all the parts in r markdown (pandoc,
+knitr, LaTeX).
 
 \chapter{Multi-format projects}\label{multi-format-projects}
 
@@ -614,7 +579,7 @@ shown below:
 \begin{Highlighting}[]
 \OtherTok{---}
 \FunctionTok{title:}\AttributeTok{ Your title}
-\FunctionTok{date:}\AttributeTok{ }\StringTok{"23 September, 2018"}
+\FunctionTok{date:}\AttributeTok{ !r format(Sys.time(), '%d %B, %Y')}
 \OtherTok{---}
 \end{Highlighting}
 \end{Shaded}
