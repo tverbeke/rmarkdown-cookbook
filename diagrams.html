@@ -12,7 +12,7 @@
   <meta property="og:title" content="R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="images/cover.png" />
   <meta property="og:description" content="Tips and tricks to build advanced projects in R Markdown" />
   
 
@@ -20,20 +20,20 @@
   <meta name="twitter:title" content="R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
-  
+  <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-08-08">
+<meta name="date" content="2018-09-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="managing-big-projects.html">
-<link rel="next" href="references.html">
+<link rel="prev" href="notifications.html">
+<link rel="next" href="basic-diagrams.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -104,50 +104,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Mastering R Markdown with examples</a></li>
+<li><a href="./">R Markdown Cookbook</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-reading"><i class="fa fa-check"></i>Recommended Reading</a></li>
+<li class="chapter" data-level="" data-path="how-to-read-this-book.html"><a href="how-to-read-this-book.html"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="structure-of-the-book.html"><a href="structure-of-the-book.html"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="software-info.html"><a href="software-info.html"><i class="fa fa-check"></i>Software information and conventions</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview-of-book"><i class="fa fa-check"></i><b>1.1</b> Overview of Book</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Authors</a></li>
+<li class="part"><span><b>I Get Started</b></span></li>
+<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
-<li class="chapter" data-level="2.1" data-path="basics.html"><a href="basics.html#quick-tips"><i class="fa fa-check"></i><b>2.1</b> Quick Tips</a></li>
+<li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>3</b> LaTeX</a><ul>
-<li class="chapter" data-level="3.1" data-path="latex.html"><a href="latex.html#inserting-commands"><i class="fa fa-check"></i><b>3.1</b> Inserting Commands</a></li>
-<li class="chapter" data-level="3.2" data-path="latex.html"><a href="latex.html#latex-preamble"><i class="fa fa-check"></i><b>3.2</b> LaTeX preamble</a></li>
-<li class="chapter" data-level="3.3" data-path="latex.html"><a href="latex.html#multi-figure-plots"><i class="fa fa-check"></i><b>3.3</b> Multi-figure plots</a></li>
-<li class="chapter" data-level="3.4" data-path="latex.html"><a href="latex.html#cross-output"><i class="fa fa-check"></i><b>3.4</b> Cross-output</a></li>
-<li class="chapter" data-level="3.5" data-path="latex.html"><a href="latex.html#latex-subfigures"><i class="fa fa-check"></i><b>3.5</b> LaTeX subfigures</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="latex.html"><a href="latex.html#using-with-list"><i class="fa fa-check"></i><b>3.5.1</b> Using with list</a></li>
+<li class="chapter" data-level="3" data-path="basics-1.html"><a href="basics-1.html"><i class="fa fa-check"></i><b>3</b> Basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="quick-tips.html"><a href="quick-tips.html"><i class="fa fa-check"></i><b>3.1</b> Quick Tips</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="latex.html"><a href="latex.html#changing-citation-engine"><i class="fa fa-check"></i><b>3.6</b> Changing citation Engine</a></li>
-<li class="chapter" data-level="3.7" data-path="latex.html"><a href="latex.html#altering-citation-style"><i class="fa fa-check"></i><b>3.7</b> Altering Citation Style</a></li>
+<li class="chapter" data-level="4" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>4</b> Multi-format projects</a><ul>
+<li class="chapter" data-level="4.1" data-path="control-output.html"><a href="control-output.html"><i class="fa fa-check"></i><b>4.1</b> Control Output</a></li>
+<li class="chapter" data-level="4.2" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>4.2</b> Output-specific functions</a></li>
+<li class="chapter" data-level="4.3" data-path="designing-output.html"><a href="designing-output.html"><i class="fa fa-check"></i><b>4.3</b> Designing output</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>4</b> HTML Output</a><ul>
-<li class="chapter" data-level="4.1" data-path="html-output.html"><a href="html-output.html#tabbed-headings"><i class="fa fa-check"></i><b>4.1</b> Tabbed headings</a></li>
+<li class="chapter" data-level="5" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>5</b> Knitr Hooks</a></li>
+<li class="chapter" data-level="6" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>6</b> Tables</a></li>
+<li class="chapter" data-level="7" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>7</b> Managing Big Projects</a><ul>
+<li class="chapter" data-level="7.1" data-path="sourcing-files.html"><a href="sourcing-files.html"><i class="fa fa-check"></i><b>7.1</b> Sourcing Files</a></li>
+<li class="chapter" data-level="7.2" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>7.2</b> Caching</a></li>
+<li class="chapter" data-level="7.3" data-path="notifications.html"><a href="notifications.html"><i class="fa fa-check"></i><b>7.3</b> Notifications</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="multi-format-projects.html"><a href="multi-format-projects.html"><i class="fa fa-check"></i><b>5</b> Multi-format projects</a><ul>
-<li class="chapter" data-level="5.1" data-path="multi-format-projects.html"><a href="multi-format-projects.html#control-output"><i class="fa fa-check"></i><b>5.1</b> Control Output</a></li>
-<li class="chapter" data-level="5.2" data-path="multi-format-projects.html"><a href="multi-format-projects.html#output-specific-functions"><i class="fa fa-check"></i><b>5.2</b> Output-specific functions</a></li>
-<li class="chapter" data-level="5.3" data-path="multi-format-projects.html"><a href="multi-format-projects.html#designing-output"><i class="fa fa-check"></i><b>5.3</b> Designing output</a></li>
+<li class="part"><span><b>II Additional Packages</b></span></li>
+<li class="chapter" data-level="8" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>8</b> Diagrams</a><ul>
+<li class="chapter" data-level="8.1" data-path="basic-diagrams.html"><a href="basic-diagrams.html"><i class="fa fa-check"></i><b>8.1</b> Basic Diagrams</a></li>
+<li class="chapter" data-level="8.2" data-path="adding-parameters-to-plots.html"><a href="adding-parameters-to-plots.html"><i class="fa fa-check"></i><b>8.2</b> Adding parameters to plots</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>6</b> Knitr Hooks</a></li>
-<li class="chapter" data-level="7" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>7</b> Tables</a></li>
-<li class="chapter" data-level="8" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>8</b> Managing Big Projects</a><ul>
-<li class="chapter" data-level="8.1" data-path="managing-big-projects.html"><a href="managing-big-projects.html#sourcing-files"><i class="fa fa-check"></i><b>8.1</b> Sourcing Files</a></li>
-<li class="chapter" data-level="8.2" data-path="managing-big-projects.html"><a href="managing-big-projects.html#caching"><i class="fa fa-check"></i><b>8.2</b> Caching</a></li>
-<li class="chapter" data-level="8.3" data-path="managing-big-projects.html"><a href="managing-big-projects.html#notifications"><i class="fa fa-check"></i><b>8.3</b> Notifications</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+<li class="part"><span><b>III Recipes</b></span></li>
+<li class="chapter" data-level="10" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>10</b> Document Elements</a><ul>
+<li class="chapter" data-level="10.1" data-path="set-date-to-current-date.html"><a href="set-date-to-current-date.html"><i class="fa fa-check"></i><b>10.1</b> Set Date to Current Date</a></li>
+<li class="chapter" data-level="10.2" data-path="adding-multiple-authors.html"><a href="adding-multiple-authors.html"><i class="fa fa-check"></i><b>10.2</b> Adding Multiple Authors</a></li>
 </ul></li>
-<li class="part"><span><b>I Additional Packages</b></span></li>
-<li class="chapter" data-level="9" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>9</b> Diagrams</a><ul>
-<li class="chapter" data-level="9.1" data-path="diagrams.html"><a href="diagrams.html#basic-diagrams"><i class="fa fa-check"></i><b>9.1</b> Basic Diagrams</a></li>
-<li class="chapter" data-level="9.2" data-path="diagrams.html"><a href="diagrams.html#adding-parameters-to-plots"><i class="fa fa-check"></i><b>9.2</b> Adding parameters to plots</a></li>
+<li class="chapter" data-level="11" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>11</b> LaTeX</a><ul>
+<li class="chapter" data-level="11.1" data-path="inserting-commands.html"><a href="inserting-commands.html"><i class="fa fa-check"></i><b>11.1</b> Inserting Commands</a></li>
+<li class="chapter" data-level="11.2" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>11.2</b> LaTeX preamble</a></li>
+<li class="chapter" data-level="11.3" data-path="multi-figure-plots.html"><a href="multi-figure-plots.html"><i class="fa fa-check"></i><b>11.3</b> Multi-figure plots</a></li>
+<li class="chapter" data-level="11.4" data-path="cross-output.html"><a href="cross-output.html"><i class="fa fa-check"></i><b>11.4</b> Cross-output</a></li>
+<li class="chapter" data-level="11.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>11.5</b> LaTeX subfigures</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="latex-subfigures.html"><a href="latex-subfigures.html#using-with-list"><i class="fa fa-check"></i><b>11.5.1</b> Using with list</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>10</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>12</b> HTML Output</a><ul>
+<li class="chapter" data-level="12.1" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>12.1</b> Tabbed headings</a></li>
+<li class="chapter" data-level="12.2" data-path="altering-citation-style.html"><a href="altering-citation-style.html"><i class="fa fa-check"></i><b>12.2</b> Altering Citation Style</a></li>
+<li class="chapter" data-level="12.3" data-path="automatically-generate-package-citations.html"><a href="automatically-generate-package-citations.html"><i class="fa fa-check"></i><b>12.3</b> Automatically Generate Package Citations</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -169,69 +180,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="diagrams" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Diagrams</h1>
+<h1><span class="header-section-number">Chapter 8</span> Diagrams</h1>
 <p>It is often useful to express analysis using flowcharts and diagrams within reports. Although there are many separate programs which can be used to produce these, it can be beneficial to create these within our analysis directly. This makes it easier to update and edit the graph if we need to edit it in the future, and allows us to use the results from our analysis directly within the diagrams, making them more information.</p>
-<p>While there are several different packages available for R, we will focus on the package <strong>DiagrammeR</strong> <span class="citation">(Iannone <a href="#ref-R-DiagrammeR">2018</a>)</span>. We also recommend that you read at <a href="http://rich-iannone.github.io/DiagrammeR/index.html" class="uri">http://rich-iannone.github.io/DiagrammeR/index.html</a> . In this chapter we will explain some of the basic usages of the package.</p>
-<div id="basic-diagrams" class="section level2">
-<h2><span class="header-section-number">9.1</span> Basic Diagrams</h2>
-<p><strong>DiagrammeR</strong> provides methods to build graphs for a number of different graphing languages.</p>
-<p>R Studio provides native support for Graphviz (<code>.gv</code>) and mermaid (<code>.mmd</code>) files. Using files of these types in RStudio provides the advantage of syntax coloring and allowing a quick preview of the diagram. For example, we can make a simple flowchart with the following code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span>
-
-<span class="st">        graph [layout = dot, rankdir = LR]</span>
-<span class="st">        </span>
-<span class="st">        node [shape = rectangle]        </span>
-<span class="st">        rec1 [label = &#39;Step 1&#39;]</span>
-<span class="st">        rec2 [label = &#39;Step 2&#39;]</span>
-<span class="st">        rec3 [label =  &#39;Step 3&#39;]</span>
-<span class="st">        rec4 [label = &#39;Step 4&#39;]</span>
-
-<span class="st">        # edge definitions with the node IDs</span>
-<span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span>
-<span class="st">        }&quot;</span>,
-        <span class="dt">height =</span> <span class="dv">200</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:diagrammeR-basic"></span>
-<div id="htmlwidget-19abdb30d3903470afa4" style="width:100%;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-19abdb30d3903470afa4">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<p class="caption">
-Figure 9.1: A basic graphic using DiagrammeR
-</p>
+<p>While there are several different packages available for R, we will focus on the package <strong>DiagrammeR</strong> <span class="citation">(Iannone <a href="#ref-R-DiagrammeR">2018</a>)</span>. We also recommend that you read at <a href="http://rich-iannone.github.io/DiagrammeR/index.html" class="uri">http://rich-iannone.github.io/DiagrammeR/index.html</a> . In this chapter we will explain some of the basic usages of the package.</p> 
 </div>
-<p>There are extensive controls which can be used to control the shape of nodes, colours, line types and add additional parameters.</p>
-</div>
-<div id="adding-parameters-to-plots" class="section level2">
-<h2><span class="header-section-number">9.2</span> Adding parameters to plots</h2>
-<p>We can allow</p>
-<p>Graphviz substitution allows for mixing in R expressions into a Graphviz graph specification without sacrificing readability.</p>
-<p>If you specify a subsitution with <code>@@</code>, you must ensure there is a valid expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object (i.e., not a data frame, list, or matrix). Because there is the possibility to have multiple substitutions, numbering is required. Thus, the @@ notation is immediately followed by a number and that number should correspond to the number of the footnoted R expression.</p>
-<p>For example, suppose we have a dataset which is being analysed, and we would like to identify how many values are removed at each stage of a process.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span>
-<span class="st">digraph graph2 {</span>
-
-<span class="st">graph [layout = dot, rankdir = LR]</span>
-
-<span class="st"># node definitions with substituted label text</span>
-<span class="st">node [shape = rectangle]</span>
-<span class="st">a [label = &#39;@@1&#39;]</span>
-<span class="st">b [label = &#39;@@2&#39;]</span>
-<span class="st">c [label = &#39;@@3&#39;]</span>
-<span class="st">d [label = &#39;@@4&#39;]</span>
-
-<span class="st">a -&gt; b -&gt; c -&gt; d</span>
-
-<span class="st">}</span>
-
-<span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span>
-<span class="st">[2]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">[3]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">[4]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">&quot;</span>)</code></pre></div>
-<div id="htmlwidget-704d3f0f1beb9c1aeed8" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-704d3f0f1beb9c1aeed8">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-
-</div>
-</div>
-<h3> References</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-R-DiagrammeR">
 <p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
@@ -242,8 +195,8 @@ Figure 9.1: A basic graphic using DiagrammeR
           </div>
         </div>
       </div>
-<a href="managing-big-projects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="notifications.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-diagrams.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -276,11 +229,10 @@ gitbook.start({
 "link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/10-Diagrams.Rmd",
 "text": "Edit"
 },
-"download": ["mastering-rmarkdown.pdf", "mastering-rmarkdown.epub"],
+"download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
 "toc": {
 "collapse": "subsection"
-},
-"split_by": "section"
+}
 });
 });
 </script>

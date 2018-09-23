@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="altering-citation-style.html">
 
-<link rel="next" href="how-to-read-this-book.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -179,40 +179,60 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Markdown Cookbook</h1>
-<p class="author"><em>Michael Harper, Yihui Xie</em></p>
-<p class="date"><em>2018-09-23</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<blockquote>
-<p>This book is in a <strong>very</strong> early stage of development. If you have any suggestions on what should be included within this book, please get in touch via <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a></p>
-</blockquote>
-<p style="text-align: center;">
-<a href=""><img src="images/cover.png" alt="The R Markdown book cover" /></a>
-</p>
-<p>R Markdown is a powerful tool for combining analysis and reporting into the same document. Since the development of the <strong>rmarkdown</strong> package <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span>, it has grown to become a diverse ecosystem of code, and reports, books and websites can all easily be generated directly from R code.</p>
-<p>There is a wealth of guidance which has grown over the past few years. <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>. However, as noted by Yihui, it was commented by the publisher that it would be beneficial to provide more practical examples of the use of R Markdown. And so, the idea of this book was born.</p>
-<p>To fill the gap for official documentation, users often seek for help on StackOverflow. At the time of writing, there were almost 4,000 <a href="https://stackoverflow.com/questions/tagged/r-markdown">different questions</a> with the <code>r-markdown</code> tag. However, the use of the website is relatively difficult if you do not have a specific problem you are trying to search for, and therefore it is hard to be able to tell what is possible with R Markdown unless you have the insight to search for a specific question. This book aims to draw together much existing literature from StackOverflow, and provide up-to-date solutions for everyday queries that users commonly face.</p>
-<p>This book is designed to provide a range of examples of how to extend the functionality of your R Markdown documents. As a cookbook, this guide is recommended to new or intermediate R Markdown users who are looking for practical examples of how R Markdown documents can be effectively updated.</p> 
-</div>
-<h3>References</h3>
+<div id="automatically-generate-package-citations" class="section level2">
+<h2><span class="header-section-number">12.3</span> Automatically Generate Package Citations</h2>
+<p>It is important to that an acknowledgements is provided within your work to authors of any literature or software referenced. Within a typical workflow, this can be a frustrating experience if you are required to manually identify the correctly formatted citations, load them into a referencing software and then refer to them within the text. However, R Markdown makes it easy to streamline this process.</p>
+<p>We can generate a BibTex file for packages used within your analysis using the <code>write_bib</code> function within R Markdown.</p>
+<pre class="rcreatebib"><code># automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), &#39;bookdown&#39;, &#39;knitr&#39;, &#39;rmarkdown&#39;, &#39;DiagrammeR&#39;
+), &#39;packages.bib&#39;)</code></pre>
+<p>Once the bibliography has been generated, we can reference the packages, we can reference the package directly from within the text by</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">bibliography:</span><span class="at"> packages.bib</span>
+<span class="ot">---</span></code></pre></div>
+<p>rmarkdown</p>
+<p>If in addition to your packages</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">bibliography:</span><span class="at"> </span><span class="kw">[</span>packages.bib. references.bib<span class="kw">]</span>
+<span class="ot">---</span></code></pre></div>
+<p>A complete example of the elements above is provided below:</p>
+
 <div id="refs" class="references">
-<div id="ref-R-rmarkdown">
+<div>
 <p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
 </div>
-<div id="ref-xie2018">
+<div>
+<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+</div>
+<div>
+<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div>
+<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+</div>
+<div>
+<p>Xie, Y., A.P. Hill, and A. Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=riBBDwAAQBAJ" class="uri">https://books.google.co.uk/books?id=riBBDwAAQBAJ</a>.</p>
+</div>
+<div>
+<p>Xie, Yihui. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div>
+<p>———. 2018b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
+</div>
+<div>
 <p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
 </div>
 </div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
+<a href="altering-citation-style.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="how-to-read-this-book.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -242,7 +262,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/11-misc/generate-package-citations.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

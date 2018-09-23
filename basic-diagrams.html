@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="how-to-read-this-book.html">
+<link rel="prev" href="diagrams.html">
+<link rel="next" href="adding-parameters-to-plots.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -179,40 +179,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Markdown Cookbook</h1>
-<p class="author"><em>Michael Harper, Yihui Xie</em></p>
-<p class="date"><em>2018-09-23</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<blockquote>
-<p>This book is in a <strong>very</strong> early stage of development. If you have any suggestions on what should be included within this book, please get in touch via <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a></p>
-</blockquote>
-<p style="text-align: center;">
-<a href=""><img src="images/cover.png" alt="The R Markdown book cover" /></a>
+<div id="basic-diagrams" class="section level2">
+<h2><span class="header-section-number">8.1</span> Basic Diagrams</h2>
+<p><strong>DiagrammeR</strong> provides methods to build graphs for a number of different graphing languages.</p>
+<p>R Studio provides native support for Graphviz (<code>.gv</code>) and mermaid (<code>.mmd</code>) files. Using files of these types in RStudio provides the advantage of syntax coloring and allowing a quick preview of the diagram. For example, we can make a simple flowchart with the following code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span>
+
+<span class="st">        graph [layout = dot, rankdir = LR]</span>
+<span class="st">        </span>
+<span class="st">        node [shape = rectangle]        </span>
+<span class="st">        rec1 [label = &#39;Step 1&#39;]</span>
+<span class="st">        rec2 [label = &#39;Step 2&#39;]</span>
+<span class="st">        rec3 [label =  &#39;Step 3&#39;]</span>
+<span class="st">        rec4 [label = &#39;Step 4&#39;]</span>
+
+<span class="st">        # edge definitions with the node IDs</span>
+<span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span>
+<span class="st">        }&quot;</span>,
+        <span class="dt">height =</span> <span class="dv">200</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:diagrammeR-basic"></span>
+<div id="htmlwidget-067fd0e03bddce49e1ff" style="width:100%;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-067fd0e03bddce49e1ff">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 8.1: A basic graphic using DiagrammeR
 </p>
-<p>R Markdown is a powerful tool for combining analysis and reporting into the same document. Since the development of the <strong>rmarkdown</strong> package <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span>, it has grown to become a diverse ecosystem of code, and reports, books and websites can all easily be generated directly from R code.</p>
-<p>There is a wealth of guidance which has grown over the past few years. <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>. However, as noted by Yihui, it was commented by the publisher that it would be beneficial to provide more practical examples of the use of R Markdown. And so, the idea of this book was born.</p>
-<p>To fill the gap for official documentation, users often seek for help on StackOverflow. At the time of writing, there were almost 4,000 <a href="https://stackoverflow.com/questions/tagged/r-markdown">different questions</a> with the <code>r-markdown</code> tag. However, the use of the website is relatively difficult if you do not have a specific problem you are trying to search for, and therefore it is hard to be able to tell what is possible with R Markdown unless you have the insight to search for a specific question. This book aims to draw together much existing literature from StackOverflow, and provide up-to-date solutions for everyday queries that users commonly face.</p>
-<p>This book is designed to provide a range of examples of how to extend the functionality of your R Markdown documents. As a cookbook, this guide is recommended to new or intermediate R Markdown users who are looking for practical examples of how R Markdown documents can be effectively updated.</p> 
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
+<p>There are extensive controls which can be used to control the shape of nodes, colours, line types and add additional parameters.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="how-to-read-this-book.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="diagrams.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="adding-parameters-to-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -242,7 +242,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/10-Diagrams.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

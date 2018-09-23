@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="how-to-read-this-book.html">
+<link rel="prev" href="basics.html">
+<link rel="next" href="basics-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -179,40 +179,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Markdown Cookbook</h1>
-<p class="author"><em>Michael Harper, Yihui Xie</em></p>
-<p class="date"><em>2018-09-23</em></p>
+<div id="r-markdown-components" class="section level2">
+<h2><span class="header-section-number">2.1</span> R Markdown components</h2>
+<!---
+https://stackoverflow.com/questions/40563479/relationship-between-r-markdown-knitr-pandoc-and-bookdown
+--->
+<p>A common source of confusion is understanding which component does what within the R markdown worflow. Figure X highlights the components of the R Markdown workflow.</p>
+<p>We focus on <code>.Rmd</code> files within this book. <code>.Rnw</code> and <code>.Rhtml</code> are available but less frequently used formats.</p>
+<p><strong>knitr</strong> is responsible for the first stage of the conversion process. This processes all the embedded code chunks.</p>
+<p>The conversion process used by <strong>knitr</strong> is output format dependent.</p>
+<p><strong>pandoc</strong> is responsible for converting the raw markdown file into the required output format (PDF/HTML/Word).</p>
+<p>If PDF format is selected, there is one additonal dependency of LaTeX.</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<blockquote>
-<p>This book is in a <strong>very</strong> early stage of development. If you have any suggestions on what should be included within this book, please get in touch via <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a></p>
-</blockquote>
-<p style="text-align: center;">
-<a href=""><img src="images/cover.png" alt="The R Markdown book cover" /></a>
-</p>
-<p>R Markdown is a powerful tool for combining analysis and reporting into the same document. Since the development of the <strong>rmarkdown</strong> package <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span>, it has grown to become a diverse ecosystem of code, and reports, books and websites can all easily be generated directly from R code.</p>
-<p>There is a wealth of guidance which has grown over the past few years. <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>. However, as noted by Yihui, it was commented by the publisher that it would be beneficial to provide more practical examples of the use of R Markdown. And so, the idea of this book was born.</p>
-<p>To fill the gap for official documentation, users often seek for help on StackOverflow. At the time of writing, there were almost 4,000 <a href="https://stackoverflow.com/questions/tagged/r-markdown">different questions</a> with the <code>r-markdown</code> tag. However, the use of the website is relatively difficult if you do not have a specific problem you are trying to search for, and therefore it is hard to be able to tell what is possible with R Markdown unless you have the insight to search for a specific question. This book aims to draw together much existing literature from StackOverflow, and provide up-to-date solutions for everyday queries that users commonly face.</p>
-<p>This book is designed to provide a range of examples of how to extend the functionality of your R Markdown documents. As a cookbook, this guide is recommended to new or intermediate R Markdown users who are looking for practical examples of how R Markdown documents can be effectively updated.</p> 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="how-to-read-this-book.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basics-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -242,7 +228,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/mastering-rmarkdown/edit/master/02-basics.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

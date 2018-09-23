@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="how-to-read-this-book.html">
+<link rel="prev" href="structure-of-the-book.html">
+<link rel="next" href="acknowledgements.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -179,40 +179,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Markdown Cookbook</h1>
-<p class="author"><em>Michael Harper, Yihui Xie</em></p>
-<p class="date"><em>2018-09-23</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<blockquote>
-<p>This book is in a <strong>very</strong> early stage of development. If you have any suggestions on what should be included within this book, please get in touch via <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a></p>
-</blockquote>
-<p style="text-align: center;">
-<a href=""><img src="images/cover.png" alt="The R Markdown book cover" /></a>
-</p>
-<p>R Markdown is a powerful tool for combining analysis and reporting into the same document. Since the development of the <strong>rmarkdown</strong> package <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span>, it has grown to become a diverse ecosystem of code, and reports, books and websites can all easily be generated directly from R code.</p>
-<p>There is a wealth of guidance which has grown over the past few years. <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>. However, as noted by Yihui, it was commented by the publisher that it would be beneficial to provide more practical examples of the use of R Markdown. And so, the idea of this book was born.</p>
-<p>To fill the gap for official documentation, users often seek for help on StackOverflow. At the time of writing, there were almost 4,000 <a href="https://stackoverflow.com/questions/tagged/r-markdown">different questions</a> with the <code>r-markdown</code> tag. However, the use of the website is relatively difficult if you do not have a specific problem you are trying to search for, and therefore it is hard to be able to tell what is possible with R Markdown unless you have the insight to search for a specific question. This book aims to draw together much existing literature from StackOverflow, and provide up-to-date solutions for everyday queries that users commonly face.</p>
-<p>This book is designed to provide a range of examples of how to extend the functionality of your R Markdown documents. As a cookbook, this guide is recommended to new or intermediate R Markdown users who are looking for practical examples of how R Markdown documents can be effectively updated.</p> 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
+<div id="software-info" class="section level2 unnumbered">
+<h2>Software information and conventions</h2>
+<p>The R session information used when compiling this book is as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>(<span class="kw">c</span>(
+  <span class="st">&#39;blogdown&#39;</span>, <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>), <span class="dt">dependencies =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## R version 3.5.0 (2017-01-27)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 14.04.5 LTS
+## 
+## Locale:
+##   LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##   LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##   LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##   LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##   LC_ADDRESS=C               LC_TELEPHONE=C            
+##   LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## 
+## Package version:
+##   blogdown_0.8    bookdown_0.7.19 knitr_1.20      rmarkdown_1.10</code></pre>
+<p>We do not add prompts (<code>&gt;</code> and <code>+</code>) to R source code in this book, and we comment out the text output with two hashes <code>##</code> by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>blogdown::serve_site()</code>). The double-colon operator <code>::</code> means accessing an object from a package.</p>
+<p>“Rmd” is the filename extension of R Markdown files, and also an abbreviation of R Markdown in this book.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="how-to-read-this-book.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="structure-of-the-book.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="acknowledgements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
