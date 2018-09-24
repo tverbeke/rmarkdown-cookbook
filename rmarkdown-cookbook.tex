@@ -683,6 +683,38 @@ behaviour will depend on the output format (HTML/PDF/Word):
 \end{Highlighting}
 \end{Shaded}
 
+Certain R Markdown templates will allow you to specify additional
+parameters directly within the YAML. For example, the
+\href{https://rstudio.github.io/radix/}{Radix} output format allows
+\texttt{url}, \texttt{affiliation} and \texttt{affiliation\_url} to be
+specified. We must first install the Radix package from GitHub:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"rstudio/radix"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can use the new format by changing the \texttt{output} option as
+specified below:
+
+\begin{longtable}[]{@{}l@{}}
+\toprule
+```yaml\tabularnewline
+\midrule
+\endhead
+title: ``Radix for R Markdown''\tabularnewline
+author:\tabularnewline
+- name: ``JJ Allaire''\tabularnewline
+url: \url{https://github.com/jjallaire}\tabularnewline
+affiliation: RStudio\tabularnewline
+affiliation\_url: \url{https://www.rstudio.com}\tabularnewline
+output: radix::radix\_article\tabularnewline
+\bottomrule
+\end{longtable}
+
+```
+
 \chapter{LaTeX}\label{latex}
 
 For many authors, the main of long reports or books, the primary output

@@ -196,6 +196,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">-</span> John Doe^<span class="kw">[</span>Institution One<span class="kw">,</span> email@domain.com<span class="kw">]</span>
 <span class="kw">-</span> John Doe 2^<span class="kw">[</span>Institution Two<span class="kw">,</span> email2@domain.com<span class="kw">]</span>
 <span class="ot">---</span></code></pre></div>
+<p>Certain R Markdown templates will allow you to specify additional parameters directly within the YAML. For example, the <a href="https://rstudio.github.io/radix/">Radix</a> output format allows <code>url</code>, <code>affiliation</code> and <code>affiliation_url</code> to be specified. We must first install the Radix package from GitHub:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio/radix&quot;</span>)</code></pre></div>
+<p>We can use the new format by changing the <code>output</code> option as specified below:</p>
+<table>
+<thead>
+<tr class="header">
+<th>```yaml</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>title: “Radix for R Markdown”</td>
+</tr>
+<tr class="even">
+<td>author:</td>
+</tr>
+<tr class="odd">
+<td>- name: “JJ Allaire”</td>
+</tr>
+<tr class="even">
+<td>url: <a href="https://github.com/jjallaire" class="uri">https://github.com/jjallaire</a></td>
+</tr>
+<tr class="odd">
+<td>affiliation: RStudio</td>
+</tr>
+<tr class="even">
+<td>affiliation_url: <a href="https://www.rstudio.com" class="uri">https://www.rstudio.com</a></td>
+</tr>
+<tr class="odd">
+<td>output: radix::radix_article</td>
+</tr>
+</tbody>
+</table>
+<p>```</p>
 
 </div>
 <!-- </div> -->
