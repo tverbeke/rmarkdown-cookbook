@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="basic-diagrams.html">
-<link rel="next" href="references.html">
+<link rel="prev" href="set-date-to-current-date.html">
+<link rel="next" href="latex.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -176,32 +176,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="adding-parameters-to-plots" class="section level2">
-<h2><span class="header-section-number">7.2</span> Adding parameters to plots</h2>
-<p>Graphviz substitution allows for mixing in R expressions into a Graphviz graph specification without sacrificing readability. If you specify a subsitution with <code>@@</code>, you must ensure there is a valid expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object (i.e., not a data frame, list, or matrix). Because there is the possibility to have multiple substitutions, numbering is required. Thus, the @@ notation is immediately followed by a number and that number should correspond to the number of the footnoted R expression. For example, suppose we have a dataset which is being analysed, and we would like to identify how many values are removed at each stage of a process.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span>
-<span class="st">digraph graph2 {</span>
-
-<span class="st">graph [layout = dot, rankdir = LR]</span>
-
-<span class="st"># node definitions with substituted label text</span>
-<span class="st">node [shape = rectangle]</span>
-<span class="st">a [label = &#39;@@1&#39;]</span>
-<span class="st">b [label = &#39;@@2&#39;]</span>
-<span class="st">c [label = &#39;@@3&#39;]</span>
-<span class="st">d [label = &#39;@@4&#39;]</span>
-
-<span class="st">a -&gt; b -&gt; c -&gt; d</span>
-
-<span class="st">}</span>
-
-<span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span>
-<span class="st">[2]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">[3]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">[4]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">&quot;</span>)</code></pre></div>
-<div id="htmlwidget-087f6b8133f0df94fd0a" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-087f6b8133f0df94fd0a">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="adding-multiple-authors-to-document" class="section level2">
+<h2><span class="header-section-number">9.2</span> Adding Multiple Authors to Document</h2>
+<!--- https://stackoverflow.com/questions/26043807/multiple-authors-and-subtitles-in-rmarkdown-yaml --->
+<p>We can add multiple authors to a R Markdown document within the YAML in a number of ways. If we simply want to list them on the same line, we can provide a text string to the document:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Untitled&quot;</span>
+<span class="fu">author:</span><span class="at"> </span><span class="st">&quot;John Doe, John Smith&quot;</span>
+<span class="ot">---</span></code></pre></div>
+<p>Alternatively, if we wish for each entry to be on its own line we can provide a list of entries to the YAML field. This can be useful if you wish to include further information about each author such as an email address or instituion:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">author:</span><span class="at"> </span>
+<span class="kw">-</span> John Doe, Institution One
+<span class="kw">-</span> John Smith, Institution Two
+<span class="ot">---</span></code></pre></div>
+<p>We can make use of the markdown syntax <code>^[]</code> to add additional information as a footnote to the document. This may be more useful if you have extended information you wish to include for each author, such as providing a contact email, address etc. The exact behaviour will depend on the output format (HTML/PDF/Word):</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">author:</span>
+<span class="kw">-</span> John Doe^<span class="kw">[</span>Institution One<span class="kw">,</span> email@domain.com<span class="kw">]</span>
+<span class="kw">-</span> John Doe 2^<span class="kw">[</span>Institution Two<span class="kw">,</span> email2@domain.com<span class="kw">]</span>
+<span class="ot">---</span></code></pre></div>
 
 </div>
 <!-- </div> -->
@@ -210,8 +204,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="basic-diagrams.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="set-date-to-current-date.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -241,7 +235,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/10-Diagrams.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/03-content/multiple-authors.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
