@@ -819,32 +819,32 @@ to authors of any literature or software referenced. Within a typical
 workflow, this can be a frustrating experience if you are required to
 manually identify the correctly formatted citations, load them into a
 referencing software and then refer to them within the text. However, R
-Markdown makes it easy to streamline this process.
-
-We can generate a BibTex file for packages used within your analysis
-using the \texttt{write\_bib} function within R Markdown.
-
-\begin{verbatim}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'DiagrammeR'
-), 'packages.bib')
-\end{verbatim}
-
-Once the bibliography has been generated, we can reference the packages,
-we can reference the package directly from within the text by
+Markdown makes it easy to streamline this process. We can generate a
+BibTex file for packages used within your analysis using the
+\texttt{write\_bib} function within R Markdown.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OtherTok{---}
-\FunctionTok{bibliography:}\AttributeTok{ packages.bib}
-\OtherTok{---}
+\CommentTok{# automatically create a bib database for R packages}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{write_bib}\NormalTok{(}\KeywordTok{c}\NormalTok{(}
+  \KeywordTok{.packages}\NormalTok{(), }\StringTok{'bookdown'}\NormalTok{, }\StringTok{'knitr'}\NormalTok{, }\StringTok{'rmarkdown'}\NormalTok{, }\StringTok{'DiagrammeR'}
+\NormalTok{), }\StringTok{'packages.bib'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-rmarkdown
+To refer to the packages in the text, we must add
+\texttt{bibliography:\ packages.bib} to the YAML frontmatter, and then
+references can be made using the format \texttt{{[}@R-package{]}} where
+\texttt{package} is replaced with the package name i.e.
+\texttt{{[}@R-rmarkdown{]}}. This will be replaced with an intext
+citation and will be added to the bibliography at the end of your
+document.
 
-If in addition to your packages
+Note, that the \texttt{write\_bib} command is designed to overwrite the
+existing bibliography. If you want to manually add any other items to
+the bibligraphy in your document, it is recommended that you create a
+second \texttt{.bib} file which is also referred to within the YAML
+\texttt{bibliography} field, as shown below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -853,8 +853,6 @@ If in addition to your packages
 \OtherTok{---}
 \end{Highlighting}
 \end{Shaded}
-
-A complete example of the elements above is provided below:
 
 \bibliography{book.bib,packages.bib}
 
