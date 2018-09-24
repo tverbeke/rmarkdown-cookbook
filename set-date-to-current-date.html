@@ -179,18 +179,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="set-date-to-current-date" class="section level2">
 <h2><span class="header-section-number">9.1</span> Set Date to Current Date</h2>
 <!--- https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown --->
-<p>It is useful for the date of the knitted R Markdown document to automatically update each time we rerun the file. To do this, we can add R code directly to the <code>date</code> field in the YAML, and use the <code>Sys.time()</code> function to extract the current date. As this function will by default provide the date and time, we must format it as shown below:</p>
+<p>It may be useful for the date of the knitted R Markdown document to automatically update each time we rerun the file. To do this, we can add R code directly to the <code>date</code> field in the YAML, and use the <code>Sys.time()</code> function to extract the current date. As this function will by default provide the date and time, we must specify the desired date time format as shown below:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
 <span class="fu">title:</span><span class="at"> Your title</span>
 <span class="fu">date:</span><span class="at"> !r format(Sys.time(), &#39;%d %B, %Y&#39;)</span>
 <span class="ot">---</span></code></pre></div>
 <p>This will automatically update each time you Knit your document i.e. 24 September, 2018. If we wish to customize the format of the dates, we can alter the time format by providing our own text string. Some examples are shown as follows:</p>
 <ul>
-<li><code>%B %Y</code>: “September 2018”</li>
-<li><code>%d/%m/%y</code>: “24/09/18”</li>
-<li><code>%d/%m/%y</code>: “Mon 24 Sep”</li>
+<li><code>%B %Y</code>: September 2018</li>
+<li><code>%d/%m/%y</code>: “24/09/18</li>
+<li><code>%d/%m/%y</code>: Mon 24 Sep</li>
 </ul>
-<p>A full table of POSIXct formats is shown in Table <a href="set-date-to-current-date.html#tab:dateTimeFormats">9.1</a>, with</p>
+<p>A full table of POSIXct formats is shown in Table <a href="set-date-to-current-date.html#tab:dateTimeFormats">9.1</a>, which allows users to construct their required date format.</p>
 <table>
 <caption><span id="tab:dateTimeFormats">Table 9.1: </span>Date Time Formats within R</caption>
 <thead>

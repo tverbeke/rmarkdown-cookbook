@@ -568,12 +568,12 @@ documents.
 
 \section{Set Date to Current Date}\label{set-date-to-current-date}
 
-It is useful for the date of the knitted R Markdown document to
+It may be useful for the date of the knitted R Markdown document to
 automatically update each time we rerun the file. To do this, we can add
 R code directly to the \texttt{date} field in the YAML, and use the
 \texttt{Sys.time()} function to extract the current date. As this
-function will by default provide the date and time, we must format it as
-shown below:
+function will by default provide the date and time, we must specify the
+desired date time format as shown below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -592,15 +592,16 @@ are shown as follows:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\%B\ \%Y}: ``September 2018''
+  \texttt{\%B\ \%Y}: September 2018
 \item
-  \texttt{\%d/\%m/\%y}: ``24/09/18''
+  \texttt{\%d/\%m/\%y}: ``24/09/18
 \item
-  \texttt{\%d/\%m/\%y}: ``Mon 24 Sep''
+  \texttt{\%d/\%m/\%y}: Mon 24 Sep
 \end{itemize}
 
 A full table of POSIXct formats is shown in Table
-\ref{tab:dateTimeFormats}, with
+\ref{tab:dateTimeFormats}, which allows users to construct their
+required date format.
 
 \begin{table}
 
