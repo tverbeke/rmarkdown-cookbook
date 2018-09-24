@@ -698,22 +698,19 @@ specified. We must first install the Radix package from GitHub:
 We can use the new format by changing the \texttt{output} option as
 specified below:
 
-\begin{longtable}[]{@{}l@{}}
-\toprule
-```yaml\tabularnewline
-\midrule
-\endhead
-title: ``Radix for R Markdown''\tabularnewline
-author:\tabularnewline
-- name: ``JJ Allaire''\tabularnewline
-url: \url{https://github.com/jjallaire}\tabularnewline
-affiliation: RStudio\tabularnewline
-affiliation\_url: \url{https://www.rstudio.com}\tabularnewline
-output: radix::radix\_article\tabularnewline
-\bottomrule
-\end{longtable}
-
-```
+\begin{Shaded}
+\begin{Highlighting}[]
+\OtherTok{---}
+\FunctionTok{title:}\AttributeTok{ }\StringTok{"Radix for R Markdown"}
+\FunctionTok{author:}
+  \KeywordTok{-} \FunctionTok{name:}\AttributeTok{ }\StringTok{"JJ Allaire"}
+    \FunctionTok{url:}\AttributeTok{ https://github.com/jjallaire}
+    \FunctionTok{affiliation:}\AttributeTok{ RStudio}
+    \FunctionTok{affiliation_url:}\AttributeTok{ https://www.rstudio.com}
+\FunctionTok{output:}\AttributeTok{ radix::radix_article}
+\OtherTok{---}
+\end{Highlighting}
+\end{Shaded}
 
 \chapter{LaTeX}\label{latex}
 
