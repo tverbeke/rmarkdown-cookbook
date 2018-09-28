@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="structure-of-the-book.html">
+<link rel="prev" href="document-elements.html">
+<link rel="next" href="set-date-to-current-date.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -181,44 +181,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="how-to-read-this-book" class="section level2 unnumbered">
-<h2>How to read this book</h2>
-<p>The book is designed to highlight the many ways in which your R Markdown documents can be customized. Users are encouraged to try using the concepts within their own documents. The code detailed in the book should be sufficient, but the full source code and examples are provided on <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a>.</p>
-<p>It is recommended that readers have a basic understanding of R Markdown. <a href="https://bookdown.org/yihui/rmarkdown/basics.html">Chapter 2</a> of <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span> provides a great overview of the basics of R Markdown and is recommended background reading for any new users of R Markdown.</p>
-<p>It should be noted that this guide does not intend to provide a full technical reference for R Markdown, and there is already extensive literature available on these topics. This book aims to supplement, not replace, this existing literature, and it is therefore recommended that readers explore the following books if they seek further information:</p>
-<ul>
-<li><em>R Markdown: The Definitive guide</em> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>: provides an overview of the R Markdown package and the wide range of ways it can be used.</li>
-<li><em>Dynamic documents and knitr</em>: provides more detailed technical guidance on the inner workings of <strong>rmarkdown</strong> and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-R-knitr">2018</a><a href="#ref-R-knitr">b</a>)</span>.</li>
-<li><em>Authoring books with bookdown</em> <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span>: a short book which provides details on the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a><a href="#ref-R-bookdown">a</a>)</span>, which is designed to simplify the creation of long-format documents in R Markdown.</li>
-<li><em>blogdown: Creating Websites with R Markdown</em> <span class="citation">(Xie, Hill, and Thomas <a href="#ref-xie2017blogdown">2017</a>)</span>: provides details of the <strong>blogdown</strong> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-blogdown"><strong>???</strong></span>)</span> package.</li>
-</ul>
-<p>Where relevant, this book provides references to these existing resources.</p>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
-<div id="ref-R-knitr">
-<p>Xie, Yihui. 2018b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
-</div>
-<div id="ref-xie2017blogdown">
-<p>Xie, Y., A.P. Hill, and A. Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=riBBDwAAQBAJ" class="uri">https://books.google.co.uk/books?id=riBBDwAAQBAJ</a>.</p>
-</div>
+<div id="include-appendix-after-bibliography" class="section level2">
+<h2><span class="header-section-number">9.1</span> Include Appendix after Bibliography</h2>
+<!--- https://stackoverflow.com/questions/41532707/include-rmd-appendix-after-references/42258998#42258998 --->
+<!--- https://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography?noredirect=1&lq=1 --->
+<p>By default, the bibliography appears at the very end of the document. However, there can be cases where we want to place additional text after the references, most typically if we wish to include appendices within the document. We can force the position of the references by using <code>&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</code>, as shown below:</p>
+<pre><code># References
+
+&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;
+
+# Appendices 
+</code></pre>
+<p>We can improve this further by using the <strong>bookdown</strong> package, which offers a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers">special header</a> for the Appendix as shown with the syntax below:</p>
+<pre><code># References
+
+&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;
+
+# (APPENDIX) Appendix {-} 
+
+# Appendix A
+
+# Appendix B
+</code></pre>
+<p>The numbering style of appendices will be automatically changed in LaTeX/PDF and HTML output (usually in the form A, A.1, A.2, B, B.1, …).</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="structure-of-the-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="document-elements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="set-date-to-current-date.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -248,7 +242,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/03-content/appendix-after-bibliography.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

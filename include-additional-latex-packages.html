@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="structure-of-the-book.html">
+<link rel="prev" href="cross-output.html">
+<link rel="next" href="latex-subfigures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -181,35 +181,41 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="how-to-read-this-book" class="section level2 unnumbered">
-<h2>How to read this book</h2>
-<p>The book is designed to highlight the many ways in which your R Markdown documents can be customized. Users are encouraged to try using the concepts within their own documents. The code detailed in the book should be sufficient, but the full source code and examples are provided on <a href="https://github.com/mikey-harper/rmarkdown-cookbook">GitHub</a>.</p>
-<p>It is recommended that readers have a basic understanding of R Markdown. <a href="https://bookdown.org/yihui/rmarkdown/basics.html">Chapter 2</a> of <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span> provides a great overview of the basics of R Markdown and is recommended background reading for any new users of R Markdown.</p>
-<p>It should be noted that this guide does not intend to provide a full technical reference for R Markdown, and there is already extensive literature available on these topics. This book aims to supplement, not replace, this existing literature, and it is therefore recommended that readers explore the following books if they seek further information:</p>
+<div id="include-additional-latex-packages" class="section level2">
+<h2><span class="header-section-number">10.5</span> Include additional LaTeX packages</h2>
+<!--- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 --->
+<p>If your primary output format for your R Markdown document is PDF, then the use of additional LaTeX packages can allow for extensive customization of document styling. In addition, several packages such as <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">kableExtra</a> may have LaTeX dependencies for the R package to function. Much like R, we need to load packages within the R Markdown document before we are able to use their functions.</p>
+<div id="loading-latex-packages" class="section level3">
+<h3><span class="header-section-number">10.5.1</span> Loading LaTeX Packages</h3>
+<p>We can load additional LaTeX packages using the <code>extra_dependencies</code> option within the <code>pdf_document</code> YAML settings. This allows us to provide a list of R Markdown packages:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Untitled&quot;</span>
+<span class="fu">output:</span><span class="at"> </span>
+  <span class="fu">pdf_document:</span>
+    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span> <span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span>
+<span class="ot">---</span></code></pre></div>
+<p>If you need to specify options when loading the package, you can add a second-level to the list and provide the options as a list:</p>
+<pre><code>output: 
+  pdf_document:
+    extra_dependencies:
+      caption: [&quot;labelfont={bf}&quot;]
+      hyperref: [&quot;unicode=true&quot;, &quot;breaklinks=true&quot;]
+      lmodern: null</code></pre>
+<p>For those familiar with LaTeX, this is equivalent to the following LaTeX file:</p>
+<pre><code>\usepackage[labelfont={bf}]{caption} 
+\usepackage[unicode=true, breaklinks=true]{hyperref}
+\userpackage{lmodern}</code></pre>
+</div>
+<div id="example-packages" class="section level3">
+<h3><span class="header-section-number">10.5.2</span> Example Packages</h3>
+<p>There is an extensive community for LaTeX, and there are over 4,000 packages available through the <a href="https://ctan.org/">Comprohensive Tex Archive Network</a> (CTAN). As some examples of LaTeX packages you could consider using within your analysis:</p>
 <ul>
-<li><em>R Markdown: The Definitive guide</em> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>: provides an overview of the R Markdown package and the wide range of ways it can be used.</li>
-<li><em>Dynamic documents and knitr</em>: provides more detailed technical guidance on the inner workings of <strong>rmarkdown</strong> and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-R-knitr">2018</a><a href="#ref-R-knitr">b</a>)</span>.</li>
-<li><em>Authoring books with bookdown</em> <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span>: a short book which provides details on the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a><a href="#ref-R-bookdown">a</a>)</span>, which is designed to simplify the creation of long-format documents in R Markdown.</li>
-<li><em>blogdown: Creating Websites with R Markdown</em> <span class="citation">(Xie, Hill, and Thomas <a href="#ref-xie2017blogdown">2017</a>)</span>: provides details of the <strong>blogdown</strong> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-blogdown"><strong>???</strong></span>)</span> package.</li>
+<li><a href="https://ctan.org/pkg/pdfpages?lang=en">pdfpages</a>: include full PDF pages within your document. This is useful if you wish to have appendices within your document</li>
+<li><a href="https://ctan.org/pkg/caption?lang=en">caption</a>: change the appearance of caption subtitles. For example, you can make the Figure title italics, centered.</li>
+<li><a href="https://ctan.org/pkg/fancyhdr?lang=en">fancyhdr</a>: change the style of page headers.</li>
 </ul>
-<p>Where relevant, this book provides references to these existing resources.</p>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
-<div id="ref-R-knitr">
-<p>Xie, Yihui. 2018b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
-<div id="ref-xie2016bookdown">
-<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
-</div>
-<div id="ref-xie2017blogdown">
-<p>Xie, Y., A.P. Hill, and A. Thomas. 2017. <em>Blogdown: Creating Websites with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=riBBDwAAQBAJ" class="uri">https://books.google.co.uk/books?id=riBBDwAAQBAJ</a>.</p>
+<!--- ADD MORE PACKAGES --->
+
 </div>
 </div>
             </section>
@@ -217,8 +223,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="structure-of-the-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cross-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="latex-subfigures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -248,7 +254,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-dependencies.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

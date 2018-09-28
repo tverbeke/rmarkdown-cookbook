@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-24}
+    \date{2018-09-28}
 
 \usepackage{booktabs}
 
@@ -244,7 +244,7 @@ The R session information used when compiling this book is as follows:
 \end{Shaded}
 
 \begin{verbatim}
-## R version 3.5.0 (2017-01-27)
+## R version 3.5.1 (2017-01-27)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 14.04.5 LTS
 ## 
@@ -566,6 +566,45 @@ the content of R Markdown documents. This chapter provides short recipes
 which are useful for tweaking the behaviour of your own R Markdown
 documents.
 
+\section{Include Appendix after
+Bibliography}\label{include-appendix-after-bibliography}
+
+By default, the bibliography appears at the very end of the document.
+However, there can be cases where we want to place additional text after
+the references, most typically if we wish to include appendices within
+the document. We can force the position of the references by using
+\texttt{\textless{}div\ id="refs"\textgreater{}\textless{}/div\textgreater{}},
+as shown below:
+
+\begin{verbatim}
+# References
+
+<div id="refs"></div>
+
+# Appendices 
+\end{verbatim}
+
+We can improve this further by using the \textbf{bookdown} package,
+which offers a
+\href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#special-headers}{special
+header} for the Appendix as shown with the syntax below:
+
+\begin{verbatim}
+# References
+
+<div id="refs"></div>
+
+# (APPENDIX) Appendix {-} 
+
+# Appendix A
+
+# Appendix B
+\end{verbatim}
+
+The numbering style of appendices will be automatically changed in
+LaTeX/PDF and HTML output (usually in the form A, A.1, A.2, B, B.1,
+\ldots{}).
+
 \section{Set Date to Current Date}\label{set-date-to-current-date}
 
 It may be useful for the date of the knitted R Markdown document to
@@ -584,7 +623,7 @@ desired date time format as shown below:
 \end{Highlighting}
 \end{Shaded}
 
-This will automatically update each time you Knit your document i.e.~24
+This will automatically update each time you Knit your document i.e.~28
 September, 2018. If we wish to customize the format of the dates, we can
 alter the time format by providing our own text string. Some examples
 are shown as follows:
@@ -594,9 +633,9 @@ are shown as follows:
 \item
   \texttt{\%B\ \%Y}: September 2018
 \item
-  \texttt{\%d/\%m/\%y}: ``24/09/18
+  \texttt{\%d/\%m/\%y}: ``28/09/18
 \item
-  \texttt{\%d/\%m/\%y}: Mon 24 Sep
+  \texttt{\%d/\%m/\%y}: Fri 28 Sep
 \end{itemize}
 
 A full table of POSIXct formats is shown in Table
@@ -756,6 +795,77 @@ the \texttt{out.width} option. As an example below, we have set the
 
 The main benefits of this approach is that it is easily achieved, and
 also works for both PDF and HTML outputs.
+
+\section{Include additional LaTeX
+packages}\label{include-additional-latex-packages}
+
+If your primary output format for your R Markdown document is PDF, then
+the use of additional LaTeX packages can allow for extensive
+customization of document styling. In addition, several packages such as
+\href{https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf}{kableExtra}
+may have LaTeX dependencies for the R package to function. Much like R,
+we need to load packages within the R Markdown document before we are
+able to use their functions.
+
+\subsection{Loading LaTeX Packages}\label{loading-latex-packages}
+
+We can load additional LaTeX packages using the
+\texttt{extra\_dependencies} option within the \texttt{pdf\_document}
+YAML settings. This allows us to provide a list of R Markdown packages:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OtherTok{---}
+\FunctionTok{title:}\AttributeTok{ }\StringTok{"Untitled"}
+\FunctionTok{output:}\AttributeTok{ }
+  \FunctionTok{pdf_document:}
+    \FunctionTok{extra_dependencies:}\AttributeTok{ }\KeywordTok{[}\StringTok{"bbm"}\KeywordTok{,} \StringTok{"threeparttable"}\KeywordTok{]}
+\OtherTok{---}
+\end{Highlighting}
+\end{Shaded}
+
+If you need to specify options when loading the package, you can add a
+second-level to the list and provide the options as a list:
+
+\begin{verbatim}
+output: 
+  pdf_document:
+    extra_dependencies:
+      caption: ["labelfont={bf}"]
+      hyperref: ["unicode=true", "breaklinks=true"]
+      lmodern: null
+\end{verbatim}
+
+For those familiar with LaTeX, this is equivalent to the following LaTeX
+file:
+
+\begin{verbatim}
+\usepackage[labelfont={bf}]{caption} 
+\usepackage[unicode=true, breaklinks=true]{hyperref}
+\userpackage{lmodern}
+\end{verbatim}
+
+\subsection{Example Packages}\label{example-packages}
+
+There is an extensive community for LaTeX, and there are over 4,000
+packages available through the \href{https://ctan.org/}{Comprohensive
+Tex Archive Network} (CTAN). As some examples of LaTeX packages you
+could consider using within your analysis:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://ctan.org/pkg/pdfpages?lang=en}{pdfpages}: include full
+  PDF pages within your document. This is useful if you wish to have
+  appendices within your document
+\item
+  \href{https://ctan.org/pkg/caption?lang=en}{caption}: change the
+  appearance of caption subtitles. For example, you can make the Figure
+  title italics, centered.
+\item
+  \href{https://ctan.org/pkg/fancyhdr?lang=en}{fancyhdr}: change the
+  style of page headers.
+\end{itemize}
 
 \section{LaTeX subfigures}\label{latex-subfigures}
 

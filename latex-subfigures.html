@@ -25,14 +25,14 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-09-24">
+<meta name="date" content="2018-09-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="cross-output.html">
+<link rel="prev" href="include-additional-latex-packages.html">
 <link rel="next" href="html-output.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,16 +139,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
 <li class="part"><span><b>III Recipes</b></span></li>
 <li class="chapter" data-level="9" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>9</b> Document Elements</a><ul>
-<li class="chapter" data-level="9.1" data-path="set-date-to-current-date.html"><a href="set-date-to-current-date.html"><i class="fa fa-check"></i><b>9.1</b> Set Date to Current Date</a></li>
-<li class="chapter" data-level="9.2" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>9.2</b> Adding Multiple Authors to Document</a></li>
+<li class="chapter" data-level="9.1" data-path="include-appendix-after-bibliography.html"><a href="include-appendix-after-bibliography.html"><i class="fa fa-check"></i><b>9.1</b> Include Appendix after Bibliography</a></li>
+<li class="chapter" data-level="9.2" data-path="set-date-to-current-date.html"><a href="set-date-to-current-date.html"><i class="fa fa-check"></i><b>9.2</b> Set Date to Current Date</a></li>
+<li class="chapter" data-level="9.3" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>9.3</b> Adding Multiple Authors to Document</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>10</b> LaTeX</a><ul>
 <li class="chapter" data-level="10.1" data-path="inserting-commands.html"><a href="inserting-commands.html"><i class="fa fa-check"></i><b>10.1</b> Inserting Commands</a></li>
 <li class="chapter" data-level="10.2" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>10.2</b> LaTeX preamble</a></li>
 <li class="chapter" data-level="10.3" data-path="multi-figure-plots.html"><a href="multi-figure-plots.html"><i class="fa fa-check"></i><b>10.3</b> Multi-figure plots</a></li>
 <li class="chapter" data-level="10.4" data-path="cross-output.html"><a href="cross-output.html"><i class="fa fa-check"></i><b>10.4</b> Cross-output</a></li>
-<li class="chapter" data-level="10.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>10.5</b> LaTeX subfigures</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="latex-subfigures.html"><a href="latex-subfigures.html#using-with-list"><i class="fa fa-check"></i><b>10.5.1</b> Using with list</a></li>
+<li class="chapter" data-level="10.5" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>10.5</b> Include additional LaTeX packages</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>10.5.1</b> Loading LaTeX Packages</a></li>
+<li class="chapter" data-level="10.5.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>10.5.2</b> Example Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>10.6</b> LaTeX subfigures</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="latex-subfigures.html"><a href="latex-subfigures.html#using-with-list"><i class="fa fa-check"></i><b>10.6.1</b> Using with list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>11</b> HTML Output</a><ul>
@@ -177,7 +182,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="latex-subfigures" class="section level2">
-<h2><span class="header-section-number">10.5</span> LaTeX subfigures</h2>
+<h2><span class="header-section-number">10.6</span> LaTeX subfigures</h2>
 <p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
 <p>Subfigures require the LaTeX package <code>subfig</code>. The line <code>\usepackage{subfig}</code> must therefore be included within the YAML, or if you are using an external tex template you can add this to that file. For example:</p>
 <p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
@@ -206,7 +211,7 @@ Figure 10.2: An example subcaption
 </p>
 </div>
 <div id="using-with-list" class="section level3">
-<h3><span class="header-section-number">10.5.1</span> Using with list</h3>
+<h3><span class="header-section-number">10.6.1</span> Using with list</h3>
 
 </div>
 </div>
@@ -216,7 +221,7 @@ Figure 10.2: An example subcaption
           </div>
         </div>
       </div>
-<a href="cross-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="include-additional-latex-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="html-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

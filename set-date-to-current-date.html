@@ -25,14 +25,14 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-09-24">
+<meta name="date" content="2018-09-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="document-elements.html">
+<link rel="prev" href="include-appendix-after-bibliography.html">
 <link rel="next" href="adding-multiple-authors-to-document.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,16 +139,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
 <li class="part"><span><b>III Recipes</b></span></li>
 <li class="chapter" data-level="9" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>9</b> Document Elements</a><ul>
-<li class="chapter" data-level="9.1" data-path="set-date-to-current-date.html"><a href="set-date-to-current-date.html"><i class="fa fa-check"></i><b>9.1</b> Set Date to Current Date</a></li>
-<li class="chapter" data-level="9.2" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>9.2</b> Adding Multiple Authors to Document</a></li>
+<li class="chapter" data-level="9.1" data-path="include-appendix-after-bibliography.html"><a href="include-appendix-after-bibliography.html"><i class="fa fa-check"></i><b>9.1</b> Include Appendix after Bibliography</a></li>
+<li class="chapter" data-level="9.2" data-path="set-date-to-current-date.html"><a href="set-date-to-current-date.html"><i class="fa fa-check"></i><b>9.2</b> Set Date to Current Date</a></li>
+<li class="chapter" data-level="9.3" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>9.3</b> Adding Multiple Authors to Document</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>10</b> LaTeX</a><ul>
 <li class="chapter" data-level="10.1" data-path="inserting-commands.html"><a href="inserting-commands.html"><i class="fa fa-check"></i><b>10.1</b> Inserting Commands</a></li>
 <li class="chapter" data-level="10.2" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>10.2</b> LaTeX preamble</a></li>
 <li class="chapter" data-level="10.3" data-path="multi-figure-plots.html"><a href="multi-figure-plots.html"><i class="fa fa-check"></i><b>10.3</b> Multi-figure plots</a></li>
 <li class="chapter" data-level="10.4" data-path="cross-output.html"><a href="cross-output.html"><i class="fa fa-check"></i><b>10.4</b> Cross-output</a></li>
-<li class="chapter" data-level="10.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>10.5</b> LaTeX subfigures</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="latex-subfigures.html"><a href="latex-subfigures.html#using-with-list"><i class="fa fa-check"></i><b>10.5.1</b> Using with list</a></li>
+<li class="chapter" data-level="10.5" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>10.5</b> Include additional LaTeX packages</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>10.5.1</b> Loading LaTeX Packages</a></li>
+<li class="chapter" data-level="10.5.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>10.5.2</b> Example Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>10.6</b> LaTeX subfigures</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="latex-subfigures.html"><a href="latex-subfigures.html#using-with-list"><i class="fa fa-check"></i><b>10.6.1</b> Using with list</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>11</b> HTML Output</a><ul>
@@ -177,18 +182,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="set-date-to-current-date" class="section level2">
-<h2><span class="header-section-number">9.1</span> Set Date to Current Date</h2>
+<h2><span class="header-section-number">9.2</span> Set Date to Current Date</h2>
 <!--- https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown --->
 <p>It may be useful for the date of the knitted R Markdown document to automatically update each time we rerun the file. To do this, we can add R code directly to the <code>date</code> field in the YAML, and use the <code>Sys.time()</code> function to extract the current date. As this function will by default provide the date and time, we must specify the desired date time format as shown below:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
 <span class="fu">title:</span><span class="at"> Your title</span>
 <span class="fu">date:</span><span class="at"> !r format(Sys.time(), &#39;%d %B, %Y&#39;)</span>
 <span class="ot">---</span></code></pre></div>
-<p>This will automatically update each time you Knit your document i.e. 24 September, 2018. If we wish to customize the format of the dates, we can alter the time format by providing our own text string. Some examples are shown as follows:</p>
+<p>This will automatically update each time you Knit your document i.e. 28 September, 2018. If we wish to customize the format of the dates, we can alter the time format by providing our own text string. Some examples are shown as follows:</p>
 <ul>
 <li><code>%B %Y</code>: September 2018</li>
-<li><code>%d/%m/%y</code>: “24/09/18</li>
-<li><code>%d/%m/%y</code>: Mon 24 Sep</li>
+<li><code>%d/%m/%y</code>: “28/09/18</li>
+<li><code>%d/%m/%y</code>: Fri 28 Sep</li>
 </ul>
 <p>A full table of POSIXct formats is shown in Table <a href="set-date-to-current-date.html#tab:dateTimeFormats">9.1</a>, which allows users to construct their required date format.</p>
 <table>
@@ -277,7 +282,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="document-elements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="include-appendix-after-bibliography.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="adding-multiple-authors-to-document.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
