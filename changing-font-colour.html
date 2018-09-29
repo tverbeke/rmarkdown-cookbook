@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="knitr-hooks.html">
-<link rel="next" href="managing-big-projects.html">
+<link rel="prev" href="formatting.html">
+<link rel="next" href="indenting-text.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -187,21 +187,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tables" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Tables</h1>
+<div id="changing-font-colour" class="section level2">
+<h2><span class="header-section-number">9.1</span> Changing Font Colour</h2>
+<!--- https://stackoverflow.com/questions/29067541/rmarkdown-how-to-change-the-font-color --->
+<p>The markdown syntax has no built-in method for changing text colours. We can use HTML and LaTeX syntax to change the formatting of words:</p>
 <ul>
-<li>provide more detailed documentation on kable</li>
-<li>Using kableExtra to style tables</li>
+<li><strong>For HTML</strong>: we can wrap the text in the <code>&lt;font color='&quot;,color,&quot;'&gt;&quot;,x,&quot;&lt;/font&gt;</code> command.</li>
+<li><strong>For PDF</strong>: we can use the LaTeX command <code>\textcolor{}{}</code>. This requires the extra LaTeX package <strong>xcolor</strong>.</li>
 </ul>
+<p>As an example of changing the colour in PDF text:</p>
+<pre><code>---
+output:
+  pdf_document:
+    extra_dependencies: [&quot;xcolor&quot;]
+---
 
+Roses are \textcolor{red}{red}, violets are \textcolor{blue}{blue}</code></pre>
+<div id="multi-output-text-colour" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Multi-output text colour</h3>
+<p>We should attempt to design our R Markdown documents to allow for multiple outputs. If we embed raw HTML or LaTeX code into our documents, this formatting will be ignored in the other output format. We can write a custom function which will insert the correct syntax depending on the output format using the <code>is_latex_output()</code> and <code>is_html_output</code> functions as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">format_with_col =<span class="st"> </span><span class="cf">function</span>(x, color){
+  <span class="cf">if</span>(knitr<span class="op">::</span><span class="kw">is_latex_output</span>())
+    <span class="kw">paste</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">textcolor{&quot;</span>,color,<span class="st">&quot;}{&quot;</span>,x,<span class="st">&quot;}&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+  <span class="cf">else</span> <span class="cf">if</span>(knitr<span class="op">::</span><span class="kw">is_html_output</span>())
+    <span class="kw">paste</span>(<span class="st">&quot;&lt;font color=&#39;&quot;</span>,color,<span class="st">&quot;&#39;&gt;&quot;</span>,x,<span class="st">&quot;&lt;/font&gt;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+  <span class="cf">else</span>
+    x
+}</code></pre></div>
+<p>We can then use the code as an inline R expression <code>format_with_col(&quot;text&quot;, &quot;red&quot;)</code> which will create <font color='red'>text</font> text.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="knitr-hooks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="managing-big-projects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="formatting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="indenting-text.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -231,7 +254,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/08-tables.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/02-formatting/change-text-colour.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

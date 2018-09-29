@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="knitr-hooks.html">
-<link rel="next" href="managing-big-projects.html">
+<link rel="prev" href="changing-font-colour.html">
+<link rel="next" href="document-elements.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -187,21 +187,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tables" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Tables</h1>
-<ul>
-<li>provide more detailed documentation on kable</li>
-<li>Using kableExtra to style tables</li>
-</ul>
+<div id="indenting-text" class="section level2">
+<h2><span class="header-section-number">9.2</span> Indenting Text</h2>
+<!--- https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks --->
+<!--- https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 --->
+<p>Markdown will ignore indentations by default. However, we may want to keep indentation within the text, for example within verses and addresses. In these situations, we can use line blocks by starting the line with a vertical bar (<code>|</code>). The division into lines will be preserved in the output, as will any leading spaces; otherwise, the lines will be formatted as Markdown. As an example:</p>
+<pre><code>| The limerick packs laughs anatomical
+| In space that is quite economical.
+|    But the good ones I&#39;ve seen
+|    So seldom are clean
+| And the clean ones so seldom are comical</code></pre>
+<div style="white-space: pre-line;">The limerick packs laughs anatomical
+In space that is quite economical.
+   But the good ones I’ve seen
+   So seldom are clean
+And the clean ones so seldom are comical</div>
+<p>The lines can be hard-wrapped if needed, but the continuation line must begin with a space. For example:</p>
+<pre><code>| The Right Honorable Most Venerable and Righteous Samuel L.
+  Constable, Jr.
+| 200 Main St.
+| Berkeley, CA 94718</code></pre>
 
 </div>
+<!-- </div> -->
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="knitr-hooks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="managing-big-projects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="changing-font-colour.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="document-elements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -231,7 +249,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/08-tables.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/02-formatting/indenting-text.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
