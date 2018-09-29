@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="designing-output.html">
-<link rel="next" href="tables.html">
+<link rel="prev" href="r-markdown-components.html">
+<link rel="next" href="formatting.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -189,22 +189,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="knitr-hooks" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Knitr Hooks</h1>
-<ul>
-<li>Knitr hooks: these are explained within previous R Markdown book</li>
-<li>Include practical examples could be very useful for readers to see the power of it.</li>
-<li>Use some of these: <a href="https://gist.github.com/yihui/2629886" class="uri">https://gist.github.com/yihui/2629886</a></li>
-</ul>
+<div id="controlling-each-layer" class="section level2">
+<h2><span class="header-section-number">2.2</span> Controlling Each layer</h2>
+<p>The way in which <strong>knitr</strong> can be controlled is via the code chunk options.</p>
+<p>To set variables in a single location, we can use</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, echo = FALSE, message = FALSE}</span>
+
+<span class="st">```</span></code></pre></div>
+<p>Alternatively, we can set global properties for a R Markdown document.</p>
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="designing-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-markdown-components.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="formatting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -234,7 +236,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/07-hooks/07-hooks.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/02-basics.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
