@@ -141,9 +141,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.5.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.5.1</b> Loading LaTeX Packages</a></li>
 <li class="chapter" data-level="5.5.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>5.5.2</b> Example Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX subfigures</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="latex-subfigures.html"><a href="latex-subfigures.html#using-with-list"><i class="fa fa-check"></i><b>5.6.1</b> Using with list</a></li>
-</ul></li>
+<li class="chapter" data-level="5.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.1</b> Tabbed headings</a></li>
@@ -203,8 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ```yaml
 output:
   pdf_document:
-    extra_dependencies:
-      caption: [&quot;labelfont={bf}&quot;]
+    extra_dependencies: subfig
 ```
 
 ```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
@@ -219,10 +216,7 @@ plot(rnorm(10), pch=19)
 Figure 5.2: An example subcaption
 </p>
 </div>
-<div id="using-with-list" class="section level3">
-<h3><span class="header-section-number">5.6.1</span> Using with list</h3>
 
-</div>
 </div>
 <!-- </div> -->
             </section>
