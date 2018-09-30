@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="cross-output.html">
+<link rel="prev" href="latex.html">
 <link rel="next" href="latex-subfigures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -133,15 +133,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.4" data-path="adding-multiple-authors-to-document.html"><a href="adding-multiple-authors-to-document.html"><i class="fa fa-check"></i><b>4.4</b> Adding Multiple Authors to Document</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>5</b> LaTeX</a><ul>
-<li class="chapter" data-level="5.1" data-path="inserting-commands.html"><a href="inserting-commands.html"><i class="fa fa-check"></i><b>5.1</b> Inserting Commands</a></li>
-<li class="chapter" data-level="5.2" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>5.2</b> LaTeX preamble</a></li>
-<li class="chapter" data-level="5.3" data-path="multi-figure-plots.html"><a href="multi-figure-plots.html"><i class="fa fa-check"></i><b>5.3</b> Multi-figure plots</a></li>
-<li class="chapter" data-level="5.4" data-path="cross-output.html"><a href="cross-output.html"><i class="fa fa-check"></i><b>5.4</b> Cross-output</a></li>
-<li class="chapter" data-level="5.5" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>5.5</b> Include additional LaTeX packages</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.5.1</b> Loading LaTeX Packages</a></li>
-<li class="chapter" data-level="5.5.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>5.5.2</b> Example Packages</a></li>
+<li class="chapter" data-level="5.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>5.1</b> Include additional LaTeX packages</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.1.1</b> Loading LaTeX Packages</a></li>
+<li class="chapter" data-level="5.1.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>5.1.2</b> Example Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.6</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="5.2" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.2</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.1</b> Tabbed headings</a></li>
@@ -150,6 +146,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.1" data-path="control-output.html"><a href="control-output.html"><i class="fa fa-check"></i><b>7.1</b> Control Output</a></li>
 <li class="chapter" data-level="7.2" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>7.2</b> Output-specific functions</a></li>
 <li class="chapter" data-level="7.3" data-path="designing-output.html"><a href="designing-output.html"><i class="fa fa-check"></i><b>7.3</b> Designing output</a></li>
+<li class="chapter" data-level="7.4" data-path="plotting-multiple-figures-side-by-side.html"><a href="plotting-multiple-figures-side-by-side.html"><i class="fa fa-check"></i><b>7.4</b> Plotting multiple figures side-by-side</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>8</b> Knitr Hooks</a></li>
 <li class="chapter" data-level="9" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>9</b> Tables</a></li>
@@ -187,11 +184,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="include-additional-latex-packages" class="section level2">
-<h2><span class="header-section-number">5.5</span> Include additional LaTeX packages</h2>
+<h2><span class="header-section-number">5.1</span> Include additional LaTeX packages</h2>
 <!--- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 --->
 <p>If your primary output format for your R Markdown document is PDF, then the use of additional LaTeX packages can allow for extensive customization of document styling. In addition, several packages such as <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">kableExtra</a> may have LaTeX dependencies for the R package to function. Much like R, we need to load packages within the R Markdown document before we are able to use their functions.</p>
 <div id="loading-latex-packages" class="section level3">
-<h3><span class="header-section-number">5.5.1</span> Loading LaTeX Packages</h3>
+<h3><span class="header-section-number">5.1.1</span> Loading LaTeX Packages</h3>
 <p>We can load additional LaTeX packages using the <code>extra_dependencies</code> option within the <code>pdf_document</code> YAML settings. This allows us to provide a list of R Markdown packages:</p>
 <pre><code>---
 title: &quot;Untitled&quot;
@@ -212,7 +209,7 @@ output:
 \userpackage{lmodern}</code></pre>
 </div>
 <div id="example-packages" class="section level3">
-<h3><span class="header-section-number">5.5.2</span> Example Packages</h3>
+<h3><span class="header-section-number">5.1.2</span> Example Packages</h3>
 <p>There is an extensive community for LaTeX, and there are over 4,000 packages available through the <a href="https://ctan.org/">Comprohensive Tex Archive Network</a> (CTAN). As some examples of LaTeX packages you could consider using within your analysis:</p>
 <ul>
 <li><a href="https://ctan.org/pkg/pdfpages?lang=en">pdfpages</a>: include full PDF pages within your document. This is useful if you wish to have appendices within your document</li>
@@ -228,7 +225,7 @@ output:
           </div>
         </div>
       </div>
-<a href="cross-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="latex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="latex-subfigures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
