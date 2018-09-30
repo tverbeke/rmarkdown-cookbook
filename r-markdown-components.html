@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-09-29">
+<meta name="date" content="2018-09-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -200,7 +200,7 @@ Figure 2.1: Schematic highlighting the R Markdown workflow. (DRAFT DIAGRAM)
 <p>The <code>.Rmd</code> document is the original format of the document. It contains a combination of YAML, text and code chunks.</p>
 <p><strong>knitr</strong> is used to convert any code embedded within the <code>.Rmd</code> file. This will run all the R code contained within the report and prepare the outputs to be displayed within the output results. All these results are converted into the correct markup language to be contained within the temporary <code>.md</code> file.</p>
 <p>The <code>.md</code> file is processed by <a href="https://pandoc.org/">pandoc</a>, a multipurpose tool which is designed to convert files from one markup language to another. This takes any parameters specified within the YAML frontmatter of the document (e.g. <code>title</code>, <code>author</code>, <code>date</code>) to convert the document to the output format specified in the <code>output</code> argument (HTML/PDF/Word).</p>
-<p>If the output document is PDF, there is an additional layer of processing, as Pandoc will convert the raw <code>.md</code> into an intermediate <code>'tex</code> file. This is file is then processed by <a href="https://www.latex-project.org/about/">LaTeX</a> to form the final PDF document.</p>
+<p>If the output document is PDF, there is an additional layer of processing, as Pandoc will convert the raw <code>.md</code> into an intermediate <code>.tex</code> file. This file is then processed by <a href="https://www.latex-project.org/about/">LaTeX</a> to form the final PDF document.</p>
 <p>As a final clarification, the <strong>bookdown</strong> package is often used within more complex, multiple file books such as this. This essentially provides a layer of preprocessing to the R Markdown document which extends the functionality of the <strong>rmarkdown</strong> package.</p>
 </div>
             </section>
