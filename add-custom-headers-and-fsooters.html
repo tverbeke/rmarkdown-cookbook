@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="structure-of-the-book.html">
-<link rel="next" href="acknowledgements.html">
+<link rel="prev" href="include-additional-latex-packages.html">
+<link rel="next" href="latex-subfigures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -184,35 +184,48 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="software-info" class="section level2 unnumbered">
-<h2>Software information and conventions</h2>
-<p>The R session information used when compiling this book is as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>(<span class="kw">c</span>(
-  <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>), <span class="dt">dependencies =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## R version 3.5.1 (2017-01-27)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.5 LTS
-## 
-## Locale:
-##   LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##   LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##   LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##   LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##   LC_ADDRESS=C               LC_TELEPHONE=C            
-##   LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-## 
-## Package version:
-##   bookdown_0.7   knitr_1.20     rmarkdown_1.10</code></pre>
-<p>We do not add prompts (<code>&gt;</code> and <code>+</code>) to R source code in this book, and we comment out the text output with two hashes <code>##</code> by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>blogdown::serve_site()</code>). The double-colon operator <code>::</code> means accessing an object from a package.</p>
-<p>“Rmd” is the filename extension of R Markdown files, and also an abbreviation of R Markdown in this book.</p>
+<div id="add-custom-headers-and-fsooters" class="section level2">
+<h2><span class="header-section-number">5.2</span> Add Custom Headers and Fsooters</h2>
+<!--- https://stackoverflow.com/questions/25329375/creating-a-footer-for-every-page-using-r-markdown --->
+<p>We can use LaTeX package <strong>fancyhdr</strong> to customise the header and footer of PDF outputs. It provides several commands that allow you to customize the header and footer lines of your document. For a more complete guide, please refer to the <a href="http://tug.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf">full documentation</a>. To begin with, we must load the package and change the header style:</p>
+<pre><code>\usepackage{fancyhdr}
+\pagestyle{fancy}</code></pre>
+<p>The package offers three different interfaces, but we will use the commands <code>\fancyhead</code> and <code>\fancyfoot</code>. The syntax for the formatting <code>\fancyhead[selectors]{output text}</code>, whereby the selectors state which part of the header we wish to customize. We can use the following selectors for the page locators:</p>
+<ul>
+<li><strong>E</strong> for even page</li>
+<li><strong>O</strong> for odd page</li>
+<li><strong>L</strong> for left side</li>
+<li><strong>C</strong> for centered</li>
+<li><strong>R</strong> for right side</li>
+</ul>
+<p>For example, <code>\fancyhead[LE,RO]{Your Name}</code> will print the text “Your Name” on the Left side of the header for Even pages, and the Right side for Odd pages. We can combine this with additional LaTeX commands to extract details from our document for each page:</p>
+<ul>
+<li><code>\thepage</code>: adds number of the current page.</li>
+<li><code>\thechapter</code>: adds number of the current chapter.</li>
+<li><code>\thesection</code>: adds number of the current section.</li>
+<li><code>\chaptername</code>: adds the word “Chapter” in English or its equivalent in the current language.</li>
+<li><code>\leftmark</code>: adds name and number of the current top-level structure in uppercase letters.</li>
+<li><code>\rightmark</code>: adds name and number of the current next to top-level structure in uppercase letters.</li>
+</ul>
+<p>Piecing this components together, a complete example is presented below. The code has been included directly within the YAML:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">header-includes:</span>
+<span class="kw">-</span> \usepackage<span class="kw">{</span>fancyhdr<span class="kw">}</span>
+<span class="kw">-</span> \pagestyle<span class="kw">{</span>fancy<span class="kw">}</span>
+<span class="kw">-</span> \fancyhead<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>YOur Document Header<span class="kw">}</span>
+<span class="kw">-</span> \fancyfoot<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>And this is a fancy footer<span class="kw">}</span>
+<span class="kw">-</span> \fancyfoot<span class="kw">[</span>LE<span class="kw">,</span>RO<span class="kw">]{</span>\thepage<span class="kw">}</span>
+<span class="fu">output:</span><span class="at"> pdf_document</span>
+<span class="ot">---</span></code></pre></div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="structure-of-the-book.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="acknowledgements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="include-additional-latex-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="latex-subfigures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -242,7 +255,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-header-footer.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
