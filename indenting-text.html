@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-09-30">
+<meta name="date" content="2018-10-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -185,19 +185,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="indenting-text" class="section level2">
 <h2><span class="header-section-number">3.2</span> Indenting Text</h2>
-<!--- https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks --->
-<!--- https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 --->
+<!--- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 --->
+<!--- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks --->
 <p>Markdown will ignore indentations by default. However, we may want to keep indentation within the text, for example within verses and addresses. In these situations, we can use line blocks by starting the line with a vertical bar (<code>|</code>). The division into lines will be preserved in the output, as will any leading spaces; otherwise, the lines will be formatted as Markdown. As an example:</p>
 <pre><code>| The limerick packs laughs anatomical
 | In space that is quite economical.
 |    But the good ones I&#39;ve seen
 |    So seldom are clean
 | And the clean ones so seldom are comical</code></pre>
-<div style="white-space: pre-line;">The limerick packs laughs anatomical
-In space that is quite economical.
-   But the good ones I’ve seen
-   So seldom are clean
-And the clean ones so seldom are comical</div>
 <p>The lines can be hard-wrapped if needed, but the continuation line must begin with a space. For example:</p>
 <pre><code>| The Right Honorable Most Venerable and Righteous Samuel L.
   Constable, Jr.
