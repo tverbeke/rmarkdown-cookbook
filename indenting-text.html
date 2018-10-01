@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="changing-font-colour.html">
+<link rel="prev" href="comment-out-content.html">
 <link rel="next" href="document-elements.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -124,7 +124,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html"><i class="fa fa-check"></i><b>3.1</b> Changing Font Colour</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="changing-font-colour.html"><a href="changing-font-colour.html#multi-output-text-colour"><i class="fa fa-check"></i><b>3.1.1</b> Multi-output text colour</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>3.2</b> Indenting Text</a></li>
+<li class="chapter" data-level="3.2" data-path="comment-out-content.html"><a href="comment-out-content.html"><i class="fa fa-check"></i><b>3.2</b> Comment out content</a></li>
+<li class="chapter" data-level="3.3" data-path="indenting-text.html"><a href="indenting-text.html"><i class="fa fa-check"></i><b>3.3</b> Indenting Text</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>4</b> Document Elements</a><ul>
 <li class="chapter" data-level="4.1" data-path="include-appendix-after-bibliography.html"><a href="include-appendix-after-bibliography.html"><i class="fa fa-check"></i><b>4.1</b> Include Appendix after Bibliography</a></li>
@@ -137,8 +138,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>5.1.1</b> Loading LaTeX Packages</a></li>
 <li class="chapter" data-level="5.1.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>5.1.2</b> Example Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="add-custom-headers-and-fsooters.html"><a href="add-custom-headers-and-fsooters.html"><i class="fa fa-check"></i><b>5.2</b> Add Custom Headers and Fsooters</a></li>
-<li class="chapter" data-level="5.3" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.3</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="5.2" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>5.2</b> Controlling the Placement of Figures</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#controlling-float"><i class="fa fa-check"></i><b>5.2.1</b> Controlling Float</a></li>
+<li class="chapter" data-level="5.2.2" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#forcing-the-position"><i class="fa fa-check"></i><b>5.2.2</b> Forcing the position</a></li>
+<li class="chapter" data-level="5.2.3" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html#forcing-float-forwards"><i class="fa fa-check"></i><b>5.2.3</b> Forcing Float Forwards</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="add-custom-headers-and-fsooters.html"><a href="add-custom-headers-and-fsooters.html"><i class="fa fa-check"></i><b>5.3</b> Add Custom Headers and Fsooters</a></li>
+<li class="chapter" data-level="5.4" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>5.4</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>6</b> HTML Output</a><ul>
 <li class="chapter" data-level="6.1" data-path="tabbed-headings.html"><a href="tabbed-headings.html"><i class="fa fa-check"></i><b>6.1</b> Tabbed headings</a></li>
@@ -185,7 +191,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="indenting-text" class="section level2">
-<h2><span class="header-section-number">3.2</span> Indenting Text</h2>
+<h2><span class="header-section-number">3.3</span> Indenting Text</h2>
 <!--- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 --->
 <!--- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks --->
 <p>Markdown will ignore indentations by default. However, we may want to keep indentation within the text, for example within verses and addresses. In these situations, we can use line blocks by starting the line with a vertical bar (<code>|</code>). The division into lines will be preserved in the output, as will any leading spaces; otherwise, the lines will be formatted as Markdown. As an example:</p>
@@ -207,7 +213,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="changing-font-colour.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comment-out-content.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="document-elements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

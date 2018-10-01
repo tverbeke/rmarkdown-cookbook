@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="adding-multiple-authors-to-document.html">
-<link rel="next" href="include-additional-latex-packages.html">
+<link rel="prev" href="include-additional-latex-packages.html">
+<link rel="next" href="add-custom-headers-and-fsooters.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -190,19 +190,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="latex" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> LaTeX</h1>
-<p>For many authors, the main output of their work will be the PDF report, and will be able to utilise the styling of LaTeX. In this chapter, we discuss approaches which can be used to customise the output of PDF reports.</p>
-<p>Users should approach with a note of caution. One of the major benefits of R Markdown is the fact that a single source document can create documents with multiple formats. By tailoring your work to a single output format (PDF/Word/HTML), you may improve the appearance and performance of a single output but at the expense of this tranferability.</p>
-<!--chapter:end:04-latex/04-latex.Rmd--> 
+<div id="controlling-the-placement-of-figures" class="section level2">
+<h2><span class="header-section-number">5.2</span> Controlling the Placement of Figures</h2>
+<p>One of the common</p>
+<p>To new users of LaTeX, the behaviour of figure positioning can be fairly confusing and it is not clear how <a href="https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions">floats</a> work. Floats are used as containers for things which cannot be broken over a page, such as tables and figures. designed to minim</p>
+<p>You may run into some problems if you have multiple figures in close</p>
+<blockquote>
+<p>Authors sometimes have many floats occurring in rapid succession, which raises the problem of how they are supposed to fit on the page and still leave room for text. In this case, LaTeX stacks them all up and prints them together if possible, or leaves them to the end of the chapter in protest. The skill is to space them out within your text so that they intrude neither on the thread of your argument or discussion, nor on the visual balance of the typeset pages.</p>
+</blockquote>
+<div id="controlling-float" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Controlling Float</h3>
+</div>
+<div id="forcing-the-position" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Forcing the position</h3>
+</div>
+<div id="forcing-float-forwards" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Forcing Float Forwards</h3>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="adding-multiple-authors-to-document.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="include-additional-latex-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="include-additional-latex-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="add-custom-headers-and-fsooters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -232,7 +245,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-dependencies.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-figure-positioning.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
