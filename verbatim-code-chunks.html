@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="document-elements.html">
-<link rel="next" href="cross-referencing-within-documents.html">
+<link rel="prev" href="indenting-text.html">
+<link rel="next" href="document-elements.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -193,38 +193,43 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="include-appendix-after-bibliography" class="section level2">
-<h2><span class="header-section-number">4.1</span> Include Appendix after Bibliography</h2>
-<!--- https://stackoverflow.com/questions/41532707/include-rmd-appendix-after-references/42258998#42258998 --->
-<!--- https://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography?noredirect=1&lq=1 --->
-<p>By default, the bibliography appears at the very end of the document. However, there can be cases where we want to place additional text after the references, most typically if we wish to include appendices within the document. We can force the position of the references by using <code>&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;</code>, as shown below:</p>
-<pre><code># References
-
-&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;
-
-# Appendices 
-</code></pre>
-<p>We can improve this further by using the <strong>bookdown</strong> package, which offers a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers">special header</a> for the Appendix as shown with the syntax below:</p>
-<pre><code># References
-
-&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;
-
-# (APPENDIX) Appendix {-} 
-
-# Appendix A
-
-# Appendix B
-</code></pre>
-<p>The numbering style of appendices will be automatically changed in LaTeX/PDF and HTML output (usually in the form A, A.1, A.2, B, B.1, …).</p>
+<div id="verbatim-code-chunks" class="section level2">
+<h2><span class="header-section-number">3.4</span> Verbatim Code Chunks</h2>
+<p>Typically we write code chunks and inline expressions that we want to be parsed and evaluated by <strong>knitr</strong>. However, if you are trying to write a tutorial on using <strong>knitr</strong>, you may need to generate verbatim code chunk or inline expression that is <em>not</em> parsed by <strong>knitr</strong>, and we want to display the content of the chunk header.</p>
+<p>Unfortunately, we can’t wrap the code chunk in another layer of backticks, but instead we must make the code chunk invalid within the source code by inserting “`` `` to the chunk header. This will be evaluated as an inline expression to <em>an empty string</em> by <strong>knitr</strong>. For this example, the following”code chunk&quot; in the source document:</p>
+<pre><code>```{r, eval=TRUE}`r &#39;&#39;`
+1 + 1
+```</code></pre>
+<p>will be rendered as:</p>
+<pre><code>```{r, eval=TRUE}
+1 + 1
+```</code></pre>
+<p>in the output. The inline expression is gone because it is substituted by an empty string. However, that is only the first step. To show something verbatim in the output, the syntax in Markdown is to wrap it in a code block (indent by four spaces or use backtick fences). This will be the actual source if you want to see the output above:</p>
+<pre><code>````
+```{r, eval=TRUE}`r &#39;&#39;`
+1 + 1
+```
+````</code></pre>
+<p>Why four backticks? That is because you have to use at least N+1 backticks to wrap up N backticks.</p>
+<div id="show-a-verbatim-inline-expression" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Show a verbatim inline expression</h3>
+<p>There are multiple ways to show a verbatim inline expression. I mentioned this trick for R Markdown documents in the FAQ:</p>
+<div class="sourceCode"><pre class="sourceCode md"><code class="sourceCode markdown">This will show a verbatim inline R expression `<span class="bn">` `</span>r
+1+1<span class="bn">` `</span>` in the output.</code></pre></div>
+<p>The trick works due to two reasons (1) a single line break is often the same as a space to Markdown parsers (by comparison, two consecutive line breaks means starting a new paragraph); (2) <strong>knitr</strong> requires a space after <code>`r</code> to parse it; if the space is missing, it will not be treated as an inline expression. In the output document, you should see:</p>
+<pre><code>This will show a verbatim inline R expression 2 in the output.</code></pre>
+<p>You can read more about this behaviour <a href="https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/">here</a>.</p>
 
 </div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="document-elements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cross-referencing-within-documents.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="indenting-text.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="document-elements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -254,7 +259,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/03-content/appendix-after-bibliography.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/02-formatting/verbatim-code.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
