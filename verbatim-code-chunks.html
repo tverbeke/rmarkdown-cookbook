@@ -197,7 +197,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">3.4</span> Verbatim Code Chunks</h2>
 <p>Typically we write code chunks and inline expressions that we want to be parsed and evaluated by <strong>knitr</strong>. However, if you are trying to write a tutorial on using <strong>knitr</strong>, you may need to generate verbatim code chunk or inline expression that is <em>not</em> parsed by <strong>knitr</strong>, and we want to display the content of the chunk header.</p>
 <p>Unfortunately, we can’t wrap the code chunk in another layer of backticks, but instead we must make the code chunk invalid within the source code by inserting “`` `` to the chunk header. This will be evaluated as an inline expression to <em>an empty string</em> by <strong>knitr</strong>. For this example, the following”code chunk&quot; in the source document:</p>
-<pre><code>```{r, eval=TRUE}`r &#39;&#39;`
+<pre><code>```{r, eval=TRUE}
 1 + 1
 ```</code></pre>
 <p>will be rendered as:</p>
@@ -205,11 +205,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 1 + 1
 ```</code></pre>
 <p>in the output. The inline expression is gone because it is substituted by an empty string. However, that is only the first step. To show something verbatim in the output, the syntax in Markdown is to wrap it in a code block (indent by four spaces or use backtick fences). This will be the actual source if you want to see the output above:</p>
-<pre><code>````
-```{r, eval=TRUE}`r &#39;&#39;`
+<div class="sourceCode"><pre class="sourceCode md"><code class="sourceCode markdown">````
+```{r, eval=TRUE}
 1 + 1
 ```
-````</code></pre>
+````</code></pre></div>
 <p>Why four backticks? That is because you have to use at least N+1 backticks to wrap up N backticks.</p>
 <div id="show-a-verbatim-inline-expression" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Show a verbatim inline expression</h3>
