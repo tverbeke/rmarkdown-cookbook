@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="how-to-read-this-book.html">
+<link rel="prev" href="knitr.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -201,42 +201,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R Markdown Cookbook</h1>
-<h4 class="author"><em>Michael Harper, Yihui Xie</em></h4>
-<h4 class="date"><em>2018-10-06</em></h4>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
+<div id="allow-duplicate-code-chunks" class="section level2">
+<h2><span class="header-section-number">13.1</span> Allow Duplicate Code Chunks</h2>
+<!--- https://stackoverflow.com/questions/36868287/purl-within-knit-duplicate-label-error/47065392#47065392 --->
+<p>By default, <strong>knitr</strong> will not allow duplicate code chunks names in the document, and will result in an error when the document is knitted. This most frequently occurs when a code chunk is copy-and-pasted within a document. Most R Markdown users will have seen an error message like this at some stage:</p>
+<pre><code>processing file: myfile.Rmd
+Error in parse_block(g[-1], g[1], params.src) : duplicate label &#39;cars&#39;
+Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
+Execution halted</code></pre>
+<p>However, there are scenarios where we may wish to allow duplicate cases. For example, if we have one master document <code>parent.rmd</code> and several child documents, each with a number of chunks. If I attempt to re-use the same child-chunks, however, this will fail:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># settings</span>
+settings =<span class="st"> </span><span class="kw">list</span>(...)
 
-<div class="rmdcaution">
-This book is in a <strong>very</strong> early stage of development. If you have any suggestions on what should be included within this book, please get in touch via <a href="https://github.com/dr-harper/rmarkdown-cookbook/issues/new">GitHub</a>
-</div>
+<span class="co"># run once</span>
+<span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)
 
-<p style="text-align: center;">
-<a href=""><img src="images/cover.png" alt="The R Markdown book cover" /></a>
-</p>
-<p>R Markdown is a powerful tool for combining analysis and reporting into the same document. Since the development of the <strong>rmarkdown</strong> package <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span>, it has grown to become a diverse ecosystem of code, and reports, books and websites can all easily be generated directly from R code.</p>
-<p>There is a wealth of guidance which has grown over the past few years, and the book <a href="https://bookdown.org/yihui/rmarkdown/"><em>R Markdown: The Definitive Guide</em></a> <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span> provides an overview of all that can be done with R Markdown. However, as noted by Yihui, it was commented by the publisher that it would be beneficial to provide more practical examples of the use of R Markdown. And so, the idea of this book was born.</p>
-<p>To fill the gap for official documentation, users often seek for help on StackOverflow. At the time of writing, there were almost 4,000 <a href="https://stackoverflow.com/questions/tagged/r-markdown">different questions</a> with the <code>r-markdown</code> tag. However, the use of the website is relatively difficult if you do not have a specific problem you are trying to search for, and therefore it is hard to be able to tell what is possible with R Markdown unless you have the insight to search for a specific question. This book aims to draw together much existing literature from StackOverflow, and provide up-to-date solutions for everyday queries that users commonly face.</p>
-<p>This book is designed to provide a range of examples of how to extend the functionality of your R Markdown documents. As a cookbook, this guide is recommended to new or intermediate R Markdown users who are looking for practical examples of how R Markdown documents can be effectively updated.</p> 
+<span class="co"># new settings</span>
+settings =<span class="st"> </span><span class="kw">list</span>(...)
+
+<span class="co"># run again</span>
+<span class="kw">knit_child</span>(<span class="st">&#39;useful_analysis.rmd&#39;</span>)</code></pre></div>
+<p>In such scenario, we can allow duplicate labels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">knitr.duplicate.label =</span> <span class="st">&#39;allow&#39;</span>)</code></pre></div>
+<p>Note, it is not recommended that this option is set in documents without valid reason. As with most error messages, they are there for a reason, and allowing duplicate chunks can create issues with figures and cross-references. You have been warned!</p>
+
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
-</div>
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="how-to-read-this-book.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="knitr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -266,7 +263,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/12-knitr/allow-duplicate-chunk-names.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
