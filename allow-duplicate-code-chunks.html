@@ -203,7 +203,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="allow-duplicate-code-chunks" class="section level2">
 <h2><span class="header-section-number">13.1</span> Allow Duplicate Code Chunks</h2>
-<!--- https://stackoverflow.com/questions/36868287/purl-within-knit-duplicate-label-error/47065392#47065392 --->
 <p>By default, <strong>knitr</strong> will not allow duplicate code chunks names in the document, and will result in an error when the document is knitted. This most frequently occurs when a code chunk is copy-and-pasted within a document. Most R Markdown users will have seen an error message like this at some stage:</p>
 <pre><code>processing file: myfile.Rmd
 Error in parse_block(g[-1], g[1], params.src) : duplicate label &#39;cars&#39;
