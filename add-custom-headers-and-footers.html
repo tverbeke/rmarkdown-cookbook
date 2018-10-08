@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="r-markdown-components.html">
-<link rel="next" href="formatting.html">
+<link rel="prev" href="controlling-the-placement-of-figures.html">
+<link rel="next" href="latex-subfigures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -201,24 +201,49 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="controlling-each-layer" class="section level2">
-<h2><span class="header-section-number">2.2</span> Controlling Each layer</h2>
-<p>The way in which <strong>knitr</strong> can be controlled is via the code chunk options.</p>
-<p>To set variables in a single location, we can use</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">```</span><span class="dt">{r, echo = FALSE, message = FALSE}</span>
-
-<span class="st">```</span></code></pre></div>
-<p>Alternatively, we can set global properties for a R Markdown document.</p>
+<div id="add-custom-headers-and-footers" class="section level2">
+<h2><span class="header-section-number">5.3</span> Add Custom Headers and Footers</h2>
+<!--- https://stackoverflow.com/questions/25329375/creating-a-footer-for-every-page-using-r-markdown --->
+<!--- https://tex.stackexchange.com/questions/139139/adding-headers-and-footers-using-pandoc --->
+<p>We can use LaTeX package <strong>fancyhdr</strong> to customise the header and footer of PDF outputs. It provides several commands that allow you to customize the header and footer lines of your document. For a more complete guide, please refer to the <a href="http://tug.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf">full documentation</a>. To begin with, we must load the package and change the header style:</p>
+<pre><code>\usepackage{fancyhdr}
+\pagestyle{fancy}</code></pre>
+<p>The package offers three different interfaces, but we will use the commands <code>\fancyhead</code> and <code>\fancyfoot</code>. The syntax for the formatting <code>\fancyhead[selectors]{output text}</code>, whereby the selectors state which part of the header we wish to customize. We can use the following selectors for the page locators:</p>
+<ul>
+<li><strong>E</strong> for even page</li>
+<li><strong>O</strong> for odd page</li>
+<li><strong>L</strong> for left side</li>
+<li><strong>C</strong> for centered</li>
+<li><strong>R</strong> for right side</li>
+</ul>
+<p>For example, <code>\fancyhead[LE,RO]{Your Name}</code> will print the text “Your Name” on the Left side of the header for Even pages, and the Right side for Odd pages. We can combine this with additional LaTeX commands to extract details from our document for each page:</p>
+<ul>
+<li><code>\thepage</code>: adds number of the current page.</li>
+<li><code>\thechapter</code>: adds number of the current chapter.</li>
+<li><code>\thesection</code>: adds number of the current section.</li>
+<li><code>\chaptername</code>: adds the word “Chapter” in English or its equivalent in the current language.</li>
+<li><code>\leftmark</code>: adds name and number of the current top-level structure in uppercase letters.</li>
+<li><code>\rightmark</code>: adds name and number of the current next to top-level structure in uppercase letters.</li>
+</ul>
+<p>Piecing this components together, a complete example is presented below. The code has been included directly within the YAML:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">header-includes:</span>
+<span class="kw">-</span> \usepackage<span class="kw">{</span>fancyhdr<span class="kw">}</span>
+<span class="kw">-</span> \pagestyle<span class="kw">{</span>fancy<span class="kw">}</span>
+<span class="kw">-</span> \fancyhead<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>YOur Document Header<span class="kw">}</span>
+<span class="kw">-</span> \fancyfoot<span class="kw">[</span>CO<span class="kw">,</span>CE<span class="kw">]{</span>And this is a fancy footer<span class="kw">}</span>
+<span class="kw">-</span> \fancyfoot<span class="kw">[</span>LE<span class="kw">,</span>RO<span class="kw">]{</span>\thepage<span class="kw">}</span>
+<span class="fu">output:</span><span class="at"> pdf_document</span>
+<span class="ot">---</span></code></pre></div>
 
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="r-markdown-components.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="formatting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="controlling-the-placement-of-figures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="latex-subfigures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -248,7 +273,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/02-basics.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-header-footer.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
