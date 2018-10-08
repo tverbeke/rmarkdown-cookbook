@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="structure-of-the-book.html">
-<link rel="next" href="acknowledgements.html">
+<link rel="prev" href="knitr-hooks.html">
+<link rel="next" href="tables.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -208,35 +208,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="software-info" class="section level2 unnumbered">
-<h2>Software information and conventions</h2>
-<p>The R session information used when compiling this book is as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>(<span class="kw">c</span>(
-  <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>), <span class="dt">dependencies =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## R version 3.5.1 (2017-01-27)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.5 LTS
-## 
-## Locale:
-##   LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##   LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##   LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##   LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##   LC_ADDRESS=C               LC_TELEPHONE=C            
-##   LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-## 
-## Package version:
-##   bookdown_0.7   knitr_1.20     rmarkdown_1.10</code></pre>
-<p>We do not add prompts (<code>&gt;</code> and <code>+</code>) to R source code in this book, and we comment out the text output with two hashes <code>##</code> by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>blogdown::serve_site()</code>). The double-colon operator <code>::</code> means accessing an object from a package.</p>
-<p>“Rmd” is the filename extension of R Markdown files, and also an abbreviation of R Markdown in this book.</p>
+<div id="hooks-scroll" class="section level2">
+<h2><span class="header-section-number">8.1</span> Scrollable Code Chunks</h2>
+<p>It was shown in Section <a href="html-scroll.html#html-scroll">6.2</a> how we can use custom CSS to add a scroll bar to the output code chunks. To highlight the use of code chunks, we extend the example here to allow for user-specified maximum heights to be provided to chunks.</p>
+<p>Firstly, we define the custom hook. In this chunk, we need to insert the formatting required to style the scroll bar. The variable <code>max_height</code> is used to control the maximum height of the code chunk:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options){
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>max_height)){
+    <span class="kw">paste</span>(<span class="st">&#39;&lt;pre style = &quot;max-height:&#39;</span>,
+          options<span class="op">$</span>max_height, 
+          <span class="st">&#39;;float: left; width: 910px; overflow-y: auto;&quot;&gt;&#39;</span>,
+          x,
+          <span class="st">&quot;&lt;/pre&gt;&quot;</span>,
+          <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+  }<span class="cf">else</span>{
+    x
+  }
+  
+})</code></pre></div>
+<p>To use this option, we can specify the option within the code chunk header.</p>
+<pre><code>```{r max_height = &quot;200px&quot;}
+print(cars)
+```</code></pre>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="structure-of-the-book.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="acknowledgements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="knitr-hooks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -266,7 +268,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/07-hooks/hook-scrollable-code.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
