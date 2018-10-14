@@ -223,17 +223,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.2</span> Cross-referencing within documents</h2>
 <!---https://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables--->
 <p>Cross-referencing is a useful way of directing your readers through your document, and can be automatically done within R Markdown. While this is explained in <a href="https://bookdown.org/yihui/bookdown/cross-references.html">Section 2.6</a> from the bookdown book <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span>, it is useful to remind readers of how to use these within documents.</p>
-
-<div class="rmdwarning">
-<p>If you are having problems with cross-referencing, make sure you are:</p>
+<p>To use cross-references, we must:</p>
 <ul>
-<li>Using a bookdown output format such as <code>html_document2</code>, <code>pdf_document2</code> and <code>word_document2</code>.</li>
-<li>Have given a caption to your figure or table.</li>
-<li>Have named your code chunk.
-</div>
-</li>
+<li><strong>Use a bookdown output format</strong>: cross-referencing is not provided directly within the base <strong>rmarkdown</strong>, but is provided as an extension. We must therefore use an output format (e.g. <code>html_document2</code>, <code>pdf_document2</code>, <code>word_document2</code>) include this in the YAML <code>output</code> field.</li>
+<li><strong>A caption to your figure or table</strong>: figures without a caption will be included directly as images and will therefore not be a numbered figure.</li>
+<li><strong>A named code chunk</strong>: this provides our identifier for referencing the chunk from within the text.</li>
 </ul>
-<p>We can make cross-references within the text using the format <code>\@ref(type:label)</code>, where <code>label</code> is the chunk label and <code>type</code> is the environment being referenced. A complete example is provided below:</p>
+<p>Having met these conditions, we can make cross-references within the text using the format <code>\@ref(type:label)</code>, where <code>label</code> is the chunk label and <code>type</code> is the environment being referenced (e.g. <code>tab</code>, <code>fig</code>, <code>eqn</code>). An example is provided below:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
 <span class="fu">output:</span><span class="at"> bookdown::html_document2</span>
 <span class="ot">---</span></code></pre></div>
@@ -248,7 +244,18 @@ See Table \@ref(tab:mtcars)
 ```{r mtcars}
 knitr::kable(mtcars[1:5, 1:5], caption = &quot;A caption&quot;)
 ```</code></pre></div>
-<p>We can also cross-reference equations, theorems and section headers, which are explained further in Section <a href="https://bookdown.org/yihui/rmarkdown/bookdown-markdown.html#cross-referencing">12.3.5</a> of the R Markdown book <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>.</p>
+<p>The output of this document is shown in Figure <a href="cross-referencing-within-documents.html#fig:crossReferencing">4.1</a>.</p>
+<div class="figure"><span id="fig:crossReferencing"></span>
+<img src="images/crossReferencing.png" alt="Example of cross-referencing within an R Markdown document"  />
+<p class="caption">
+Figure 4.1: Example of cross-referencing within an R Markdown document
+</p>
+</div>
+
+<div class="rmdnote">
+We can also cross-reference equations, theorems and section headers, which are explained further in Section <a href="https://bookdown.org/yihui/rmarkdown/bookdown-markdown.html#cross-referencing">12.3.5</a> of the R Markdown book <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>.
+</div>
+
 
 </div>
 <h3>References</h3>
