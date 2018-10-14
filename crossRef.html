@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="add-custom-headers-and-footers.html">
-<link rel="next" href="html-output.html">
+<link rel="prev" href="bibliographies-and-citations.html">
+<link rel="next" href="automatically-update-document-date.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -220,46 +220,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="latex-subfigures" class="section level2">
-<h2><span class="header-section-number">6.4</span> LaTeX subfigures</h2>
-<p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
-<p>Subfigures require the LaTeX package <code>subfig</code>. The line <code>\usepackage{subfig}</code> must therefore be included within the YAML, or if you are using an external tex template you can add this to that file. For example:</p>
-<p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
+<div id="crossRef" class="section level2">
+<h2><span class="header-section-number">4.2</span> Cross-referencing within documents</h2>
+<!---https://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables--->
+<p>Cross-referencing is a useful way of directing your readers through your document, and can be automatically done within R Markdown. While this is explained in <a href="https://bookdown.org/yihui/bookdown/cross-references.html">Section 2.6</a> from the bookdown book <span class="citation">(Xie <a href="#ref-xie2016bookdown">2016</a>)</span>, it is useful to remind readers of how to use these within documents.</p>
+<p>To use cross-references, we must:</p>
 <ul>
-<li><code>fig.subcap</code> is a list of the captions for subfigures</li>
-<li><code>fig.ncol</code>: the number of columns of subfigures</li>
-<li><code>out.width</code>: the output width of the figures. You will normally set this 100% divided by the number of sub columns.</li>
+<li><strong>Use a bookdown output format</strong>: cross-referencing is not provided directly within the base <strong>rmarkdown</strong>, but is provided as an extension. We must therefore use an output format (e.g. <code>html_document2</code>, <code>pdf_document2</code>, <code>word_document2</code>) include this in the YAML <code>output</code> field.</li>
+<li><strong>A caption to your figure or table</strong>: figures without a caption will be included directly as images and will therefore not be a numbered figure.</li>
+<li><strong>A named code chunk</strong>: this provides our identifier for referencing the chunk from within the text.</li>
 </ul>
-<p>An example is demonstrated below:</p>
-<pre><code>
-```yaml
-output:
-  pdf_document:
-    extra_dependencies: subfig
+<p>Having met these conditions, we can make cross-references within the text using the format <code>\@ref(type:label)</code>, where <code>label</code> is the chunk label and <code>type</code> is the environment being referenced (e.g. <code>tab</code>, <code>fig</code>, <code>eqn</code>). An example is provided below:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">output:</span><span class="at"> bookdown::html_document2</span>
+<span class="ot">---</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">See Figure \@ref(fig:cars-plot)
+
+```{r cars-plot, fig.cap=&quot;A plot caption&quot;}
+plot(cars)  # a scatterplot
 ```
 
-```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
-plot(1:10)
-plot(rnorm(10), pch=19)
-```</code></pre>
-<p>The output is shown in Figure <a href="latex-subfigures.html#fig:subcaptions">6.1</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/subfigure.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</code></pre></div>
-<div class="figure"><span id="fig:subcaptions"></span>
-<img src="images/subfigure.png" alt="An example subcaption"  />
+See Table \@ref(tab:mtcars)
+
+```{r mtcars}
+knitr::kable(mtcars[1:5, 1:5], caption = &quot;A caption&quot;)
+```</code></pre></div>
+<p>The output of this document is shown in Figure <a href="crossRef.html#fig:crossReferencing">4.1</a>.</p>
+<div class="figure"><span id="fig:crossReferencing"></span>
+<img src="images/crossReferencing.png" alt="Example of cross-referencing within an R Markdown document"  />
 <p class="caption">
-Figure 6.1: An example subcaption
+Figure 4.1: Example of cross-referencing within an R Markdown document
 </p>
 </div>
 
+<div class="rmdnote">
+We can also cross-reference equations, theorems and section headers, which are explained further in Section <a href="https://bookdown.org/yihui/rmarkdown/bookdown-markdown.html#cross-referencing">12.3.5</a> of the R Markdown book <span class="citation">(Yihui Xie <a href="#ref-xie2018">2018</a>)</span>.
 </div>
-<!-- </div> -->
+
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2016bookdown">
+<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+</div>
+<div id="ref-xie2018">
+<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="add-custom-headers-and-footers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="html-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bibliographies-and-citations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="automatically-update-document-date.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -289,7 +304,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-subfigures.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/03-content/cross-referencing.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

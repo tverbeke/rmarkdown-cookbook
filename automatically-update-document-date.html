@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="add-custom-headers-and-footers.html">
-<link rel="next" href="html-output.html">
+<link rel="prev" href="crossRef.html">
+<link rel="next" href="adding-multiple-authors-to-document.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -220,46 +220,112 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="latex-subfigures" class="section level2">
-<h2><span class="header-section-number">6.4</span> LaTeX subfigures</h2>
-<p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
-<p>Subfigures require the LaTeX package <code>subfig</code>. The line <code>\usepackage{subfig}</code> must therefore be included within the YAML, or if you are using an external tex template you can add this to that file. For example:</p>
-<p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
+<div id="automatically-update-document-date" class="section level2">
+<h2><span class="header-section-number">4.3</span> Automatically update document date</h2>
+<!--- https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown --->
+<p>It may be useful for the date of the knitted R Markdown document to automatically update each time we rerun the file. To do this, we can add R code directly to the <code>date</code> field in the YAML, and use the <code>Sys.time()</code> function to extract the current date. As this function will by default provide the date and time, we must specify the desired date time format as shown below:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span>
+<span class="ot">---</span></code></pre></div>
+<p>This will automatically update each time you Knit your document i.e. 14 October, 2018. If we wish to customize the format of the dates, we can alter the time format by providing our own text string. Some examples are shown as follows:</p>
 <ul>
-<li><code>fig.subcap</code> is a list of the captions for subfigures</li>
-<li><code>fig.ncol</code>: the number of columns of subfigures</li>
-<li><code>out.width</code>: the output width of the figures. You will normally set this 100% divided by the number of sub columns.</li>
+<li><code>%B %Y</code>: October 2018</li>
+<li><code>%d/%m/%y</code>: “14/10/18</li>
+<li><code>%d/%m/%y</code>: Sun 14 Oct</li>
 </ul>
-<p>An example is demonstrated below:</p>
-<pre><code>
-```yaml
-output:
-  pdf_document:
-    extra_dependencies: subfig
-```
+<p>A full table of POSIXct formats is shown in Table <a href="automatically-update-document-date.html#tab:dateTimeFormats">4.1</a>, which allows users to construct their required date format.</p>
+<table>
+<caption><span id="tab:dateTimeFormats">Table 4.1: </span>Date Time Formats within R</caption>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Meaning</th>
+<th align="left">Code</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">%a</td>
+<td align="left">Abbreviated weekday</td>
+<td align="left">%A</td>
+<td align="left">Full weekday</td>
+</tr>
+<tr class="even">
+<td align="left">%b</td>
+<td align="left">Abbreviated month</td>
+<td align="left">%B</td>
+<td align="left">Full month</td>
+</tr>
+<tr class="odd">
+<td align="left">%c</td>
+<td align="left">Locale-specific date and time</td>
+<td align="left">%d</td>
+<td align="left">Decimal date</td>
+</tr>
+<tr class="even">
+<td align="left">%H</td>
+<td align="left">Decimal hours (24 hour)</td>
+<td align="left">%I</td>
+<td align="left">Decimal hours (12 hour)</td>
+</tr>
+<tr class="odd">
+<td align="left">%j</td>
+<td align="left">Decimal day of the year</td>
+<td align="left">%m</td>
+<td align="left">Decimal month</td>
+</tr>
+<tr class="even">
+<td align="left">%M</td>
+<td align="left">Decimal minute</td>
+<td align="left">%p</td>
+<td align="left">Locale-specific AM/PM</td>
+</tr>
+<tr class="odd">
+<td align="left">%S</td>
+<td align="left">Decimal second</td>
+<td align="left">%U</td>
+<td align="left">Decimal week of the year (starting on Sunday)</td>
+</tr>
+<tr class="even">
+<td align="left">%w</td>
+<td align="left">Decimal Weekday (0=Sunday)</td>
+<td align="left">%W</td>
+<td align="left">Decimal week of the year (starting on Monday)</td>
+</tr>
+<tr class="odd">
+<td align="left">%x</td>
+<td align="left">Locale-specific Date</td>
+<td align="left">%X</td>
+<td align="left">Locale-specific Time</td>
+</tr>
+<tr class="even">
+<td align="left">%y</td>
+<td align="left">2-digit year</td>
+<td align="left">%Y</td>
+<td align="left">4-digit year</td>
+</tr>
+<tr class="odd">
+<td align="left">%z</td>
+<td align="left">Offset from GMT</td>
+<td align="left">%Z</td>
+<td align="left">Time zone (character)</td>
+</tr>
+</tbody>
+</table>
+<p>As a final note, you may even want to include some explanatory text along with the date. We can easily add any text such as “Last Compiled on” before the R code as follows:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">date:</span><span class="at"> </span><span class="st">&quot;Last compiled on `r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span>
+<span class="ot">---</span></code></pre></div>
 
-```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
-plot(1:10)
-plot(rnorm(10), pch=19)
-```</code></pre>
-<p>The output is shown in Figure <a href="latex-subfigures.html#fig:subcaptions">6.1</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/subfigure.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</code></pre></div>
-<div class="figure"><span id="fig:subcaptions"></span>
-<img src="images/subfigure.png" alt="An example subcaption"  />
-<p class="caption">
-Figure 6.1: An example subcaption
-</p>
 </div>
-
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="add-custom-headers-and-footers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="html-output.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="crossRef.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="adding-multiple-authors-to-document.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -289,7 +355,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-latex/latex-subfigures.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/03-content/current-date.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
