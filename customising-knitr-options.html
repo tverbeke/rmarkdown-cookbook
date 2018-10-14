@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="structure-of-the-book.html">
-<link rel="next" href="acknowledgements.html">
+<link rel="prev" href="allow-duplicate-code-chunks.html">
+<link rel="next" href="latex.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -224,35 +224,46 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="software-info" class="section level2 unnumbered">
-<h2>Software information and conventions</h2>
-<p>The R session information used when compiling this book is as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>(<span class="kw">c</span>(
-  <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>), <span class="dt">dependencies =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## R version 3.5.1 (2017-01-27)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.5 LTS
-## 
-## Locale:
-##   LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##   LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##   LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##   LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##   LC_ADDRESS=C               LC_TELEPHONE=C            
-##   LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-## 
-## Package version:
-##   bookdown_0.7   knitr_1.20     rmarkdown_1.10</code></pre>
-<p>We do not add prompts (<code>&gt;</code> and <code>+</code>) to R source code in this book, and we comment out the text output with two hashes <code>##</code> by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., <strong>rmarkdown</strong>), and inline code and filenames are formatted in a typewriter font (e.g., <code>knitr::knit('foo.Rmd')</code>). Function names are followed by parentheses (e.g., <code>blogdown::serve_site()</code>). The double-colon operator <code>::</code> means accessing an object from a package.</p>
-<p>“Rmd” is the filename extension of R Markdown files, and also an abbreviation of R Markdown in this book.</p>
+<div id="customising-knitr-options" class="section level2">
+<h2><span class="header-section-number">5.2</span> Customising knitr options</h2>
+<p>There are more than 40 different chunk options which can be used to fine-tune the behaviour of <strong>knitr</strong> when processing R chunks. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">Section 2.8</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span> provides a subset of these, while the full list of these variables is available <a href="https://yihui.name/knitr/options/" class="uri">https://yihui.name/knitr/options/</a>.</p>
+<p>This section aims to provides some useful recipes on some commonly used configurations within R Markdown documents.</p>
+<div id="hide-code-and-all-outputs" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Hide code and all outputs</h3>
+<p>We often wish to setup our R Markdown documents by loading a series of packages. Instead of using separate commands to R source code (<code>echo=FALSE</code>), hide text output (<code>results='hide'</code>), hide warnings (<code>warnings=FALSE</code>), hide messages (<code>messages=FALSE</code>) and so on, we can suppress all forms of output elements using the <code>include=FALSE</code> setting as shown below:</p>
+<pre><code>```{r, include=FALSE}
+
+```</code></pre>
+<p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed.</p>
+</div>
+<div id="remove-hashes-from-code-output" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Remove hashes from code output</h3>
+<!--- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr --->
+<p>By default, R code output will have hashes <code>#</code> inserted in front of the outputted code. We can alter this behaviour by using the <code>comment</code> chunk option. If we only want to change the output for a single block we can include it directly within the code block. For example:</p>
+<pre><code>```{r include=FALSE, comment = NA}
+plot(cars)
+```</code></pre>
+<p>It is typically more useful to change this globally, so that all your code chunks have the same appearrance. We can change this globally using the <code>opts_chunk$set</code> option:</p>
+<pre><code>```{r include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+```</code></pre>
+
+</div>
+</div>
+<!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2018">
+<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="structure-of-the-book.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="acknowledgements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="allow-duplicate-code-chunks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -282,7 +293,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/index.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-knitr/knitr-options.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
