@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="tables.html">
-<link rel="next" href="multi-file-documents.html">
+<link rel="prev" href="include-appendix-after-bibliography.html">
+<link rel="next" href="cross-referencing-within-documents.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -218,18 +218,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="workflow" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Workflow</h1>
-<p>Tips for running your R Markdown projects.</p>
-<!--chapter:end:09-workflow/09-workflow.Rmd--> 
+<div id="bibliographies-and-citations" class="section level2">
+<h2><span class="header-section-number">4.2</span> Bibliographies and citations</h2>
+<!--- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations --->
+<p>R Markdown makes it easy include citations within your document by using pandoc. For a comprehensive overview, we recommend <a href="https://bookdown.org/yihui/bookdown/citations.html">Section 2.8</a> of <span class="citation">Xie (<a href="#ref-xie2016bookdown">2016</a>)</span> However, the basic usage requires us to specify a bibliography file using the <code>bibliography</code> metadata field in the YAML. For example:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">output:</span><span class="at"> html_document</span>
+<span class="fu">bibliography:</span><span class="at"> references.bib  </span>
+<span class="ot">---</span></code></pre></div>
+<p>where the A BibTeX database is a plain-text file that consists of bibliography entries like this:</p>
+<pre><code>@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2016},
+  url = {https://www.R-project.org/},
+}</code></pre>
+<p>Items can be cited directly within the documentation using the first line <code>@R-base</code>.</p>
+<div id="add-item-to-bibliography-without-using-it" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Add item to bibliography without using it</h3>
+<p>By default, the bibliography will only display items which are directly referenced in the document. If you want to include items in the bibliography without actually citing them in the body text, you can define a dummy <code>nocite</code> metadata field and put the citations there. This can be included anywhere in the document but it is normally best to place it at the end of the document:</p>
+<pre><code># References
+---
+nocite: |
+ @item1, @item2
+...</code></pre>
+</div>
+<div id="add-all-items-to-bibliography" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Add all items to bibliography</h3>
+<p>If we do not wish to explicitally state all of the items within the bibliography but would still like them to show them in our references, we can use the following syntax:</p>
+<div class="sourceCode"><pre class="sourceCode md"><code class="sourceCode markdown">---
+nocite: &#39;@*&#39;
+...</code></pre></div>
+<p>This will force all items to be displayed in the bibliography.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2016bookdown">
+<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multi-file-documents.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="include-appendix-after-bibliography.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cross-referencing-within-documents.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -259,7 +298,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/09-workflow/multiple-rmd-files.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/03-content/citations.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
