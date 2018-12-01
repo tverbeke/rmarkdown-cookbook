@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-11-29">
+<meta name="date" content="2018-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -172,7 +172,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.1" data-path="control-output.html"><a href="control-output.html"><i class="fa fa-check"></i><b>8.1</b> Control Output</a></li>
 <li class="chapter" data-level="8.2" data-path="output-specific-functions.html"><a href="output-specific-functions.html"><i class="fa fa-check"></i><b>8.2</b> Output-specific functions</a></li>
 <li class="chapter" data-level="8.3" data-path="designing-output.html"><a href="designing-output.html"><i class="fa fa-check"></i><b>8.3</b> Designing output</a></li>
-<li class="chapter" data-level="8.4" data-path="plotting-multiple-figures-side-by-side.html"><a href="plotting-multiple-figures-side-by-side.html"><i class="fa fa-check"></i><b>8.4</b> Plotting multiple figures side-by-side</a></li>
+<li class="chapter" data-level="8.4" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html"><i class="fa fa-check"></i><b>8.4</b> Using Custom Blocks</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#basic-structure"><i class="fa fa-check"></i><b>8.4.1</b> Basic Structure</a></li>
+<li class="chapter" data-level="8.4.2" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#adding-a-shaded-box"><i class="fa fa-check"></i><b>8.4.2</b> Adding a Shaded Box</a></li>
+<li class="chapter" data-level="8.4.3" data-path="using-custom-blocks.html"><a href="using-custom-blocks.html#including-images"><i class="fa fa-check"></i><b>8.4.3</b> Including Images</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="plotting-multiple-figures-side-by-side.html"><a href="plotting-multiple-figures-side-by-side.html"><i class="fa fa-check"></i><b>8.5</b> Plotting multiple figures side-by-side</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>9</b> Knitr Hooks</a><ul>
 <li class="chapter" data-level="9.1" data-path="hooks-scroll.html"><a href="hooks-scroll.html"><i class="fa fa-check"></i><b>9.1</b> Scrollable code chunks</a></li>
@@ -225,11 +230,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
 <span class="fu">date:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;</span>
 <span class="ot">---</span></code></pre></div>
-<p>This will automatically update each time you Knit your document i.e. 29 November, 2018. If we wish to customize the format of the dates, we can alter the time format by providing our own text string. Some examples are shown as follows:</p>
+<p>This will automatically update each time you Knit your document i.e. 01 December, 2018. If we wish to customize the format of the dates, we can alter the time format by providing our own text string. Some examples are shown as follows:</p>
 <ul>
-<li><code>%B %Y</code>: November 2018</li>
-<li><code>%d/%m/%y</code>: “29/11/18</li>
-<li><code>%d/%m/%y</code>: Thu 29 Nov</li>
+<li><code>%B %Y</code>: December 2018</li>
+<li><code>%d/%m/%y</code>: “01/12/18</li>
+<li><code>%d/%m/%y</code>: Sat 01 Dec</li>
 </ul>
 <p>A full table of POSIXct formats is shown in Table <a href="automatically-update-document-date.html#tab:dateTimeFormats">4.1</a>, which allows users to construct their required date format.</p>
 <table>

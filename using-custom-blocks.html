@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="diagrams.html">
-<link rel="next" href="adding-parameters-to-plots.html">
+<link rel="prev" href="designing-output.html">
+<link rel="next" href="plotting-multiple-figures-side-by-side.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -223,40 +223,165 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-diagrams" class="section level2">
-<h2><span class="header-section-number">13.1</span> Basic Diagrams</h2>
-<p><strong>DiagrammeR</strong> provides methods to build graphs for a number of different graphing languages.</p>
-<p>R Studio provides native support for Graphviz (<code>.gv</code>) and mermaid (<code>.mmd</code>) files. Using files of these types in RStudio provides the advantage of syntax coloring and allowing a quick preview of the diagram. For example, we can make a simple flowchart with the following code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;digraph {</span>
-
-<span class="st">        graph [layout = dot, rankdir = LR]</span>
-<span class="st">        </span>
-<span class="st">        node [shape = rectangle]        </span>
-<span class="st">        rec1 [label = &#39;Step 1&#39;]</span>
-<span class="st">        rec2 [label = &#39;Step 2&#39;]</span>
-<span class="st">        rec3 [label =  &#39;Step 3&#39;]</span>
-<span class="st">        rec4 [label = &#39;Step 4&#39;]</span>
-
-<span class="st">        # edge definitions with the node IDs</span>
-<span class="st">        rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span>
-<span class="st">        }&quot;</span>,
-        <span class="dt">height =</span> <span class="dv">200</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:diagrammeR-basic"></span>
-<div id="htmlwidget-6406a2a4e0fb87f15109" style="width:100%;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6406a2a4e0fb87f15109">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<p class="caption">
-Figure 13.1: A basic graphic using DiagrammeR
-</p>
+<div id="using-custom-blocks" class="section level2">
+<h2><span class="header-section-number">8.4</span> Using Custom Blocks</h2>
+<!--- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown --->
+<p>Section <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html">2.7</a> of <span class="citation">Xie (<a href="#ref-xie2016bookdown">2016</a>)</span> highlighted how we can use custom blocks in R Markdown to customise the appearance of sections of text. They can be a useful way to make some text stand out from your reports or books, and are a great way to make sure that your readers take away the key points from your work. As some examples of how these could be used:</p>
+<ul>
+<li>Add a warning to let users know to make sure users are using up-to-date packages before running your analysis:</li>
+<li>Add a link at the start of your document to your GitHub repository containing code:</li>
+<li>To highlight key results and findings from your analysis:</li>
+</ul>
+<p>In this section, we will explain how to create your own custom blocks for both PDF and HTML outputs. They can both use the same formatting within the R Markdown document, but require slight different configurations in your project for this to work. You may wish to explore the <a href="https://github.com/dr-harper/customBlocks">customBlocks</a> repository on GitHub which provides a minimal example of the code highlighted in this section.</p>
+<div id="basic-structure" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Basic Structure</h3>
+<p>We can generate a custom block using either the <code>block2</code> engine in <strong>knitr</strong>. We must also specify the chunk option <code>type</code>, which specifies the class of the <code>&lt;div&gt;</code> and the name of the LaTeX environment. For example:</p>
+<pre><code>```{block, type=&#39;FOO&#39;}
+Some text for this block.
+```</code></pre>
+<p>It is up to the user to define their own <code>&lt;div&gt;</code> in CSS for the HTML output, or <code>\newenvironment</code> in LaTeX for PDF outputs. These customisations will normally be contained in their own files such as <code>style.css</code> or <code>premable.tex</code>, and then included within the YAML options:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">output:</span>
+  <span class="fu">bookdown:</span><span class="at">:html_book:</span>
+    <span class="fu">css:</span><span class="at"> style.css</span>
+  <span class="fu">bookdown:</span><span class="at">:pdf_book:</span>
+    <span class="fu">includes:</span>
+      <span class="fu">in_header:</span><span class="at"> preamble.tex</span>
+<span class="ot">---</span></code></pre></div>
+<p>With this basic setup, we will demonstrate several custom blocks that we can be used to create custom blocks for your work.</p>
 </div>
-<p>There are extensive controls which can be used to control the shape of nodes, colours, line types and add additional parameters.</p>
+<div id="adding-a-shaded-box" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> Adding a Shaded Box</h3>
+<p>First we will highlight how we can add a shaded box for our content. Both HTML and PDF outputs allow for quite a lot of customisation of our custom blocks, and it should allow you to sufficient choice in customising the styles to match if you would like consistency across your outputs.</p>
+<p>For the HTML output, we will specify our custom class in the <code>style.css</code> file. If you are unfamiliar with CSS, you may want to search for options <a href="https://www.w3schools.com/cssref/default.asp">using this link</a> to see what we can easily control. For example, we create a greyed out box with a red border, adding curved corners to the box:</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.customBlock</span> <span class="kw">{</span>
+  <span class="kw">padding:</span> <span class="dt">1em</span> <span class="dt">1em</span> <span class="dt">1em</span> <span class="dt">1em</span><span class="kw">;</span>
+  <span class="kw">margin-bottom:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">background:</span> <span class="dt">#F8F9F9</span><span class="kw">;</span>
+  <span class="kw">border-color:</span> <span class="dt">#A93226</span><span class="kw">;</span>
+  <span class="kw">border-style:</span> <span class="dt">solid</span><span class="kw">;</span>
+  <span class="kw">border-radius:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">border-width:</span> <span class="dt">thin</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div>
+<style type="text/css">
+.customBlock {
+  padding: 1em 1em 1em 1em;
+  margin-bottom: 10px;
+  background: #F8F9F9;
+  border-color: #A93226;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: thin;
+}
+</style>
+<p>For the LaTeX output, we will add our custom block to the <code>preamble.tex</code> file. We will use use the <strong>tcolorbox</strong> LaTeX package, which offers quite a flexible set of options for creating shaded boxes, as detailed within the <a href="hhttp://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf">package documentation</a>. Below, we create a new environment called <code>customBlock</code>, with a similar design of that outlined above:</p>
+<div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex"><span class="bu">\usepackage</span>[many]{<span class="ex">tcolorbox</span>}
+<span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}
+<span class="fu">\usetikzlibrary</span>{calc}
+
+<span class="co">% Define the colours to match the CSS above</span>
+<span class="fu">\definecolor</span>{background}{HTML}{F8F9F9}
+<span class="fu">\definecolor</span>{border}{HTML}{A93226}
+
+<span class="co">% Create our custom box</span>
+<span class="fu">\newtcolorbox</span>{customBlock}{
+  colback = background,
+  colframe = border,
+  boxsep=5pt,
+  arc=4pt}</code></pre></div>
+<p>By using the chunk header <code>{block2, type = &quot;customBlock&quot;}</code>, we can now use our custom block design in both PDF and HTML output formats. This is shown as follows:</p>
+
+<div class="customBlock">
+Look at our custom block!
+</div>
+
+</div>
+<div id="including-images" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> Including Images</h3>
+<p>We can make custom blocks even more visually appealing by including images in them, and it can be an effective way to convey the content of the block. For the following examples, we will assume we are working within a directory below which is a simplified version what is used to build the book:</p>
+<pre><code>directory/
+├── yourReport.Rmd
+├── style.css
+├── preamble.tex
+└── images/ 
+      └── icons/
+            └── ├── important.png
+                ├── note.png
+                └── caution.png</code></pre>
+<p>For the HTML output, we can add an image to the box by adding <code>background-image</code>. The image is inserted into the background, and the padding is offset on the right-hand side to avoid the text overlapping this image. If you are using local images, the file path to the images is provided relative to the CSS file. For example:</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.rmdcaution</span><span class="kw">{</span>
+  <span class="kw">padding:</span> <span class="dt">1em</span> <span class="dt">1em</span> <span class="dt">1em</span> <span class="dt">4em</span><span class="kw">;</span>
+  <span class="kw">margin-bottom:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">background:</span> <span class="dt">#f5f5f5</span> <span class="dt">5px</span> <span class="dt">center</span>/<span class="dt">3em</span> <span class="dt">no-repeat</span><span class="kw">;</span>
+  <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&quot;images/icons/caution.png&quot;</span><span class="dt">)</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div>
+<p>If you want to have a consistent styled box but have different icons, we can globally assign the CSS style to several custom blocks and then add the image for each block seperately. This approach is used within the <a href="https://github.com/dr-harper/rmarkdown-cookbook/blob/master/style.css#L1-L20">source code of this book</a>, as we can define multiple styles without repeating the same basic formatting, as follows:</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.rmdcaution</span>, <span class="fl">.rmdimportant</span>, <span class="fl">.rmdnote</span>, <span class="fl">.rmdtip</span>, <span class="fl">.rmdwarning</span> <span class="kw">{</span>
+  <span class="kw">padding:</span> <span class="dt">1em</span> <span class="dt">1em</span> <span class="dt">1em</span> <span class="dt">4em</span><span class="kw">;</span>
+  <span class="kw">margin-bottom:</span> <span class="dt">10px</span><span class="kw">;</span>
+  <span class="kw">background:</span> <span class="dt">#f5f5f5</span> <span class="dt">5px</span> <span class="dt">center</span>/<span class="dt">3em</span> <span class="dt">no-repeat</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.rmdcaution</span> <span class="kw">{</span>
+  <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&quot;images/icons/caution.png&quot;</span><span class="dt">)</span><span class="kw">;</span>
+<span class="kw">}</span>
+<span class="fl">.rmdimportant</span> <span class="kw">{</span>
+  <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&quot;images/icons/important.png&quot;</span><span class="dt">)</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div>
+<p>For the PDF output, we can adapt the <strong>tcolorbox</strong> code shown above to add the image to the left side of the box, whereby some slight adjustments are made to offset the text from the left and to insert the image into the box. As for the HTML, if we want to create multiple custom blocks of a similar style, it is generally more useful to make a more general function which can be used to create each block. Below, we demonstrate the use of this, where a new environment <code>customBlockImage</code> is created which is then used to build our final environments that we wish to use in our report (<code>rmdnote</code>, <code>rmdimportant</code>):</p>
+<div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex">
+<span class="co">% Create our general design</span>
+<span class="fu">\newtcolorbox</span>{customBlockImage}[2][]{
+  enhanced,
+  top=10pt,
+  bottom=10pt,
+  colframe = white,
+  width=<span class="fu">\textwidth</span>,
+  boxsep=5pt,
+  arc=4pt,
+  outer arc=4pt,
+  leftupper=1.5cm,
+overlay={
+    <span class="fu">\node</span>[anchor=west] 
+      at ([xshift=10pt] <span class="ss">$ (frame.north west)!0.5!(frame.south west) $</span> )
+       {{<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}<span class="bu">\includegraphics</span>{<span class="ex">#2</span>}}};},
+#1}
+    
+ <span class="co">% Create the new environments for R Markdown</span>
+<span class="fu">\newenvironment</span>{rmdnote}
+  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/note}}
+  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}
+  
+<span class="fu">\newenvironment</span>{rmdimportant}
+  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}{images/important}}
+  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}
+         
+<span class="co">% We can also change the colour of the box</span>
+<span class="fu">\newenvironment</span>{rmdwarning}
+  {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}[colback=red]{images/important}}
+  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}
+          </code></pre></div>
+<p>Again, we have designed an output which should be consistent across HTML and PDF outputs. Below we show the output of the <code>rmdnote</code> custom block:</p>
+
+<div class="rmdnote">
+This is the rmdnote custom block
+</div>
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-xie2016bookdown">
+<p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="diagrams.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="adding-parameters-to-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="designing-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting-multiple-figures-side-by-side.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -286,7 +411,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/11-diagrams/10-Diagrams.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/06-multiformat/custom-blocks.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
