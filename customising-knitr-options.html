@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="allow-duplicate-code-chunks.html">
+<link rel="prev" href="exit-knitting-early.html">
 <link rel="next" href="latex.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -142,9 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="knitr.html"><a href="knitr.html"><i class="fa fa-check"></i><b>5</b> Knitr</a><ul>
 <li class="chapter" data-level="5.1" data-path="allow-duplicate-code-chunks.html"><a href="allow-duplicate-code-chunks.html"><i class="fa fa-check"></i><b>5.1</b> Allow duplicate code chunks</a></li>
-<li class="chapter" data-level="5.2" data-path="customising-knitr-options.html"><a href="customising-knitr-options.html"><i class="fa fa-check"></i><b>5.2</b> Customising knitr options</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="customising-knitr-options.html"><a href="customising-knitr-options.html#hide-code-and-all-outputs"><i class="fa fa-check"></i><b>5.2.1</b> Hide code and all outputs</a></li>
-<li class="chapter" data-level="5.2.2" data-path="customising-knitr-options.html"><a href="customising-knitr-options.html#remove-hashes-from-code-output"><i class="fa fa-check"></i><b>5.2.2</b> Remove hashes from code output</a></li>
+<li class="chapter" data-level="5.2" data-path="exit-knitting-early.html"><a href="exit-knitting-early.html"><i class="fa fa-check"></i><b>5.2</b> Exit Knitting Early</a></li>
+<li class="chapter" data-level="5.3" data-path="customising-knitr-options.html"><a href="customising-knitr-options.html"><i class="fa fa-check"></i><b>5.3</b> Customising knitr options</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="customising-knitr-options.html"><a href="customising-knitr-options.html#hide-code-and-all-outputs"><i class="fa fa-check"></i><b>5.3.1</b> Hide code and all outputs</a></li>
+<li class="chapter" data-level="5.3.2" data-path="customising-knitr-options.html"><a href="customising-knitr-options.html#remove-hashes-from-code-output"><i class="fa fa-check"></i><b>5.3.2</b> Remove hashes from code output</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>6</b> LaTeX</a><ul>
@@ -232,11 +233,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="customising-knitr-options" class="section level2">
-<h2><span class="header-section-number">5.2</span> Customising knitr options</h2>
+<h2><span class="header-section-number">5.3</span> Customising knitr options</h2>
 <p>There are more than 40 different chunk options which can be used to fine-tune the behaviour of <strong>knitr</strong> when processing R chunks. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">Section 2.8</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span> provides a subset of these, while the full list of these variables is available <a href="https://yihui.name/knitr/options/" class="uri">https://yihui.name/knitr/options/</a>.</p>
 <p>This section aims to provides some useful recipes on some commonly used configurations within R Markdown documents.</p>
 <div id="hide-code-and-all-outputs" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Hide code and all outputs</h3>
+<h3><span class="header-section-number">5.3.1</span> Hide code and all outputs</h3>
 <p>We often wish to setup our R Markdown documents by loading a series of packages. Instead of using separate commands to R source code (<code>echo=FALSE</code>), hide text output (<code>results='hide'</code>), hide warnings (<code>warnings=FALSE</code>), hide messages (<code>messages=FALSE</code>) and so on, we can suppress all forms of output elements using the <code>include=FALSE</code> setting as shown below:</p>
 <pre><code>```{r, include=FALSE}
 
@@ -244,7 +245,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed.</p>
 </div>
 <div id="remove-hashes-from-code-output" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Remove hashes from code output</h3>
+<h3><span class="header-section-number">5.3.2</span> Remove hashes from code output</h3>
 <!--- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr --->
 <p>By default, R code output will have hashes <code>#</code> inserted in front of the outputted code. We can alter this behaviour by using the <code>comment</code> chunk option. If we only want to change the output for a single block we can include it directly within the code block. For example:</p>
 <pre><code>```{r include=FALSE, comment = NA}
@@ -269,7 +270,7 @@ knitr::opts_chunk$set(comment = NA)
           </div>
         </div>
       </div>
-<a href="allow-duplicate-code-chunks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exit-knitting-early.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

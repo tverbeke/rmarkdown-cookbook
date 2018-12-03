@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="output-specific-functions.html">
-<link rel="next" href="using-custom-blocks.html">
+<link rel="prev" href="allow-duplicate-code-chunks.html">
+<link rel="next" href="customising-knitr-options.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -232,11 +232,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="designing-output" class="section level2">
-<h2><span class="header-section-number">8.3</span> Designing output</h2>
-<p>If we wish to design our own format-specific function we can use the functions <code>knitr::is_latex_output() and</code>knitr::is_html_output`. These function will return a TRUE/FALSE action</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">is_html_output</span>()</code></pre></div>
-<p>This can be used to control the output of statements.</p>
+<div id="exit-knitting-early" class="section level2">
+<h2><span class="header-section-number">5.2</span> Exit Knitting Early</h2>
+<p>Sometime we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom which is not yet complete. In these situations, we could consider using the <code>knit_exit</code> function, which will end the knitting process at that location.</p>
+<p>Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:</p>
+<pre><code>```{r}
+library(knitr)
+1 + 1
+knit_exit()
+```
+
+Okay, you will not see me in the output.
+
+```{r}
+Sys.sleep(100)
+```</code></pre>
+<p>Normally you have to wait for 100 seconds, but since we have called <code>knit_exit()</code>, the rest of the document is actually ignored.</p>
 
 </div>
             </section>
@@ -244,8 +255,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="output-specific-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-custom-blocks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="allow-duplicate-code-chunks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="customising-knitr-options.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -275,7 +286,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/06-multiformat/06-multiformat.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-knitr/knitr-exit.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
