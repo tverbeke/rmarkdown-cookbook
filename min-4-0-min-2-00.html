@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="altering-citation-style.html">
-<link rel="next" href="diagrams.html">
+<link rel="prev" href="speed-dist.html">
+<link rel="next" href="st-qu-12-0-1st-qu-26-00.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -231,32 +231,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="automatically-generate-package-citations" class="section level2">
-<h2><span class="header-section-number">12.5</span> Automatically Generate Package Citations</h2>
-<!--- TODO: May add a full example into the repository examples --->
-<p>It is important to that an acknowledgements is provided within your work to authors of any literature or software referenced. Within a typical workflow, this can be a frustrating experience if you are required to manually identify the correctly formatted citations, load them into a referencing software and then refer to them within the text. However, R Markdown makes it easy to streamline this process. We can generate a BibTex file for packages used within your analysis using the <code>write_bib</code> function within R Markdown.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># automatically create a bib database for R packages</span>
-knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(
-  <span class="kw">.packages</span>(), <span class="st">&#39;bookdown&#39;</span>, <span class="st">&#39;knitr&#39;</span>, <span class="st">&#39;rmarkdown&#39;</span>, <span class="st">&#39;DiagrammeR&#39;</span>
-), <span class="st">&#39;packages.bib&#39;</span>)</code></pre></div>
-<p>To refer to the packages in the text, we must add <code>bibliography: packages.bib</code> to the YAML frontmatter, and then references can be made using the format <code>[@R-package]</code> where <code>package</code> is replaced with the package name i.e. <code>[@R-rmarkdown]</code>. This will be replaced with an intext citation and will be added to the bibliography at the end of your document.</p>
-<p>Note, that the <code>write_bib</code> command is designed to overwrite the existing bibliography. If you want to manually add any other items to the bibligraphy in your document, it is recommended that you create a second <code>.bib</code> file which is also referred to within the YAML <code>bibliography</code> field, as shown below:</p>
-<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
-<span class="fu">bibliography:</span><span class="at"> </span><span class="kw">[</span>packages.bib. references.bib<span class="kw">]</span>
-<span class="ot">---</span></code></pre></div>
-
+<div id="min.-4.0-min.-2.00" class="section level2">
+<h2><span class="header-section-number">13.4</span> Min. : 4.0 Min. : 2.00</h2>
 </div>
-<!-- </div> -->
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="altering-citation-style.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="diagrams.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="speed-dist.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="st-qu-12-0-1st-qu-26-00.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -286,7 +270,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/10-misc/generate-package-citations.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/examples/move-float.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],

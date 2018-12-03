@@ -202,7 +202,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.1" data-path="basic-diagrams.html"><a href="basic-diagrams.html"><i class="fa fa-check"></i><b>13.1</b> Basic Diagrams</a></li>
 <li class="chapter" data-level="13.2" data-path="adding-parameters-to-plots.html"><a href="adding-parameters-to-plots.html"><i class="fa fa-check"></i><b>13.2</b> Adding parameters to plots</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="13.3" data-path="speed-dist.html"><a href="speed-dist.html"><i class="fa fa-check"></i><b>13.3</b> speed dist</a></li>
+<li class="chapter" data-level="13.4" data-path="min-4-0-min-2-00.html"><a href="min-4-0-min-2-00.html"><i class="fa fa-check"></i><b>13.4</b> Min. : 4.0 Min. : 2.00</a></li>
+<li class="chapter" data-level="13.5" data-path="st-qu-12-0-1st-qu-26-00.html"><a href="st-qu-12-0-1st-qu-26-00.html"><i class="fa fa-check"></i><b>13.5</b> 1st Qu.:12.0 1st Qu.: 26.00</a></li>
+<li class="chapter" data-level="13.6" data-path="median-15-0-median-36-00.html"><a href="median-15-0-median-36-00.html"><i class="fa fa-check"></i><b>13.6</b> Median :15.0 Median : 36.00</a></li>
+<li class="chapter" data-level="13.7" data-path="mean-15-4-mean-42-98.html"><a href="mean-15-4-mean-42-98.html"><i class="fa fa-check"></i><b>13.7</b> Mean :15.4 Mean : 42.98</a></li>
+<li class="chapter" data-level="13.8" data-path="rd-qu-19-0-3rd-qu-56-00.html"><a href="rd-qu-19-0-3rd-qu-56-00.html"><i class="fa fa-check"></i><b>13.8</b> 3rd Qu.:19.0 3rd Qu.: 56.00</a></li>
+<li class="chapter" data-level="13.9" data-path="max-25-0-max-120-00.html"><a href="max-25-0-max-120-00.html"><i class="fa fa-check"></i><b>13.9</b> Max. :25.0 Max. :120.00</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -240,14 +248,12 @@ output:
 <li><code>out.width</code>: the output width of the figures. You will normally set this 100% divided by the number of sub columns.</li>
 </ul>
 <p>An example is demonstrated below:</p>
-<pre><code>
-```yaml
-output:
-  pdf_document:
-    extra_dependencies: subfig
-```
-
-```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">output:</span>
+  <span class="fu">pdf_document:</span>
+    <span class="fu">extra_dependencies:</span><span class="at"> subfig</span>
+<span class="ot">---</span></code></pre></div>
+<pre><code>```{r fig-sub, fig.cap=&#39;two plots&#39;, fig.subcap=c(&#39;one plot&#39;, &#39;the other one&#39;), out.width=&#39;.49\\linewidth&#39;, fig.asp=1, fig.ncol = 2}
 plot(1:10)
 plot(rnorm(10), pch=19)
 ```</code></pre>
