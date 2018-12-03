@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-12-01">
+<meta name="date" content="2018-12-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -226,7 +226,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="latex-subfigures" class="section level2">
 <h2><span class="header-section-number">6.4</span> LaTeX subfigures</h2>
 <p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
-<p>Subfigures require the LaTeX package <code>subfig</code>. The line <code>\usepackage{subfig}</code> must therefore be included within the YAML, or if you are using an external tex template you can add this to that file. For example:</p>
+<p>Subfigures require the LaTeX package <code>subfig</code>. We can load this via the <code>extra_dependencies</code> YAML option within the <code>pdf_document</code> output. For example:</p>
+<pre><code>
+```yaml
+output:
+  pdf_document:
+    extra_dependencies: subfig
+```</code></pre>
 <p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
 <ul>
 <li><code>fig.subcap</code> is a list of the captions for subfigures</li>
@@ -246,7 +252,6 @@ plot(1:10)
 plot(rnorm(10), pch=19)
 ```</code></pre>
 <p>The output is shown in Figure <a href="latex-subfigures.html#fig:subcaptions">6.1</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/subfigure.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</code></pre></div>
 <div class="figure"><span id="fig:subcaptions"></span>
 <img src="images/subfigure.png" alt="An example subcaption"  />
 <p class="caption">
