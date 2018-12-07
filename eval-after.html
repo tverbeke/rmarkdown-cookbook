@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 12 Managing Big Projects | R Markdown Cookbook</title>
+  <title>Chapter 15 Eval After | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 12 Managing Big Projects | R Markdown Cookbook />
+  <meta property="og:title" content="Chapter 15 Eval After | R Markdown Cookbook />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Managing Big Projects | R Markdown Cookbook />
+  <meta name="twitter:title" content="Chapter 15 Eval After | R Markdown Cookbook />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="multi-file-documents.html">
-<link rel="next" href="sourcing-files.html">
+<link rel="prev" href="references.html">
+<link rel="next" href="speed-dist.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -237,21 +237,63 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="managing-big-projects" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> Managing Big Projects</h1>
-<ul>
-<li>Practical tips on how a big project should be managed</li>
-<li><code>source</code> is particularly useful for loading external scripts so that the R Markdown project isn’t too bloated with code.</li>
-</ul>
-<p><strong>Ideas</strong>: - Use <code>(ref:tag)</code> to store page formatting options which might need to be reused. For example a page break</p> 
+<div id="eval-after" class="section level1">
+<h1><span class="header-section-number">Chapter 15</span> Eval After</h1>
+<p>When <code>fig.cap</code> needs to use objects in the current chunk, we need to set the eval.after options so the objects are available when <code>fig.cap</code> is used:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+<span class="co"># evaluate fig.cap after a chunk is evaluated</span>
+opts_knit<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval.after =</span> <span class="st">&#39;fig.cap&#39;</span>)</code></pre></div>
+<p>Dynamically generate a figure caption:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">30</span>)
+<span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>)); <span class="kw">hist</span>(x, <span class="dt">main=</span><span class="st">&#39;&#39;</span>)</code></pre></div>
+<div class="figure"><span id="fig:t-test"></span>
+<img src="rmarkdown-cookbook_files/figure-html/t-test-1.png" alt="The P-value is 0.88064" width="672" />
+<p class="caption">
+Figure 15.1: The P-value is 0.88064
+</p>
+</div>
+<p>Change the figure environment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>)); <span class="kw">boxplot</span>(x)</code></pre></div>
+<div class="figure"><span id="fig:figure-asterisk"></span>
+<img src="rmarkdown-cookbook_files/figure-html/figure-asterisk-1.png" alt="Figure * environment." width="192" />
+<p class="caption">
+Figure 15.2: Figure * environment.
+</p>
+</div>
+<p>If you have two figures, you can assign two captions to fig.cap:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ann=</span><span class="ot">FALSE</span>)
+<span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:two-caps"></span>
+<img src="rmarkdown-cookbook_files/figure-html/two-caps-1.png" alt="Hi figure one" width="192" />
+<p class="caption">
+Figure 15.3: Hi figure one
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">runif</span>(<span class="dv">10</span>))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:two-caps"></span>
+<img src="rmarkdown-cookbook_files/figure-html/two-caps-2.png" alt="Hi figure two" width="192" />
+<p class="caption">
+Figure 15.3: Hi figure two
+</p>
+</div>
+<p>You can use figure references too. For example, Figure  is a histogram, and Figure  is a boxplot. The reference key is ``fig: + the chunk label’’ by default.</p>
+
+
+
+<p>Sometimes we may not want the code to be shown inside a float, such as a figure or table environment. The hook function <code>knitr::hook_movecode()</code> was designed for this purpose; it serves a document hook to post-process the LaTeX results.</p>
+<p>First we set up the document hook:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">document =</span> hook_movecode)</code></pre></div>
+<p>Now we test a figure. You will see there is only a plot in Figure <a href="max-25-0-max-120-00.html#fig:example-a">15.4</a>; the code was moved out of the environment, and shown below right after this paragraph.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="multi-file-documents.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sourcing-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="speed-dist.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -281,7 +323,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/10-misc/09-big-projects.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/examples/figure-eval-after.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>R Markdown Cookbook</title>
+  <title>13.1 Basic Diagrams | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="R Markdown Cookbook" />
+  <meta property="og:title" content="13.1 Basic Diagrams | R Markdown Cookbook />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Markdown Cookbook" />
+  <meta name="twitter:title" content="13.1 Basic Diagrams | R Markdown Cookbook />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-12-03">
+<meta name="date" content="2018-12-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="adding-parameters-to-plots.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -154,7 +155,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>6.1.2</b> Example Packages</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>6.2</b> Controlling the Placement of Figures</a></li>
-<li class="chapter" data-level="6.3" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>6.3</b> Add Custom Headers and Footers</a></li>
+<li class="chapter" data-level="6.3" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>6.3</b> Add Custom Headers and Footers</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>6.3.1</b> Force Header and footer for every page</a></li>
+</ul></li>
 <li class="chapter" data-level="6.4" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.4</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML Output</a><ul>
@@ -204,14 +207,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>14</b> Knitr Hooks</a><ul>
 <li class="chapter" data-level="14.1" data-path="hooks-scroll.html"><a href="hooks-scroll.html"><i class="fa fa-check"></i><b>14.1</b> Scrollable code chunks</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
-<li class="chapter" data-level="14.2" data-path="speed-dist.html"><a href="speed-dist.html"><i class="fa fa-check"></i><b>14.2</b> speed dist</a></li>
-<li class="chapter" data-level="14.3" data-path="min-4-0-min-2-00.html"><a href="min-4-0-min-2-00.html"><i class="fa fa-check"></i><b>14.3</b> Min. : 4.0 Min. : 2.00</a></li>
-<li class="chapter" data-level="14.4" data-path="st-qu-12-0-1st-qu-26-00.html"><a href="st-qu-12-0-1st-qu-26-00.html"><i class="fa fa-check"></i><b>14.4</b> 1st Qu.:12.0 1st Qu.: 26.00</a></li>
-<li class="chapter" data-level="14.5" data-path="median-15-0-median-36-00.html"><a href="median-15-0-median-36-00.html"><i class="fa fa-check"></i><b>14.5</b> Median :15.0 Median : 36.00</a></li>
-<li class="chapter" data-level="14.6" data-path="mean-15-4-mean-42-98.html"><a href="mean-15-4-mean-42-98.html"><i class="fa fa-check"></i><b>14.6</b> Mean :15.4 Mean : 42.98</a></li>
-<li class="chapter" data-level="14.7" data-path="rd-qu-19-0-3rd-qu-56-00.html"><a href="rd-qu-19-0-3rd-qu-56-00.html"><i class="fa fa-check"></i><b>14.7</b> 3rd Qu.:19.0 3rd Qu.: 56.00</a></li>
-<li class="chapter" data-level="14.8" data-path="max-25-0-max-120-00.html"><a href="max-25-0-max-120-00.html"><i class="fa fa-check"></i><b>14.8</b> Max. :25.0 Max. :120.00</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="15" data-path="eval-after.html"><a href="eval-after.html"><i class="fa fa-check"></i><b>15</b> Eval After</a><ul>
+<li class="chapter" data-level="15.1" data-path="speed-dist.html"><a href="speed-dist.html"><i class="fa fa-check"></i><b>15.1</b> speed dist</a></li>
+<li class="chapter" data-level="15.2" data-path="min-4-0-min-2-00.html"><a href="min-4-0-min-2-00.html"><i class="fa fa-check"></i><b>15.2</b> Min. : 4.0 Min. : 2.00</a></li>
+<li class="chapter" data-level="15.3" data-path="st-qu-12-0-1st-qu-26-00.html"><a href="st-qu-12-0-1st-qu-26-00.html"><i class="fa fa-check"></i><b>15.3</b> 1st Qu.:12.0 1st Qu.: 26.00</a></li>
+<li class="chapter" data-level="15.4" data-path="median-15-0-median-36-00.html"><a href="median-15-0-median-36-00.html"><i class="fa fa-check"></i><b>15.4</b> Median :15.0 Median : 36.00</a></li>
+<li class="chapter" data-level="15.5" data-path="mean-15-4-mean-42-98.html"><a href="mean-15-4-mean-42-98.html"><i class="fa fa-check"></i><b>15.5</b> Mean :15.4 Mean : 42.98</a></li>
+<li class="chapter" data-level="15.6" data-path="rd-qu-19-0-3rd-qu-56-00.html"><a href="rd-qu-19-0-3rd-qu-56-00.html"><i class="fa fa-check"></i><b>15.6</b> 3rd Qu.:19.0 3rd Qu.: 56.00</a></li>
+<li class="chapter" data-level="15.7" data-path="max-25-0-max-120-00.html"><a href="max-25-0-max-120-00.html"><i class="fa fa-check"></i><b>15.7</b> Max. :25.0 Max. :120.00</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -252,8 +256,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="st">        }&quot;</span>,
         <span class="dt">height =</span> <span class="dv">200</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:diagrammeR-basic"></span>
-<div id="htmlwidget-2e82f0101d63c65dc471" style="width:100%;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2e82f0101d63c65dc471">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-55cff06fb77d5b72bf30" style="width:100%;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-55cff06fb77d5b72bf30">{"x":{"diagram":"digraph {\n\n        graph [layout = dot, rankdir = LR]\n        \n        node [shape = rectangle]        \n        rec1 [label = \"Step 1\"]\n        rec2 [label = \"Step 2\"]\n        rec3 [label =  \"Step 3\"]\n        rec4 [label = \"Step 4\"]\n\n        # edge definitions with the node IDs\n        rec1 -> rec2 -> rec3 -> rec4\n        }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 13.1: A basic graphic using DiagrammeR
 </p>
@@ -286,7 +290,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -299,6 +303,10 @@ gitbook.start({
 "link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/11-diagrams/10-Diagrams.Rmd",
 "text": "Edit"
 },
+"history": {
+"link": null,
+"text": null
+},
 "download": ["rmarkdown-cookbook.pdf", "rmarkdown-cookbook.epub"],
 "toc": {
 "collapse": "subsection"
@@ -307,6 +315,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
