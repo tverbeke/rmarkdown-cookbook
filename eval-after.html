@@ -150,15 +150,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>6</b> LaTeX</a><ul>
-<li class="chapter" data-level="6.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>6.1</b> Include additional LaTeX packages</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>6.1.1</b> Loading LaTeX Packages</a></li>
-<li class="chapter" data-level="6.1.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>6.1.2</b> Example Packages</a></li>
+<li class="chapter" data-level="6.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>6.1</b> Add logo to title page</a></li>
+<li class="chapter" data-level="6.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>6.2</b> Include additional LaTeX packages</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>6.2.1</b> Loading LaTeX Packages</a></li>
+<li class="chapter" data-level="6.2.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>6.2.2</b> Example Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>6.2</b> Controlling the Placement of Figures</a></li>
-<li class="chapter" data-level="6.3" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>6.3</b> Add Custom Headers and Footers</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>6.3.1</b> Force Header and footer for every page</a></li>
+<li class="chapter" data-level="6.3" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>6.3</b> Controlling the Placement of Figures</a></li>
+<li class="chapter" data-level="6.4" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>6.4</b> Add Custom Headers and Footers</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>6.4.1</b> Force Header and footer for every page</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.4</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="6.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.5</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML Output</a><ul>
 <li class="chapter" data-level="7.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
@@ -247,9 +248,9 @@ opts_knit<span class="op">$</span><span class="kw">set</span>(<span class="dt">e
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">30</span>)
 <span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>)); <span class="kw">hist</span>(x, <span class="dt">main=</span><span class="st">&#39;&#39;</span>)</code></pre></div>
 <div class="figure"><span id="fig:t-test"></span>
-<img src="rmarkdown-cookbook_files/figure-html/t-test-1.png" alt="The P-value is 0.88064" width="672" />
+<img src="rmarkdown-cookbook_files/figure-html/t-test-1.png" alt="The P-value is 0.074722" width="672" />
 <p class="caption">
-Figure 15.1: The P-value is 0.88064
+Figure 15.1: The P-value is 0.074722
 </p>
 </div>
 <p>Change the figure environment:</p>
@@ -279,6 +280,10 @@ Figure 15.3: Hi figure two
 <p>You can use figure references too. For example, Figure  is a histogram, and Figure  is a boxplot. The reference key is ``fig: + the chunk label’’ by default.</p>
 
 
+
+<!--- Optionally include a page break. This will force the start of the document to the second page --->
+
+<p>This is your report.</p>
 
 <p>Sometimes we may not want the code to be shown inside a float, such as a figure or table environment. The hook function <code>knitr::hook_movecode()</code> was designed for this purpose; it serves a document hook to post-process the LaTeX results.</p>
 <p>First we set up the document hook:</p>

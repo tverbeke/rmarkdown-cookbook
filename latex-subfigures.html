@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>6.4 LaTeX subfigures | R Markdown Cookbook</title>
+  <title>6.5 LaTeX subfigures | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="6.4 LaTeX subfigures | R Markdown Cookbook />
+  <meta property="og:title" content="6.5 LaTeX subfigures | R Markdown Cookbook />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.4 LaTeX subfigures | R Markdown Cookbook />
+  <meta name="twitter:title" content="6.5 LaTeX subfigures | R Markdown Cookbook />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -150,15 +150,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i><b>6</b> LaTeX</a><ul>
-<li class="chapter" data-level="6.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>6.1</b> Include additional LaTeX packages</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>6.1.1</b> Loading LaTeX Packages</a></li>
-<li class="chapter" data-level="6.1.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>6.1.2</b> Example Packages</a></li>
+<li class="chapter" data-level="6.1" data-path="add-logo-to-title-page.html"><a href="add-logo-to-title-page.html"><i class="fa fa-check"></i><b>6.1</b> Add logo to title page</a></li>
+<li class="chapter" data-level="6.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html"><i class="fa fa-check"></i><b>6.2</b> Include additional LaTeX packages</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#loading-latex-packages"><i class="fa fa-check"></i><b>6.2.1</b> Loading LaTeX Packages</a></li>
+<li class="chapter" data-level="6.2.2" data-path="include-additional-latex-packages.html"><a href="include-additional-latex-packages.html#example-packages"><i class="fa fa-check"></i><b>6.2.2</b> Example Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>6.2</b> Controlling the Placement of Figures</a></li>
-<li class="chapter" data-level="6.3" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>6.3</b> Add Custom Headers and Footers</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>6.3.1</b> Force Header and footer for every page</a></li>
+<li class="chapter" data-level="6.3" data-path="controlling-the-placement-of-figures.html"><a href="controlling-the-placement-of-figures.html"><i class="fa fa-check"></i><b>6.3</b> Controlling the Placement of Figures</a></li>
+<li class="chapter" data-level="6.4" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html"><i class="fa fa-check"></i><b>6.4</b> Add Custom Headers and Footers</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="add-custom-headers-and-footers.html"><a href="add-custom-headers-and-footers.html#force-header-and-footer-for-every-page"><i class="fa fa-check"></i><b>6.4.1</b> Force Header and footer for every page</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.4</b> LaTeX subfigures</a></li>
+<li class="chapter" data-level="6.5" data-path="latex-subfigures.html"><a href="latex-subfigures.html"><i class="fa fa-check"></i><b>6.5</b> LaTeX subfigures</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML Output</a><ul>
 <li class="chapter" data-level="7.1" data-path="change-chunk-styling.html"><a href="change-chunk-styling.html"><i class="fa fa-check"></i><b>7.1</b> Change Chunk Styling</a><ul>
@@ -238,7 +239,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="latex-subfigures" class="section level2">
-<h2><span class="header-section-number">6.4</span> LaTeX subfigures</h2>
+<h2><span class="header-section-number">6.5</span> LaTeX subfigures</h2>
 <p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
 <p>Subfigures require the LaTeX package <code>subfig</code>. We can load this via the <code>extra_dependencies</code> YAML option within the <code>pdf_document</code> output. For example:</p>
 <pre><code>
@@ -263,11 +264,11 @@ output:
 plot(1:10)
 plot(rnorm(10), pch=19)
 ```</code></pre>
-<p>The output is shown in Figure <a href="latex-subfigures.html#fig:subcaptions">6.1</a>.</p>
+<p>The output is shown in Figure <a href="latex-subfigures.html#fig:subcaptions">6.2</a>.</p>
 <div class="figure"><span id="fig:subcaptions"></span>
 <img src="images/subfigure.png" alt="An example subcaption"  />
 <p class="caption">
-Figure 6.1: An example subcaption
+Figure 6.2: An example subcaption
 </p>
 </div>
 
