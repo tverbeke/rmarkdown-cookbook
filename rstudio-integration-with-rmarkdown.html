@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>5.3 Customising knitr options | R Markdown Cookbook</title>
+  <title>11.2 RStudio integration with Rmarkdown | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="5.3 Customising knitr options | R Markdown Cookbook />
+  <meta property="og:title" content="11.2 RStudio integration with Rmarkdown | R Markdown Cookbook />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.3 Customising knitr options | R Markdown Cookbook />
+  <meta name="twitter:title" content="11.2 RStudio integration with Rmarkdown | R Markdown Cookbook />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="exit-knitting-early.html">
-<link rel="next" href="latex.html">
+<link rel="prev" href="multi-file-documents.html">
+<link rel="next" href="managing-big-projects.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -241,46 +241,112 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="customising-knitr-options" class="section level2">
-<h2><span class="header-section-number">5.3</span> Customising knitr options</h2>
-<p>There are more than 40 different chunk options which can be used to fine-tune the behaviour of <strong>knitr</strong> when processing R chunks. <a href="https://bookdown.org/yihui/rmarkdown/r-code.html">Section 2.8</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span> provides a subset of these, while the full list of these variables is available <a href="https://yihui.name/knitr/options/" class="uri">https://yihui.name/knitr/options/</a>.</p>
-<p>This section aims to provides some useful recipes on some commonly used configurations within R Markdown documents.</p>
-<div id="hide-code-and-all-outputs" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> Hide code and all outputs</h3>
-<p>We often wish to setup our R Markdown documents by loading a series of packages. Instead of using separate commands to R source code (<code>echo=FALSE</code>), hide text output (<code>results='hide'</code>), hide warnings (<code>warnings=FALSE</code>), hide messages (<code>messages=FALSE</code>) and so on, we can suppress all forms of output elements using the <code>include=FALSE</code> setting as shown below:</p>
-<pre><code>```{r, include=FALSE}
-
-```</code></pre>
-<p>With <code>include=FALSE</code>, the code chunk will be evaluated (unless <code>eval=FALSE</code>), but the output will be completely suppressed.</p>
-</div>
-<div id="remove-hashes-from-code-output" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> Remove hashes from code output</h3>
-<!--- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr --->
-<p>By default, R code output will have hashes <code>#</code> inserted in front of the outputted code. We can alter this behaviour by using the <code>comment</code> chunk option. If we only want to change the output for a single block we can include it directly within the code block. For example:</p>
-<pre><code>```{r include=FALSE, comment = NA}
-plot(cars)
-```</code></pre>
-<p>It is typically more useful to change this globally, so that all your code chunks have the same appearrance. We can change this globally using the <code>opts_chunk$set</code> option:</p>
-<pre><code>```{r include=FALSE}
-knitr::opts_chunk$set(comment = NA)
-```</code></pre>
+<div id="rstudio-integration-with-rmarkdown" class="section level2">
+<h2><span class="header-section-number">11.2</span> RStudio integration with Rmarkdown</h2>
+<p>Rmarkdown format and features can be used with R and <code>rmarkdown</code> package, with any editor that got your preference. However, RStudio has a deep integration with Rmarkdown and offers additional feature that will help your project worflown without a doubt.</p>
+<div id="rmarkdown-specific-rstudio-keyboard-shorcuts" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Rmarkdown specific Rstudio keyboard shorcuts</h3>
+<!--- https://stackoverflow.com/questions/30938280/keyboard-shortcut-to-produce-code-chunk-brackets-in-markdown-in-r-for-rstudio --->
+<p>Like any great IDE, RStudio has keyboard shorcuts<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and some are specific to Rmarkdown:</p>
+<table>
+<caption><span id="tab:keyboard-shortcuts">Table 11.1: </span>Rmarkdown related Rstudio keyboard shorcuts</caption>
+<thead>
+<tr class="header">
+<th align="left">Description</th>
+<th align="left">Windows &amp; Linux</th>
+<th align="left">Mac</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Insert R chunk</td>
+<td align="left">Ctrl+Alt+I</td>
+<td align="left">Command+Option+I</td>
+</tr>
+<tr class="even">
+<td align="left">Preview HTML</td>
+<td align="left">Ctrl+Shift+K</td>
+<td align="left">Command+Shift+K</td>
+</tr>
+<tr class="odd">
+<td align="left">Knitr document (knitr)</td>
+<td align="left">Ctrl+Shift+K</td>
+<td align="left">Command+Shift+K</td>
+</tr>
+<tr class="even">
+<td align="left">Compile Notebook</td>
+<td align="left">Ctrl+Shift+K</td>
+<td align="left">Command+Shift+K</td>
+</tr>
+<tr class="odd">
+<td align="left">Compile PDF</td>
+<td align="left">Ctrl+Shift+K</td>
+<td align="left">Command+Shift+K</td>
+</tr>
+<tr class="even">
+<td align="left">Run all chunks above</td>
+<td align="left">Ctrl+Alt+P</td>
+<td align="left">Command+Option+P</td>
+</tr>
+<tr class="odd">
+<td align="left">Run current chunk</td>
+<td align="left">Ctrl+Alt+C</td>
+<td align="left">Command+Option+C</td>
+</tr>
+<tr class="even">
+<td align="left">Run current chunk</td>
+<td align="left">Ctrl+Shift+Enter</td>
+<td align="left">Command+Shift+Enter</td>
+</tr>
+<tr class="odd">
+<td align="left">Run next chunk</td>
+<td align="left">Ctrl+Alt+N</td>
+<td align="left">Command+Option+N</td>
+</tr>
+<tr class="even">
+<td align="left">Run all chunks</td>
+<td align="left">Ctrl+Alt+R</td>
+<td align="left">Command+Option+R</td>
+</tr>
+<tr class="odd">
+<td align="left">Go to next chunk/title</td>
+<td align="left">Ctrl+PgDown</td>
+<td align="left">Command+PgDown</td>
+</tr>
+<tr class="even">
+<td align="left">Go to previous chunk/title</td>
+<td align="left">Ctrl+PgUp</td>
+<td align="left">Command+PgUp</td>
+</tr>
+<tr class="odd">
+<td align="left">Show/hide document outline</td>
+<td align="left">Ctrl+Shift+O</td>
+<td align="left">Command+Shift+O</td>
+</tr>
+<tr class="even">
+<td align="left">Build book, website, …</td>
+<td align="left">Ctrl+Shift+B</td>
+<td align="left">Command+Shift+B</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
 <!-- </div> -->
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2018">
-<p>Yihui Xie, Garrett Grolemund, J.J. Allaire. 2018. <em>R Markdown: The Definitive Guide</em>. 1st ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
-</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>A full list can be found on the <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">web</a> or directly in the IDE under tools menu <code>Tools -&gt; Keyboard Shortcuts Help.</code><a href="rstudio-integration-with-rmarkdown.html#fnref2">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="exit-knitting-early.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="latex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multi-file-documents.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="managing-big-projects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -310,7 +376,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/04-knitr/knitr-options.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/master/09-workflow/rstudio-integration.Rmd",
 "text": "Edit"
 },
 "history": {
