@@ -263,20 +263,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>\rightmark</code>: adds name and number of the current next to top-level structure in uppercase letters.</li>
 </ul>
 <p>Piecing this components together, a complete example is presented below.</p>
-<p>This could be inserted in the document, or another <em>header.tex</em> file :</p>
+<p>This could be inserted in the document, or another <code>header.tex</code> file :</p>
 <div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex"><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}
 <span class="fu">\pagestyle</span>{fancy}
 <span class="fu">\fancyhead</span>[CO,CE]{Your Document Header}
 <span class="fu">\fancyfoot</span>[CO,CE]{And this is a fancy footer}
 <span class="fu">\fancyfoot</span>[LE,RO]{<span class="fu">\thepage</span>}</code></pre></div>
-<p>If in an external <em>.tex</em> file, then it could be included in the header of our <code>rmarkdown::pdf_document</code> format:</p>
+<p>If in an external <code>.tex</code> file, then it could be included in the header of our <code>rmarkdown::pdf_document</code> format:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Document with header and footer&quot;</span>
 <span class="fu">output:</span><span class="at"> </span>
   <span class="fu">pdf_document:</span>
     <span class="fu">includes:</span>
       <span class="fu">in_header:</span><span class="at"> header.tex</span>
 <span class="ot">---</span></code></pre></div>
-<p>The <em>includes</em> feature of <code>pdf_document</code> is presented in <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#includes-1">Advanced customisation</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span>.</p>
+<p>The <code>includes</code> feature of <code>pdf_document</code> is presented in <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#includes-1">Advanced customisation</a> of <span class="citation">Yihui Xie (<a href="#ref-xie2018">2018</a>)</span>.</p>
 <p>An alternative,<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> it could also be included directly in header to a rmarkdown document within the YAML using the pandoc variable <code>header-includes</code>:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
 <span class="fu">header-includes:</span>
