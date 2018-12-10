@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-12-09">
+<meta name="date" content="2018-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -264,7 +264,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="fu">\fancyfoot</span>[CO,CE]{And this is a fancy footer}
 <span class="fu">\fancyfoot</span>[LE,RO]{<span class="fu">\thepage</span>}</code></pre></div>
 <p>If in an external <code>.tex</code> file, then it could be included in the header of our <code>rmarkdown::pdf_document</code> format:</p>
-<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Document with header and footer&quot;</span>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Document with header and footer&quot;</span>
 <span class="fu">output:</span><span class="at"> </span>
   <span class="fu">pdf_document:</span>
     <span class="fu">includes:</span>

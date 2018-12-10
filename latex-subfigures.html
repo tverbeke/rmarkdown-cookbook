@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-12-09">
+<meta name="date" content="2018-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -236,12 +236,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">6.5</span> LaTeX subfigures</h2>
 <p>When writing a document you may want to include some slightly more complicated figures with multiple images. Subfigures are a useful LaTeX feature which allows us to achieve this by plotting multiple figures within a single plot and providing each with their own subcaption.</p>
 <p>Subfigures require the LaTeX package <code>subfig</code>. We can load this via the <code>extra_dependencies</code> YAML option within the <code>pdf_document</code> output. For example:</p>
-<pre><code>
-```yaml
-output:
-  pdf_document:
-    extra_dependencies: subfig
-```</code></pre>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">output:</span>
+  <span class="fu">pBdf_document:</span>
+    <span class="fu">extra_dependencies:</span><span class="at"> subfig</span>
+<span class="ot">---</span></code></pre></div>
 <p>As listed within the knitr <a href="https://yihui.name/knitr/options/">chunk options</a>, subfigures require a few additional settings to be set in the chunk header:</p>
 <ul>
 <li><code>fig.subcap</code> is a list of the captions for subfigures</li>

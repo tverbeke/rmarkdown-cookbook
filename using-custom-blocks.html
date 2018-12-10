@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-12-09">
+<meta name="date" content="2018-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -284,7 +284,7 @@ Some text for this block.
 }
 </style>
 <p>For the LaTeX output, we will add our custom block to the <code>preamble.tex</code> file. We will use use the <strong>tcolorbox</strong> LaTeX package, which offers quite a flexible set of options for creating shaded boxes, as detailed within the <a href="hhttp://ftp.cc.uoc.gr/mirrors/CTAN/macros/latex/contrib/tcolorbox/tcolorbox.pdf">package documentation</a>. Below, we create a new environment called <code>customBlock</code>, with a similar design of that outlined above:</p>
-<div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex"><span class="bu">\usepackage</span>[many]{<span class="ex">tcolorbox</span>}
+<div class="sourceCode"><pre class="sourceCode latex latex"><code class="sourceCode latex"><span class="bu">\usepackage</span>[many]{<span class="ex">tcolorbox</span>}
 <span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}
 <span class="fu">\usetikzlibrary</span>{calc}
 
@@ -337,8 +337,7 @@ Look at our custom block!
   <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&quot;images/icons/important.png&quot;</span><span class="dt">)</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre></div>
 <p>For the PDF output, we can adapt the <strong>tcolorbox</strong> code shown above to add the image to the left side of the box, whereby some slight adjustments are made to offset the text from the left and to insert the image into the box. As for the HTML, if we want to create multiple custom blocks of a similar style, it is generally more useful to make a more general function which can be used to create each block. Below, we demonstrate the use of this, where a new environment <code>customBlockImage</code> is created which is then used to build our final environments that we wish to use in our report (<code>rmdnote</code>, <code>rmdimportant</code>):</p>
-<div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex">
-<span class="co">% Create our general design</span>
+<div class="sourceCode"><pre class="sourceCode latex"><code class="sourceCode latex"><span class="co">% Create our general design</span>
 <span class="fu">\newtcolorbox</span>{customBlockImage}[2][]{
   enhanced,
   top=10pt,
@@ -367,8 +366,7 @@ overlay={
 <span class="co">% We can also change the colour of the box</span>
 <span class="fu">\newenvironment</span>{rmdwarning}
   {<span class="kw">\begin</span>{<span class="ex">customBlockImage</span>}[colback=red]{images/important}}
-  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}
-          </code></pre></div>
+  {<span class="kw">\end</span>{<span class="ex">customBlockImage</span>}}</code></pre></div>
 <p>Again, we have designed an output which should be consistent across HTML and PDF outputs. Below we show the output of the <code>rmdnote</code> custom block:</p>
 
 <div class="rmdnote">
