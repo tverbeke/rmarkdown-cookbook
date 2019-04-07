@@ -9,7 +9,7 @@
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="11.1 Multi-file documents | R Markdown Cookbook />
+  <meta property="og:title" content="11.1 Multi-file documents | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.1 Multi-file documents | R Markdown Cookbook />
+  <meta name="twitter:title" content="11.1 Multi-file documents | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2018-12-10">
+<meta name="date" content="2019-04-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -236,7 +236,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">11.1</span> Multi-file documents</h2>
 <!--- https://stackoverflow.com/questions/25824795/how-to-combine-two-rmarkdown-rmd-files-into-a-single-output --->
 <p>With larger R Markdown projects, it can be useful to split the document into smaller files which are easier to handle than a single, massive <code>'.Rmd</code> document. Also, we may also have generic components which we wish to use across all of our analyses, and rather than copying and pasting the same code across for each report.</p>
-<p>In this section, we highlight two approaches which can be used when splitting an R Markdown document into separate <code>.Rmd</code> files, using child documents and the <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a><a href="#ref-R-bookdown">b</a>)</span> package. Most importantly, we will highlight when it is preferred for each to be used within your analysis.</p>
+<p>In this section, we highlight two approaches which can be used when splitting an R Markdown document into separate <code>.Rmd</code> files, using child documents and the <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> package. Most importantly, we will highlight when it is preferred for each to be used within your analysis.</p>
 <div id="child-documents" class="section level3">
 <h3><span class="header-section-number">11.1.1</span> Child documents</h3>
 <p>We can include other R Markdown documents within a file by using child documents. The contents of the child document is loaded into the parent document, and any R code will be run as normally within <strong>knitr</strong>.</p>
@@ -257,7 +257,7 @@ This analysis was written in the R programming language [@R-base]. The report wa
 </div>
 <div id="using-bookdown" class="section level3">
 <h3><span class="header-section-number">11.1.2</span> Using bookdown</h3>
-<p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a><a href="#ref-R-bookdown">b</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
+<p>The <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span> package is designed for creating long format documents within R Markdown, and allows us to split our files into multiple components. To demonstrate the use, we provide a minimal example comprising of three files within the same directory:</p>
 <div class="sourceCode"><pre class="sourceCode md"><code class="sourceCode markdown">directory
   |- index.Rmd
   |- 01-intro.Rmd
@@ -297,7 +297,7 @@ This is chapter 2.</code></pre></div>
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-R-bookdown">
-<p>Xie, Yihui. 2018b. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
+<p>Xie, Yihui. 2018. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
 </div>
 <div id="ref-xie2016bookdown">
 <p>Xie, Y. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://books.google.co.uk/books?id=8nm0DQAAQBAJ" class="uri">https://books.google.co.uk/books?id=8nm0DQAAQBAJ</a>.</p>
