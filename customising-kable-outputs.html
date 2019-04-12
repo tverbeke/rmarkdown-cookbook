@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>13.2 Adding parameters to plots | R Markdown Cookbook</title>
+  <title>10.1 Customising kable outputs | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="13.2 Adding parameters to plots | R Markdown Cookbook" />
+  <meta property="og:title" content="10.1 Customising kable outputs | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13.2 Adding parameters to plots | R Markdown Cookbook" />
+  <meta name="twitter:title" content="10.1 Customising kable outputs | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="basic-diagrams.html">
-<link rel="next" href="knitr-hooks.html">
+<link rel="prev" href="tables.html">
+<link rel="next" href="kableextra.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -245,42 +245,202 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="adding-parameters-to-plots" class="section level2">
-<h2><span class="header-section-number">13.2</span> Adding parameters to plots</h2>
-<p>Graphviz substitution allows for mixing in R expressions into a Graphviz graph specification without sacrificing readability. If you specify a subsitution with <code>@@</code>, you must ensure there is a valid expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object (i.e., not a data frame, list, or matrix). Because there is the possibility to have multiple substitutions, numbering is required. Thus, the @@ notation is immediately followed by a number and that number should correspond to the number of the footnoted R expression. For example, suppose we have a dataset which is being analysed, and we would like to identify how many values are removed at each stage of a process.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DiagrammeR<span class="op">::</span><span class="kw">grViz</span>(<span class="st">&quot;</span>
-<span class="st">digraph graph2 {</span>
-
-<span class="st">graph [layout = dot, rankdir = LR]</span>
-
-<span class="st"># node definitions with substituted label text</span>
-<span class="st">node [shape = rectangle]</span>
-<span class="st">a [label = &#39;@@1&#39;]</span>
-<span class="st">b [label = &#39;@@2&#39;]</span>
-<span class="st">c [label = &#39;@@3&#39;]</span>
-<span class="st">d [label = &#39;@@4&#39;]</span>
-
-<span class="st">a -&gt; b -&gt; c -&gt; d</span>
-
-<span class="st">}</span>
-
-<span class="st">[1]: paste(&#39;Input Data&#39;, 1)</span>
-<span class="st">[2]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">[3]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">[4]: paste(&#39;Step &#39;, 1)</span>
-<span class="st">&quot;</span>)</code></pre></div>
-<div id="htmlwidget-b36291abf208479d337f" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b36291abf208479d337f">{"x":{"diagram":"\ndigraph graph2 {\n\ngraph [layout = dot, rankdir = LR]\n\n# node definitions with substituted label text\nnode [shape = rectangle]\na [label = \"Input Data 1\"]\nb [label = \"Step  1\"]\nc [label = \"Step  1\"]\nd [label = \"Step  1\"]\n\na -> b -> c -> d\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="customising-kable-outputs" class="section level2">
+<h2><span class="header-section-number">10.1</span> Customising kable outputs</h2>
+<p>The <code>kable</code> package provides the most convenient way of producing tables within the R Markdown package, providing neatly formatted tables for PDF, HTML, and Word and Markdown documents. The majority of the time, the default settings are generally suitable, but if we wish to have more control of their behaviour, there is an extensive number of settings which can be used. Table <a href="customising-kable-outputs.html#tab:kableArgs">10.1</a> shows the possible arguments which can be used, and with some examples shown below on how they can be used.</p>
+<table>
+<caption><span id="tab:kableArgs">Table 10.1: </span>Possible arguments for the kable function</caption>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+<th align="left">HTML</th>
+<th align="left">LaTeX</th>
+<th align="left">Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">digits</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">row.names</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">col.names</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">align</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">caption</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">format</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">escape</td>
+<td align="left">NA</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">booktabs</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">longtable</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">linesep</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">table.envir</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">table.attr</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">format.args</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">X</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">padding</td>
+<td align="left">NA</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">X</td>
+</tr>
+</tbody>
+</table>
+<!--- LateX options also include toprule, bottomrule, midrule, centering --->
+<div id="changing-column-names" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Changing column names</h3>
+<p>The names of columns in a dataframe will often not be the same as what we want to display in our output format. It can be particularly annoying to have spaces in the name of a variable. We can use the the <code>col.names</code> argument to replace the names with a vector of names:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris),
+      <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Sepal Length&quot;</span>, <span class="st">&quot;Sepal Width&quot;</span>, <span class="st">&quot;Petal Length&quot;</span>, <span class="st">&quot;Petal Width&quot;</span>, <span class="st">&quot;Species&quot;</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Sepal Length</th>
+<th align="right">Sepal Width</th>
+<th align="right">Petal Length</th>
+<th align="right">Petal Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td align="left">setosa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="customising-latex-options" class="section level3">
+<h3><span class="header-section-number">10.1.2</span> Customising LaTeX options</h3>
+<p>There are a lot of extra options which can be controlled for LaTeX tables.</p>
+<ul>
+<li><code>booktabs</code> <a href="https://ctan.org/pkg/booktabs?lang=en">booktabs</a> LaTeX package.</li>
+<li>If we are creating tables which are longer than a page, we can <code>longtable</code> option. This will load the <a href="https://ctan.org/pkg/longtable?lang=en">longtable</a> LaTeX package.</li>
+<li>The <code>caption.short</code> argument can be useful if we wish to show a shortened caption in our table of contents.</li>
+<li><code>linesep</code> can be used to change the line spacing. We can play around with this option if you want to change the style. For example <code>linesep = c(&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;\\hline&quot;)</code> would add a horizontal line every four spaces.</li>
+</ul>
 
 </div>
-<!-- </div> -->
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="basic-diagrams.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="knitr-hooks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kableextra.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -310,7 +470,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/book/master/11-diagrams/10-Diagrams.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/book/master/08-tables/08-01-kable.Rmd",
 "text": "Edit"
 },
 "history": {
