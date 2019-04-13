@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>11.2 RStudio integration with R Markdown | R Markdown Cookbook</title>
+  <title>11.3 RStudio integration with R Markdown | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="11.2 RStudio integration with R Markdown | R Markdown Cookbook" />
+  <meta property="og:title" content="11.3 RStudio integration with R Markdown | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.2 RStudio integration with R Markdown | R Markdown Cookbook" />
+  <meta name="twitter:title" content="11.3 RStudio integration with R Markdown | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2019-04-12">
+<meta name="date" content="2019-04-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -200,13 +200,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>11</b> Workflow</a><ul>
-<li class="chapter" data-level="11.1" data-path="multi-file-documents.html"><a href="multi-file-documents.html"><i class="fa fa-check"></i><b>11.1</b> Multi-file documents</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="multi-file-documents.html"><a href="multi-file-documents.html#child-documents"><i class="fa fa-check"></i><b>11.1.1</b> Child documents</a></li>
-<li class="chapter" data-level="11.1.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html#using-bookdown"><i class="fa fa-check"></i><b>11.1.2</b> Using bookdown</a></li>
-<li class="chapter" data-level="11.1.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>11.1.3</b> Which method should you use?</a></li>
+<li class="chapter" data-level="11.1" data-path="customRender.html"><a href="customRender.html"><i class="fa fa-check"></i><b>11.1</b> Creating custom render functions</a></li>
+<li class="chapter" data-level="11.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html"><i class="fa fa-check"></i><b>11.2</b> Multi-file documents</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="multi-file-documents.html"><a href="multi-file-documents.html#child-documents"><i class="fa fa-check"></i><b>11.2.1</b> Child documents</a></li>
+<li class="chapter" data-level="11.2.2" data-path="multi-file-documents.html"><a href="multi-file-documents.html#using-bookdown"><i class="fa fa-check"></i><b>11.2.2</b> Using bookdown</a></li>
+<li class="chapter" data-level="11.2.3" data-path="multi-file-documents.html"><a href="multi-file-documents.html#which-method-should-you-use"><i class="fa fa-check"></i><b>11.2.3</b> Which method should you use?</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>11.2</b> RStudio integration with R Markdown</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>11.2.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="11.3" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html"><i class="fa fa-check"></i><b>11.3</b> RStudio integration with R Markdown</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#r-markdown-specific-rstudio-keyboard-shorcuts"><i class="fa fa-check"></i><b>11.3.1</b> R Markdown specific Rstudio keyboard shorcuts</a></li>
+<li class="chapter" data-level="11.3.2" data-path="rstudio-integration-with-r-markdown.html"><a href="rstudio-integration-with-r-markdown.html#customising-the-knit-button"><i class="fa fa-check"></i><b>11.3.2</b> Customising the knit button</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="managing-big-projects.html"><a href="managing-big-projects.html"><i class="fa fa-check"></i><b>12</b> Managing Big Projects</a><ul>
@@ -246,10 +248,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="rstudio-integration-with-r-markdown" class="section level2">
-<h2><span class="header-section-number">11.2</span> RStudio integration with R Markdown</h2>
+<h2><span class="header-section-number">11.3</span> RStudio integration with R Markdown</h2>
 <p>R Markdown format and features can be used with R and <strong>rmarkdown</strong> package, with any editor that got your preference. However, RStudio has a deep integration with R Markdown and offers additional feature that will help your project workflow without a doubt.</p>
 <div id="r-markdown-specific-rstudio-keyboard-shorcuts" class="section level3">
-<h3><span class="header-section-number">11.2.1</span> R Markdown specific Rstudio keyboard shorcuts</h3>
+<h3><span class="header-section-number">11.3.1</span> R Markdown specific Rstudio keyboard shorcuts</h3>
 <!--- https://stackoverflow.com/questions/30938280/keyboard-shortcut-to-produce-code-chunk-brackets-in-markdown-in-r-for-rstudio --->
 <p>Like any great IDE, RStudio has keyboard shorcuts<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and some are specific to R Markdown. Some of the most useful shortcuts are summarised in Table <a href="rstudio-integration-with-r-markdown.html#tab:keyboardShortcuts">11.1</a>.</p>
 <table>
@@ -334,6 +336,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
+</div>
+<div id="customising-the-knit-button" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> Customising the knit button</h3>
+<p>When you click the <code>Knit</code> button in RStudio, it will run the <code>rmarkdown::render</code> in a clean R session and output a file of the same name in the same directory. For example, running <code>example.Rmd</code> with the <code>output:html_document</code> will create an output file <code>example.html</code>.</p>
+<p>There may be situations where we want to customise how the document is rendered. For example, perhaps we would like the rendered document to contain the current date, or would like to output the compiled report into a different directory. Although we can customise the <code>render</code> function using external scripts (See section <a href="customRender.html#customRender">11.1</a>), it can be inconvenient to have to rely on external scripts to compile your report.</p>
+<p>It is possible to control the behaviour of the knit button by using the <code>knit</code> argument within the YAML of your document. This requires a function to be specified with the arguments <code>inputFile</code>, and <code>encoding</code>. There are two techniques that we can use to customise the behaviour of the knit function:</p>
+<ol style="list-style-type: decimal">
+<li>Embed the custom function directly within the YAML</li>
+<li>Create a custom function and save it in a package</li>
+</ol>
+<p>The easiest way of creating a function is to store the code directly within the YAML. We must wrap the entire function in brackets, and any linebreaks in the YAML must start with 4 spaces. For example, if we want the output filename to include the date it was rendered, we could use the following YAML code:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">knit:</span><span class="at"> (function(inputFile, encoding)</span>
+    <span class="kw">{</span><span class="fu">rmarkdown:</span><span class="at">:render(input = inputFile</span><span class="kw">,</span>
+    encoding = encoding,
+    <span class="fu">output_file = paste0(tools:</span><span class="at">:file_path_sans_ext(basename(inputFile)),</span>
+                                         <span class="st">&#39;-&#39;</span>,
+                                         format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),
+                                         <span class="st">&#39;.html&#39;</span>))})
+<span class="ot">---</span></code></pre></div>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/04/13, the output file name would be example-20190413.html.</p>
+<p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Custom Knit function for RStudio</span>
+<span class="co">#&#39;</span>
+<span class="co">#&#39; @export</span>
+knit_with_date &lt;-<span class="st"> </span><span class="cf">function</span>(inputFile, encoding) {
+
+  rmarkdown<span class="op">::</span><span class="kw">render</span>(inputFile,
+                    <span class="dt">encoding =</span> encoding,
+                    <span class="dt">output_file =</span> <span class="kw">paste0</span>(<span class="kw">dirname</span>(inputFile),<span class="st">&#39;/&#39;</span>, tools<span class="op">::</span><span class="kw">file_path_sans_ext</span>(<span class="kw">basename</span>(inputFile)),
+                                         <span class="st">&#39;-&#39;</span>,
+                                         <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="st">&#39;%Y%m%d&#39;</span>),
+                                         <span class="st">&#39;.html&#39;</span>))
+  }</code></pre></div>
+<p>If we were to add this to the package <code>myPackage</code>, you will then be able to refer to your custom Knit function using the following YAML argument:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="ot">---</span>
+<span class="fu">knit:</span><span class="at"> myPackage::knit_with_date</span>
+<span class="ot">---</span></code></pre></div>
+<p>Readers may wish to refer to Section <a href="customRender.html#customRender">11.1</a> to find out more ideas on how they could customise the control of their render function.</p>
 
 </div>
 </div>
