@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="knitr-hooks.html">
-<link rel="next" href="references.html">
+<link rel="next" href="output-figures-in-html5-format.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -230,6 +230,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="14" data-path="knitr-hooks.html"><a href="knitr-hooks.html"><i class="fa fa-check"></i><b>14</b> Knitr Hooks</a><ul>
 <li class="chapter" data-level="14.1" data-path="hooks-scroll.html"><a href="hooks-scroll.html"><i class="fa fa-check"></i><b>14.1</b> Scrollable code chunks</a></li>
+<li class="chapter" data-level="14.2" data-path="output-figures-in-html5-format.html"><a href="output-figures-in-html5-format.html"><i class="fa fa-check"></i><b>14.2</b> Output figures in HTML5 format</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -274,40 +275,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 print(cars)
 ```</code></pre>
 
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
-hook_output &lt;-<span class="st"> </span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&quot;output&quot;</span>)
-knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {
-   lines &lt;-<span class="st"> </span>options<span class="op">$</span>output.lines
-   <span class="cf">if</span> (<span class="kw">is.null</span>(lines)) {
-     <span class="kw">return</span>(<span class="kw">hook_output</span>(x, options))  <span class="co"># pass to default hook</span>
-   }
-   x &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))
-   more &lt;-<span class="st"> &quot;...&quot;</span>
-   <span class="cf">if</span> (<span class="kw">length</span>(lines)<span class="op">==</span><span class="dv">1</span>) {        <span class="co"># first n lines</span>
-     <span class="cf">if</span> (<span class="kw">length</span>(x) <span class="op">&gt;</span><span class="st"> </span>lines) {
-       <span class="co"># truncate the output, but add ....</span>
-       x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">head</span>(x, lines), more)
-     }
-   } <span class="cf">else</span> {
-     x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="cf">if</span> (<span class="kw">abs</span>(lines[<span class="dv">1</span>])<span class="op">&gt;</span><span class="dv">1</span>) more <span class="cf">else</span> <span class="ot">NULL</span>, 
-            x[lines], 
-            <span class="cf">if</span> (<span class="kw">length</span>(x)<span class="op">&gt;</span>lines[<span class="kw">abs</span>(<span class="kw">length</span>(lines))]) more <span class="cf">else</span> <span class="ot">NULL</span>
-           )
-   }
-   <span class="co"># paste these lines together</span>
-   x &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">c</span>(x, <span class="st">&quot;&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
-   <span class="kw">hook_output</span>(x, options)
- })</code></pre></div>
-
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="knitr-hooks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="output-figures-in-html5-format.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

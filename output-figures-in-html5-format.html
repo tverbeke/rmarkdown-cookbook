@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 6 LaTeX | R Markdown Cookbook</title>
+  <title>14.2 Output figures in HTML5 format | R Markdown Cookbook</title>
   <meta name="description" content="Tips and tricks to build advanced projects in R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 6 LaTeX | R Markdown Cookbook" />
+  <meta property="og:title" content="14.2 Output figures in HTML5 format | R Markdown Cookbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 LaTeX | R Markdown Cookbook" />
+  <meta name="twitter:title" content="14.2 Output figures in HTML5 format | R Markdown Cookbook" />
   
   <meta name="twitter:description" content="Tips and tricks to build advanced projects in R Markdown" />
   <meta name="twitter:image" content="images/cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="customising-knitr-options.html">
-<link rel="next" href="add-logo-to-title-page.html">
+<link rel="prev" href="hooks-scroll.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -253,19 +253,81 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="latex" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> LaTeX</h1>
-<p>For many authors, the main output of their work will be the PDF report, and will be able to utilise the styling of LaTeX. In this chapter, we discuss approaches which can be used to customise the output of PDF reports.</p>
-<p>Users should approach with a note of caution. One of the major benefits of R Markdown is the fact that a single source document can create documents with multiple formats. By tailoring your work to a single output format (PDF/Word/HTML), you may improve the appearance and performance of a single output but at the expense of this tranferability.</p>
-<!--chapter:end:04-latex/04-latex.Rmd--> 
+<div id="output-figures-in-html5-format" class="section level2">
+<h2><span class="header-section-number">14.2</span> Output figures in HTML5 format</h2>
+<p>By default, images in R Markdown are translated to <code>&lt;img src='...' alt='...'&gt;</code> in the HTML output. This demo shows how to use the HTML5 <code>&lt;figure&gt;</code> tag to display images in R Markdown. Firstly we must define the custom hook as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reconfigure the plot hook</span>
+<span class="kw">library</span>(knitr)
+knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">plot =</span> <span class="cf">function</span>(x, options) {
+  <span class="kw">paste</span>(<span class="st">&#39;&lt;figure&gt;&lt;img src=&quot;&#39;</span>,
+        opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;base.url&#39;</span>), <span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&#39;.&#39;</span>),
+        <span class="st">&#39;&quot;&gt;&lt;figcaption&gt;&#39;</span>, options<span class="op">$</span>fig.cap, <span class="st">&#39;&lt;/figcaption&gt;&lt;/figure&gt;&#39;</span>,
+        <span class="dt">sep =</span> <span class="st">&#39;&#39;</span>)
+})</code></pre></div>
+<p>One motivation for this is that we could use CSS to customise the output using the HTML5 specification, and readers may want to check out this <a href="https://www.w3.org/Style/Examples/007/figures.en.html">website</a> for some ideas. For example, we could add a border to the plot and then change the background colour of the figure caption text:</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">figure <span class="kw">{</span>
+  <span class="kw">border:</span> <span class="dt">thin</span> <span class="dt">silver</span> <span class="dt">solid</span><span class="kw">;</span>
+  <span class="kw">padding-top:</span> <span class="dt">0</span><span class="kw">;</span>
+<span class="kw">}</span>
+figcaption <span class="kw">{</span>
+  <span class="kw">padding:</span> <span class="dt">0.5em</span><span class="kw">;</span>
+  <span class="kw">border:</span> <span class="dt">thin</span> <span class="dt">silver</span> <span class="dt">solid</span><span class="kw">;</span>
+  <span class="kw">background:</span> <span class="dt">#D2F0F7</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre></div>
+<style type="text/css">
+figure {
+  border: thin silver solid;
+  padding-top: 0;
+}
+figcaption {
+  padding: 0.5em;
+  border: thin silver solid;
+  background: #D2F0F7;
+}
+</style>
+<p>Having specified the custom hook and CSS, the output of an example figure is shown in Figure <a href="#fig:hookHTML5"><strong>??</strong></a>. A full reproducible example is provided in the examples <a href="https://github.com/dr-harper/rmarkdown-cookbook/blob/master/examples/hook-html5-figures.Rmd">online</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/hookHtml5Images.png&quot;</span>, <span class="dt">dpi =</span> <span class="ot">NA</span>)</code></pre></div>
+<figure>
+<img src="images/hookHtml5Images.png">
+<figcaption>
+Customised Figure Output styled by HTML5 CSS
+</figcaption>
+</figure>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+hook_output &lt;-<span class="st"> </span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&quot;output&quot;</span>)
+knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {
+   lines &lt;-<span class="st"> </span>options<span class="op">$</span>output.lines
+   <span class="cf">if</span> (<span class="kw">is.null</span>(lines)) {
+     <span class="kw">return</span>(<span class="kw">hook_output</span>(x, options))  <span class="co"># pass to default hook</span>
+   }
+   x &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(x, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))
+   more &lt;-<span class="st"> &quot;...&quot;</span>
+   <span class="cf">if</span> (<span class="kw">length</span>(lines)<span class="op">==</span><span class="dv">1</span>) {        <span class="co"># first n lines</span>
+     <span class="cf">if</span> (<span class="kw">length</span>(x) <span class="op">&gt;</span><span class="st"> </span>lines) {
+       <span class="co"># truncate the output, but add ....</span>
+       x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">head</span>(x, lines), more)
+     }
+   } <span class="cf">else</span> {
+     x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="cf">if</span> (<span class="kw">abs</span>(lines[<span class="dv">1</span>])<span class="op">&gt;</span><span class="dv">1</span>) more <span class="cf">else</span> <span class="ot">NULL</span>, 
+            x[lines], 
+            <span class="cf">if</span> (<span class="kw">length</span>(x)<span class="op">&gt;</span>lines[<span class="kw">abs</span>(<span class="kw">length</span>(lines))]) more <span class="cf">else</span> <span class="ot">NULL</span>
+           )
+   }
+   <span class="co"># paste these lines together</span>
+   x &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">c</span>(x, <span class="st">&quot;&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+   <span class="kw">hook_output</span>(x, options)
+ })</code></pre></div>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="customising-knitr-options.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="add-logo-to-title-page.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hooks-scroll.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -295,7 +357,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/book/master/04-latex/latex-add-logo.Rmd",
+"link": "https://github.com/mikey-harper/rmarkdown-cookbook/edit/book/master/12-hooks/hooks-html5-figures.Rmd",
 "text": "Edit"
 },
 "history": {
