@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2019-04-13">
+<meta name="date" content="2019-04-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -51,7 +51,7 @@
 <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -115,7 +115,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>I Get Started</b></span></li>
-<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a></li>
+<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> Installation</a><ul>
+<li class="chapter" data-level="1.1" data-path="installing-latex-with-tinytex.html"><a href="installing-latex-with-tinytex.html"><i class="fa fa-check"></i><b>1.1</b> Installing LaTeX with TinyTex</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Basics</a><ul>
 <li class="chapter" data-level="2.1" data-path="r-markdown-components.html"><a href="r-markdown-components.html"><i class="fa fa-check"></i><b>2.1</b> R Markdown components</a></li>
 </ul></li>
@@ -187,7 +189,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>10</b> Tables</a><ul>
 <li class="chapter" data-level="10.1" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html"><i class="fa fa-check"></i><b>10.1</b> Customising kable outputs</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html#changing-column-names"><i class="fa fa-check"></i><b>10.1.1</b> Changing column names</a></li>
-<li class="chapter" data-level="10.1.2" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html#customising-latex-options"><i class="fa fa-check"></i><b>10.1.2</b> Customising LaTeX options</a></li>
+<li class="chapter" data-level="10.1.2" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html#changing-column-alignment"><i class="fa fa-check"></i><b>10.1.2</b> Changing column alignment</a></li>
+<li class="chapter" data-level="10.1.3" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html#customising-latex-options"><i class="fa fa-check"></i><b>10.1.3</b> Customising LaTeX options</a></li>
+<li class="chapter" data-level="10.1.4" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html#customising-html-table-appearance"><i class="fa fa-check"></i><b>10.1.4</b> Customising HTML table appearance</a></li>
+<li class="chapter" data-level="10.1.5" data-path="customising-kable-outputs.html"><a href="customising-kable-outputs.html#changing-default-behavour"><i class="fa fa-check"></i><b>10.1.5</b> Changing default behavour</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="kableextra.html"><a href="kableextra.html"><i class="fa fa-check"></i><b>10.2</b> kableExtra</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="kableextra.html"><a href="kableextra.html#setup"><i class="fa fa-check"></i><b>10.2.1</b> Setup</a></li>
@@ -250,12 +255,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="diagrams" class="section level1">
 <h1><span class="header-section-number">Chapter 13</span> Diagrams</h1>
 <p>It is often useful to express analysis using flowcharts and diagrams within reports. Although there are many separate programs which can be used to produce these, it can be beneficial to create these within our analysis directly. This makes it easier to update and edit the graph if we need to edit it in the future, and allows us to use the results from our analysis directly within the diagrams, making them more information.</p>
-<p>While there are several different packages available for R, we will focus on the package <strong>DiagrammeR</strong> <span class="citation">(Iannone <a href="#ref-R-DiagrammeR">2018</a>)</span>. We also recommend that you read at <a href="http://rich-iannone.github.io/DiagrammeR/index.html" class="uri">http://rich-iannone.github.io/DiagrammeR/index.html</a> . In this chapter we will explain some of the basic usages of the package.</p> 
+<p>While there are several different packages available for R, we will focus on the package <strong>DiagrammeR</strong> <span class="citation">(Iannone <a href="#ref-R-DiagrammeR">2019</a>)</span>. We also recommend that you read at <a href="http://rich-iannone.github.io/DiagrammeR/index.html" class="uri">http://rich-iannone.github.io/DiagrammeR/index.html</a> . In this chapter we will explain some of the basic usages of the package.</p> 
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-R-DiagrammeR">
-<p>Iannone, Richard. 2018. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
+<p>Iannone, Richard. 2019. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://CRAN.R-project.org/package=DiagrammeR" class="uri">https://CRAN.R-project.org/package=DiagrammeR</a>.</p>
 </div>
 </div>
             </section>
