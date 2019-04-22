@@ -256,13 +256,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">1.1</span> Installing LaTeX with TinyTex</h2>
 <p>If you would like to create PDF outputs from R Markdown, you will need to have a LaTeX distribution installed. Although there are several traditional options including MiKTeX, MacTeX, and TeX Live, these can be cumbersome to install if you primarily want to use LaTeX within R Markdown.</p>
 <p>To make this process easier, TinyTeX is a custom LaTeX distribution based on TeX Live that is small in size (150Mb on macOS/Linux and 220Mb on Windows) but functions well in most cases, especially for R users. Installing or running TinyTeX does not require admin privileges, which means you no longer need sudo or your IT.</p>
-<p>If you want to use TinyTeX, we recommend that you first uninstall your existing LaTeX distribution. The <strong>tinytex</strong> R package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-tinytex"><strong>???</strong></span>)</span> can be used to install TinyTeX:</p>
+<p>If you want to use TinyTeX, we recommend that you first uninstall your existing LaTeX distribution. The <strong>tinytex</strong> R package <span class="citation">(Xie <a href="#ref-R-tinytex">2019</a><a href="#ref-R-tinytex">c</a>)</span> can be used to install TinyTeX:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)
 tinytex<span class="op">::</span><span class="kw">install_tinytex</span>()
 <span class="co"># to uninstall TinyTeX, run tinytex::uninstall_tinytex() </span></code></pre></div>
 
 </div>
 <!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-tinytex">
+<p>Xie, Yihui. 2019c. <em>Tinytex: Helper Functions to Install and Maintain ’Tex Live’, and Compile ’Latex’ Documents</em>. <a href="https://CRAN.R-project.org/package=tinytex" class="uri">https://CRAN.R-project.org/package=tinytex</a>.</p>
+</div>
+</div>
             </section>
 
           </div>
