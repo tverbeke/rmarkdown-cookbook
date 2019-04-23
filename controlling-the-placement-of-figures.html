@@ -281,8 +281,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">6.3.2</span> Preventing figures floating</h3>
 <p>Many users will initially want to prevent figures from floating in their document, replicating the behaviour of a traditional word processor. To do this, we must firstly load the LaTeX package <code>float</code>. This can be done by including the following line in the YAML:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span><span class="at"> </span>
-<span class="fu">pdf_document:</span>
-<span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></code></pre></div>
+  <span class="fu">pdf_document:</span>
+    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></code></pre></div>
 <p>We can use the <code>fig.pos</code> to control the float behaviour, and the use of <code>!H</code> will prevent any floating within the document. We can set the default behaviour for the document so that all chunks have this setting by including the following line at the start of your R Markdown document:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.pos =</span> <span class="st">&quot;!H&quot;</span>)</code></pre></div>
 <p>Please note, that we would strongly advise that readers consider the behaviour of float in their document. This solution was included within the book by popular demand<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> but there are some serious sides effects overriding the default settings.</p>
@@ -292,8 +292,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <!--- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text --->
 <p>An alternative to forcing all floats to be held is to force floats forwards in the text. This can remove a common issue, where a figure is shown at the top of the page on which it is created. This can break the flow of a report. We can force it so that the figure always appears after the text by using the <strong>flafter</strong> LaTeX package as follows:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span><span class="at"> </span>
-<span class="fu">pdf_document:</span>
-<span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></code></pre></div>
+  <span class="fu">pdf_document:</span>
+    <span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></code></pre></div>
 </div>
 <div id="adjust-latex-placement-rules" class="section level3">
 <h3><span class="header-section-number">6.3.4</span> Adjust LaTeX placement rules</h3>
@@ -359,9 +359,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="fu">\setcounter</span>{dbltopnumber}{9}</code></pre></div>
 <p>If we added these changes to our <code>premable.tex</code> file, we could reference to them within our YAML of our document:</p>
 <div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span>
-    <span class="fu">pdf_document:</span>
-        <span class="fu">includes:</span>
-            <span class="fu">in_header:</span><span class="at"> premable.tex</span></code></pre></div>
+  <span class="fu">pdf_document:</span>
+    <span class="fu">includes:</span>
+      <span class="fu">in_header:</span><span class="at"> premable.tex</span></code></pre></div>
 
 </div>
 </div>
