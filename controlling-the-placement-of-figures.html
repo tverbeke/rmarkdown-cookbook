@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2019-04-22">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -280,39 +280,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="preventing-figures-floating" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Preventing figures floating</h3>
 <p>Many users will initially want to prevent figures from floating in their document, replicating the behaviour of a traditional word processor. To do this, we must firstly load the LaTeX package <code>float</code>. This can be done by including the following line in the YAML:</p>
-<pre><code>output: 
-pdf_document:
-extra_dependencies: [&quot;float&quot;]</code></pre>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span><span class="at"> </span>
+<span class="fu">pdf_document:</span>
+<span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></code></pre></div>
 <p>We can use the <code>fig.pos</code> to control the float behaviour, and the use of <code>!H</code> will prevent any floating within the document. We can set the default behaviour for the document so that all chunks have this setting by including the following line at the start of your R Markdown document:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.pos =</span> <span class="st">&quot;!H&quot;</span>)</code></pre></div>
-<p>Please note, that we would strongly advise that readers consider the behaviour of float in their document. This solution was included within the book by popular demand<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> but there are some serious sides effects overriding the default settings. Primarily, you may end</p>
+<p>Please note, that we would strongly advise that readers consider the behaviour of float in their document. This solution was included within the book by popular demand<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> but there are some serious sides effects overriding the default settings.</p>
 </div>
 <div id="force-floats-forwards" class="section level3">
 <h3><span class="header-section-number">6.3.3</span> Force floats forwards</h3>
 <!--- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text --->
 <p>An alternative to forcing all floats to be held is to force floats forwards in the text. This can remove a common issue, where a figure is shown at the top of the page on which it is created. This can break the flow of a report. We can force it so that the figure always appears after the text by using the <strong>flafter</strong> LaTeX package as follows:</p>
-<pre><code>output: 
-pdf_document:
-extra_dependencies: [&quot;flafter&quot;]</code></pre>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">output:</span><span class="at"> </span>
+<span class="fu">pdf_document:</span>
+<span class="fu">extra_dependencies:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></code></pre></div>
 </div>
 <div id="adjust-latex-placement-rules" class="section level3">
 <h3><span class="header-section-number">6.3.4</span> Adjust LaTeX placement rules</h3>
 <p>LaTeX’s own float placement parameters could be preventing placements that seem entirely “reasonable” to you — they’re notoriously rather conservative. These defaults are displayed in Table <a href="controlling-the-placement-of-figures.html#tab:latexFloatDefault">6.1</a>.</p>
 <!--- This table may work better as a diagram? --->
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data.frame</span>(
-  <span class="dt">Command =</span> <span class="kw">c</span>(<span class="st">&quot;topfraction&quot;</span>, <span class="st">&quot;bottomfraction&quot;</span>, <span class="st">&quot;textfraction&quot;</span>,
-              <span class="st">&quot;floatpagefraction&quot;</span>, <span class="st">&quot;topnumber&quot;</span>, <span class="st">&quot;bottomnumber&quot;</span>,
-              <span class="st">&quot;totalnumber&quot;</span>),
-  <span class="dt">Description =</span> <span class="kw">c</span>(<span class="st">&quot;maximum fraction of page for floats at top&quot;</span>,
-                  <span class="st">&quot;maximum fraction of page for floats at bottom&quot;</span>,
-                  <span class="st">&quot;minimum fraction of page for text&quot;</span>,
-                  <span class="st">&quot;minimum fraction of floatpage that should have floats&quot;</span>,
-                  <span class="st">&quot;maximum number of floats at top of page&quot;</span>, <span class="st">&quot;maximum number of floats at bottom of page&quot;</span>,
-                  <span class="st">&quot;maximum number of floats on a page&quot;</span>),
-  <span class="dt">Default =</span> <span class="kw">c</span>(<span class="st">&quot;0.7&quot;</span>, <span class="st">&quot;0.3&quot;</span>, <span class="st">&quot;0.2&quot;</span>, <span class="st">&quot;0.5&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>),
-  <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>
-) <span class="op">%&gt;%</span>
-<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;Default LaTeX float settings&quot;</span>, <span class="dt">escape =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <table>
 <caption><span id="tab:latexFloatDefault">Table 6.1: </span>Default LaTeX float settings</caption>
 <thead>

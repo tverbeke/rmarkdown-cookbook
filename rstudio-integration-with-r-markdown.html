@@ -25,7 +25,7 @@
 <meta name="author" content="Michael Harper, Yihui Xie">
 
 
-<meta name="date" content="2019-04-22">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -368,7 +368,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
                                          format(Sys.Date(), <span class="st">&quot;%Y%m%d&quot;</span>),
                                          <span class="st">&#39;.html&#39;</span>))})
 <span class="ot">---</span></code></pre></div>
-<p>For example, we if knitted <code>example.Rmd</code> on 2019/04/22, the output file name would be example-20190422.html.</p>
+<p>For example, we if knitted <code>example.Rmd</code> on 2019/04/23, the output file name would be example-20190423.html.</p>
 <p>While the above approach does benefit from simplicity, it may get more complicated if we wish to do more advanced behaviour (perhaps creating a directory, setting some other environment variables). Embedding longer functions directly in your YAML may become difficult to manage. It may therefore be worth creating a function which could be used in a package. Taking our example above, we have created an example <code>knit_with_date</code> as defined below:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Custom Knit function for RStudio</span>
 <span class="co">#&#39;</span>
